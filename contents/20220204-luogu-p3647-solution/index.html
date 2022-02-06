@@ -1,0 +1,421 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
+<title>Luogu P3647 连珠线题解 - ctj12461's Blog</title><meta name=author content="ctj12461: ">
+<meta name=description content="这里给出一种无需换根的 DP 思路。 Part 1 我们从结点的添加方式入手，可以把结点分为三类： 初始的结点，这种结点只有一个 通过 Append 添加的结点，以下简称 A 类结">
+<meta name=keywords content="OI,DP,树形 DP,C++"><meta itemprop=name content="Luogu P3647 连珠线题解">
+<meta itemprop=description content="这里给出一种无需换根的 DP 思路。 Part 1 我们从结点的添加方式入手，可以把结点分为三类： 初始的结点，这种结点只有一个 通过 Append 添加的结点，以下简称 A 类结"><meta itemprop=datePublished content="2022-02-04T19:41:12+08:00">
+<meta itemprop=dateModified content="2022-02-04T19:41:12+08:00">
+<meta itemprop=wordCount content="1059"><meta itemprop=image content="https://ctj12461.vercel.app/logo.png">
+<meta itemprop=keywords content="OI,DP,树形 DP,C++,"><meta property="og:title" content="Luogu P3647 连珠线题解">
+<meta property="og:description" content="这里给出一种无需换根的 DP 思路。 Part 1 我们从结点的添加方式入手，可以把结点分为三类： 初始的结点，这种结点只有一个 通过 Append 添加的结点，以下简称 A 类结">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/"><meta property="og:image" content="https://ctj12461.vercel.app/logo.png"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2022-02-04T19:41:12+08:00">
+<meta property="article:modified_time" content="2022-02-04T19:41:12+08:00">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://ctj12461.vercel.app/logo.png">
+<meta name=twitter:title content="Luogu P3647 连珠线题解">
+<meta name=twitter:description content="这里给出一种无需换根的 DP 思路。 Part 1 我们从结点的添加方式入手，可以把结点分为三类： 初始的结点，这种结点只有一个 通过 Append 添加的结点，以下简称 A 类结">
+<meta name=application-name content="ctj12461">
+<meta name=apple-mobile-web-app-title content="ctj12461"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#252627"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/><link rel=next href=https://ctj12461.vercel.app/contents/20220206-gauss-elimination-note/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Luogu P3647 连珠线题解","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/ctj12461.vercel.app\/contents\/20220204-luogu-p3647-solution\/"},"genre":"posts","keywords":"OI, DP, 树形 DP, C\u002b\u002b","wordcount":1059,"url":"https:\/\/ctj12461.vercel.app\/contents\/20220204-luogu-p3647-solution\/","datePublished":"2022-02-04T19:41:12+08:00","dateModified":"2022-02-04T19:41:12+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"ctj12461"},"description":""}</script></head>
+<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="ctj12461's Blog"><span class=header-title-text>ctj12461's Blog</span></a><span class=header-subtitle></span></div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder="搜索文章标题或内容 ..." id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="ctj12461's Blog"><span class=header-title-text>ctj12461's Blog</span></a><span class=header-subtitle></span></div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder="搜索文章标题或内容 ..." id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</div>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
+</a>
+</div><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a></div>
+</div>
+</header>
+<div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div>
+<main class=main>
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animated flipInX">Luogu P3647 连珠线题解</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>ctj12461</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E9%A2%98%E8%A7%A3/><i class="far fa-folder fa-fw"></i>题解</a></span></div>
+<div class=post-meta-line><span title="2022-02-04 19:41:12">
+<i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-02-04>2022-02-04</time>
+</span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1059 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+</div><div class="details toc" id=toc-static kept=true>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span>
+</div>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href=#part-1>Part 1</a></li>
+<li><a href=#part-2>Part 2</a></li>
+<li><a href=#part-3>Part 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div><div class=content id=content><p>这里给出一种无需换根的 DP 思路。</p>
+<h4 id=part-1>Part 1</h4>
+<p>我们从结点的添加方式入手，可以把结点分为三类：</p>
+<ul>
+<li>初始的结点，这种结点只有一个</li>
+<li>通过 Append 添加的结点，以下简称 A 类结点</li>
+<li>通过 Insert 添加的结点，以下简称 I 类结点</li>
+</ul>
+<p>不换根的思路核心就在于保证转移时的过程符合结点的添加规则。为了方便，我们可以给每条线定向。同时假设 $1$ 为根，$x$ 为当前结点，$y$ 为 $x$ 的一个儿子结点，$fa$ 为 $x$ 的父亲结点。很显然接下来可以分 $6$ 类讨论：</p>
+<ol>
+<li>
+<p>若 $x$ 为初始结点，则其子结点、$fa$ 都应该连向 $x$</p>
+</li>
+<li>
+<p>若 $x$ 为 A 类结点</p>
+<ol>
+<li>$x$ 向 $fa$ 连一条红线，子结点连向 $x$</li>
+<li>$x$ 向其中一个子结点 $y$ 连一条红线，其他子结点以及 $fa$ 连向 $x$</li>
+</ol>
+</li>
+<li>
+<p>若 $x$ 为 I 类结点</p>
+<ol>
+<li>$x$ 取代一个子结点 $y$ 连向 $fa$ 的红线，然后换成蓝线</li>
+<li>$x$ 取代两个个子结点 $y_1$ 和 $y_2$ 之间的红线，然后换成蓝线</li>
+<li>$x$ 取代 $fa$ 连向一个子结点 $y$ 的红线，然后换成蓝线</li>
+</ol>
+</li>
+</ol>
+<p>上面的分类讨论中的“连向”可以看成 Append 或 Insert，根据题意计算就可以了。</p>
+<h4 id=part-2>Part 2</h4>
+<p>接下来根据分类讨论设出状态以及写出方程：</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=kt>long</span> <span class=kt>long</span> <span class=n>f</span><span class=p>[</span><span class=n>MAXN</span><span class=p>][</span><span class=mi>6</span><span class=p>];</span>
+
+<span class=cm>/**
+</span><span class=cm> * f[x][0]: x is initial
+</span><span class=cm> * f[x][1]: x -&gt; fa
+</span><span class=cm> * f[x][2]: x -&gt; y
+</span><span class=cm> * f[x][3]: y -&gt; x -&gt; fa
+</span><span class=cm> * f[x][4]: y1 -&gt; x -&gt; y2
+</span><span class=cm> * f[x][5]: fa -&gt; x -&gt; y
+</span><span class=cm> */</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>设 $cont(x)$ 表示 $x$ 向其父结点连线的贡献，则 $cont(x)=\max\{f[x][1],f[x][3]+len(x,fa(x))\}$。
+$$
+f[x][0]=\sum_{y\in son(x)}cont(y)\\
+f[x][1]=\sum_{y\in son(x)}cont(y)\\
+f[x][2]=\sum_{y\in son(x)}cont(y)+\max_{y\in son(x)}\{\max\{f[y][0], f[y][2], f[y][4], f[y][5] + len(y,x)\}-cont(y)\}\\
+f[x][3]=\sum_{y\in son(x)}cont(y)+\max_{y\in son(x)}\{f[y][1]+len(y,x)-cont(y)\}\\
+f[x][4]=\sum_{y\in son(x)}cont(y)+\\\max_{y_1,y_2\in son(x)\wedge y_1\ne y_2}\{
+f[y_1][1]+len(y_1,x)-cont(y_1)+\max\{f[y_2][0], f[y_2][2], f[y_2][4]\}+len(y_2,x)-cont(y_2)\}\\
+f[x][5]=\sum_{y\in son(x)}cont(y)+\max_{y\in son(x)}\{\max\{f[y][0], f[y][2], f[y][4]\}+len(y,x)-cont(y)\}
+$$
+上面的转移都可以看成先从子结点按照 $cont(x)$ 转移，在钦定某个结点按照特定的方式转移，记录下最优的差值在加到 $f$ 里即可。$f[x][4]$ 有两个变量，可以考虑枚举其中一个，用 <code>std::multiset&lt;T></code> 维护另外一个的最值即可。</p>
+<p>时间复杂度 $O(n \log_2 n)$。</p>
+<h4 id=part-3>Part 3</h4>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span><span class=lnt>73
+</span><span class=lnt>74
+</span><span class=lnt>75
+</span><span class=lnt>76
+</span><span class=lnt>77
+</span><span class=lnt>78
+</span><span class=lnt>79
+</span><span class=lnt>80
+</span><span class=lnt>81
+</span><span class=lnt>82
+</span><span class=lnt>83
+</span><span class=lnt>84
+</span><span class=lnt>85
+</span><span class=lnt>86
+</span><span class=lnt>87
+</span><span class=lnt>88
+</span><span class=lnt>89
+</span><span class=lnt>90
+</span><span class=lnt>91
+</span><span class=lnt>92
+</span><span class=lnt>93
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span><span class=cp>#include</span> <span class=cpf>&lt;vector&gt;</span><span class=cp>
+</span><span class=cp>#include</span> <span class=cpf>&lt;set&gt;</span><span class=cp>
+</span><span class=cp></span><span class=k>using</span> <span class=k>namespace</span> <span class=n>std</span><span class=p>;</span>
+
+<span class=k>constexpr</span> <span class=kt>int</span> <span class=n>MAXN</span> <span class=o>=</span> <span class=mi>200000</span> <span class=o>+</span> <span class=mi>10</span><span class=p>;</span>
+<span class=k>constexpr</span> <span class=kt>int</span> <span class=n>INFINITY</span> <span class=o>=</span> <span class=mh>0x7fffffff</span><span class=p>;</span>
+
+<span class=kt>int</span> <span class=n>n</span><span class=p>;</span>
+<span class=n>vector</span><span class=o>&lt;</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;&gt;</span> <span class=n>tree</span><span class=p>[</span><span class=n>MAXN</span><span class=p>];</span>
+<span class=kt>long</span> <span class=kt>long</span> <span class=n>f</span><span class=p>[</span><span class=n>MAXN</span><span class=p>][</span><span class=mi>6</span><span class=p>];</span>
+
+<span class=cm>/**
+</span><span class=cm> * f[x][0]: x is initial
+</span><span class=cm> * f[x][1]: x -&gt; fa
+</span><span class=cm> * f[x][2]: x -&gt; y
+</span><span class=cm> * f[x][3]: y -&gt; x -&gt; fa
+</span><span class=cm> * f[x][4]: y1 -&gt; x -&gt; y2
+</span><span class=cm> * f[x][5]: fa -&gt; x -&gt; y
+</span><span class=cm> */</span>
+
+<span class=kt>void</span> <span class=nf>link</span><span class=p>(</span><span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=kt>int</span> <span class=n>y</span><span class=p>,</span> <span class=kt>int</span> <span class=n>l</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>tree</span><span class=p>[</span><span class=n>x</span><span class=p>].</span><span class=n>push_back</span><span class=p>({</span><span class=n>y</span><span class=p>,</span> <span class=n>l</span><span class=p>});</span>
+    <span class=n>tree</span><span class=p>[</span><span class=n>y</span><span class=p>].</span><span class=n>push_back</span><span class=p>({</span><span class=n>x</span><span class=p>,</span> <span class=n>l</span><span class=p>});</span>
+<span class=p>}</span>
+
+<span class=kt>void</span> <span class=nf>dfs</span><span class=p>(</span><span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=kt>int</span> <span class=n>fa</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=n>tree</span><span class=p>[</span><span class=n>x</span><span class=p>].</span><span class=n>size</span><span class=p>()</span> <span class=o>==</span> <span class=mi>1</span> <span class=o>&amp;&amp;</span> <span class=n>fa</span> <span class=o>!=</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>f</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=mi>2</span><span class=p>]</span> <span class=o>=</span> <span class=n>f</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=mi>3</span><span class=p>]</span> <span class=o>=</span> <span class=n>f</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=mi>4</span><span class=p>]</span> <span class=o>=</span> <span class=n>f</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=mi>5</span><span class=p>]</span> <span class=o>=</span> <span class=o>-</span><span class=n>INFINITY</span><span class=p>;</span>
+        <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=kt>long</span> <span class=kt>long</span> <span class=n>sum</span> <span class=o>=</span> <span class=mi>0</span><span class=p>,</span> <span class=n>delta</span><span class=p>[</span><span class=mi>4</span><span class=p>]</span> <span class=o>=</span> <span class=p>{</span><span class=o>-</span><span class=n>INFINITY</span><span class=p>,</span> <span class=o>-</span><span class=n>INFINITY</span><span class=p>,</span> <span class=o>-</span><span class=n>INFINITY</span><span class=p>,</span> <span class=o>-</span><span class=n>INFINITY</span><span class=p>};</span>
+    <span class=n>multiset</span><span class=o>&lt;</span><span class=kt>long</span> <span class=kt>long</span><span class=o>&gt;</span> <span class=n>val</span><span class=p>;</span>
+    <span class=n>val</span><span class=p>.</span><span class=n>insert</span><span class=p>(</span><span class=o>-</span><span class=n>INFINITY</span><span class=p>);</span>
+
+    <span class=k>for</span> <span class=p>(</span><span class=k>auto</span> <span class=p>[</span><span class=n>y</span><span class=p>,</span> <span class=n>l</span><span class=p>]</span> <span class=o>:</span> <span class=n>tree</span><span class=p>[</span><span class=n>x</span><span class=p>])</span> <span class=p>{</span>
+        <span class=k>if</span> <span class=p>(</span><span class=n>y</span> <span class=o>==</span> <span class=n>fa</span><span class=p>)</span>
+            <span class=k>continue</span><span class=p>;</span>
+
+        <span class=n>dfs</span><span class=p>(</span><span class=n>y</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+
+        <span class=kt>long</span> <span class=kt>long</span> <span class=n>cont</span> <span class=o>=</span> <span class=n>max</span><span class=p>(</span><span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>1</span><span class=p>],</span> <span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>3</span><span class=p>]</span> <span class=o>+</span> <span class=n>l</span><span class=p>);</span>
+        <span class=n>sum</span> <span class=o>+=</span> <span class=n>cont</span><span class=p>;</span>
+
+        <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>6</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span>
+            <span class=n>f</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=n>i</span><span class=p>]</span> <span class=o>+=</span> <span class=n>cont</span><span class=p>;</span>
+
+        <span class=n>delta</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>=</span> <span class=n>max</span><span class=p>(</span><span class=n>delta</span><span class=p>[</span><span class=mi>0</span><span class=p>],</span> <span class=n>max</span><span class=p>(</span><span class=n>max</span><span class=p>(</span><span class=n>max</span><span class=p>(</span><span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>0</span><span class=p>],</span> <span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>2</span><span class=p>]),</span> <span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>4</span><span class=p>]),</span> <span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>5</span><span class=p>]</span> <span class=o>+</span> <span class=n>l</span><span class=p>)</span> <span class=o>-</span> <span class=n>cont</span><span class=p>);</span>
+        <span class=n>delta</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>=</span> <span class=n>max</span><span class=p>(</span><span class=n>delta</span><span class=p>[</span><span class=mi>1</span><span class=p>],</span> <span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>1</span><span class=p>]</span> <span class=o>+</span> <span class=n>l</span> <span class=o>-</span> <span class=n>cont</span><span class=p>);</span>
+        <span class=n>delta</span><span class=p>[</span><span class=mi>3</span><span class=p>]</span> <span class=o>=</span> <span class=n>max</span><span class=p>(</span><span class=n>delta</span><span class=p>[</span><span class=mi>3</span><span class=p>],</span> <span class=n>max</span><span class=p>(</span><span class=n>max</span><span class=p>(</span><span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>0</span><span class=p>],</span> <span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>2</span><span class=p>]),</span> <span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>4</span><span class=p>])</span> <span class=o>+</span> <span class=n>l</span> <span class=o>-</span> <span class=n>cont</span><span class=p>);</span>
+        <span class=n>val</span><span class=p>.</span><span class=n>insert</span><span class=p>(</span><span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>1</span><span class=p>]</span> <span class=o>+</span> <span class=n>l</span> <span class=o>-</span> <span class=n>cont</span><span class=p>);</span>
+    <span class=p>}</span>
+
+    <span class=k>for</span> <span class=p>(</span><span class=k>auto</span> <span class=p>[</span><span class=n>y</span><span class=p>,</span> <span class=n>l</span><span class=p>]</span> <span class=o>:</span> <span class=n>tree</span><span class=p>[</span><span class=n>x</span><span class=p>])</span> <span class=p>{</span>
+        <span class=k>if</span> <span class=p>(</span><span class=n>y</span> <span class=o>==</span> <span class=n>fa</span><span class=p>)</span>
+            <span class=k>continue</span><span class=p>;</span>
+
+        <span class=kt>int</span> <span class=n>cont</span> <span class=o>=</span> <span class=n>max</span><span class=p>(</span><span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>1</span><span class=p>],</span> <span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>3</span><span class=p>]</span> <span class=o>+</span> <span class=n>l</span><span class=p>);</span>
+        <span class=n>val</span><span class=p>.</span><span class=n>erase</span><span class=p>(</span><span class=n>val</span><span class=p>.</span><span class=n>find</span><span class=p>(</span><span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>1</span><span class=p>]</span> <span class=o>+</span> <span class=n>l</span> <span class=o>-</span> <span class=n>cont</span><span class=p>));</span>
+        <span class=n>delta</span><span class=p>[</span><span class=mi>2</span><span class=p>]</span> <span class=o>=</span> <span class=n>max</span><span class=p>(</span><span class=n>delta</span><span class=p>[</span><span class=mi>2</span><span class=p>],</span> <span class=o>*</span><span class=n>val</span><span class=p>.</span><span class=n>rbegin</span><span class=p>()</span> <span class=o>+</span> <span class=n>max</span><span class=p>(</span><span class=n>max</span><span class=p>(</span><span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>0</span><span class=p>],</span> <span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>2</span><span class=p>]),</span> <span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>4</span><span class=p>])</span> <span class=o>+</span> <span class=n>l</span> <span class=o>-</span> <span class=n>cont</span><span class=p>);</span>
+        <span class=n>val</span><span class=p>.</span><span class=n>insert</span><span class=p>(</span><span class=n>f</span><span class=p>[</span><span class=n>y</span><span class=p>][</span><span class=mi>1</span><span class=p>]</span> <span class=o>+</span> <span class=n>l</span> <span class=o>-</span> <span class=n>cont</span><span class=p>);</span>
+    <span class=p>}</span>
+
+    <span class=n>f</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=mi>2</span><span class=p>]</span> <span class=o>+=</span> <span class=n>delta</span><span class=p>[</span><span class=mi>0</span><span class=p>];</span>
+    <span class=n>f</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=mi>3</span><span class=p>]</span> <span class=o>+=</span> <span class=n>delta</span><span class=p>[</span><span class=mi>1</span><span class=p>];</span>
+    <span class=n>f</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=mi>4</span><span class=p>]</span> <span class=o>+=</span> <span class=n>delta</span><span class=p>[</span><span class=mi>2</span><span class=p>];</span>
+    <span class=n>f</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=mi>5</span><span class=p>]</span> <span class=o>+=</span> <span class=n>delta</span><span class=p>[</span><span class=mi>3</span><span class=p>];</span>
+
+    <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>6</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span>
+        <span class=k>if</span> <span class=p>(</span><span class=n>f</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=n>i</span><span class=p>]</span> <span class=o>&lt;</span> <span class=mi>0</span><span class=p>)</span>
+            <span class=n>f</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=o>-</span><span class=n>INFINITY</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+    <span class=n>ios</span><span class=o>::</span><span class=n>sync_with_stdio</span><span class=p>(</span><span class=nb>false</span><span class=p>);</span>
+    <span class=n>cin</span> <span class=o>&gt;&gt;</span> <span class=n>n</span><span class=p>;</span>
+
+    <span class=k>if</span> <span class=p>(</span><span class=n>n</span> <span class=o>==</span> <span class=mi>1</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=mi>0</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+        <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>n</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
+        <span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span> <span class=n>l</span><span class=p>;</span>
+        <span class=n>cin</span> <span class=o>&gt;&gt;</span> <span class=n>x</span> <span class=o>&gt;&gt;</span> <span class=n>y</span> <span class=o>&gt;&gt;</span> <span class=n>l</span><span class=p>;</span>
+        <span class=n>link</span><span class=p>(</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span> <span class=n>l</span><span class=p>);</span>
+    <span class=p>}</span>
+
+    <span class=n>dfs</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
+    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>max</span><span class=p>(</span><span class=n>max</span><span class=p>(</span><span class=n>f</span><span class=p>[</span><span class=mi>1</span><span class=p>][</span><span class=mi>0</span><span class=p>],</span> <span class=n>f</span><span class=p>[</span><span class=mi>1</span><span class=p>][</span><span class=mi>2</span><span class=p>]),</span> <span class=n>f</span><span class=p>[</span><span class=mi>1</span><span class=p>][</span><span class=mi>4</span><span class=p>])</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span title="2022-02-04 19:41:12">更新于 2022-02-04</span>
+</div>
+<div class=post-info-license></div>
+</div>
+<div class=post-info-line>
+<div class=post-info-md><span>
+<a class=link-to-markdown href=/contents/20220204-luogu-p3647-solution/index.md target=_blank>阅读原始文档</a>
+</span></div>
+<div class=post-info-share>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/ data-title="Luogu P3647 连珠线题解" data-hashtags="OI,DP,树形 DP,C++"><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/ data-hashtag=OI><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 WhatsApp" data-sharer=whatsapp data-url=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/ data-title="Luogu P3647 连珠线题解" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/ data-title="Luogu P3647 连珠线题解"><i data-svg-src=/lib/simple-icons/icons/line.min.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/ data-title="Luogu P3647 连珠线题解"><i class="fab fa-weibo fa-fw"></i></a><a href=javascript:void(0); title="分享到 Myspace" data-sharer=myspace data-url=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/ data-title="Luogu P3647 连珠线题解" data-description><i data-svg-src=/lib/simple-icons/icons/myspace.min.svg></i></a><a href=javascript:void(0); title="分享到 Blogger" data-sharer=blogger data-url=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/ data-title="Luogu P3647 连珠线题解" data-description><i class="fab fa-blogger fa-fw"></i></a><a href=javascript:void(0); title="分享到 Evernote" data-sharer=evernote data-url=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/ data-title="Luogu P3647 连珠线题解"><i class="fab fa-evernote fa-fw"></i></a></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/oi/>OI</a>,&nbsp;<a href=/tags/dp/>DP</a>,&nbsp;<a href=/tags/%E6%A0%91%E5%BD%A2-dp/>树形 DP</a>,&nbsp;<a href=/tags/c++/>C++</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav>
+<a href=/contents/20220206-gauss-elimination-note/ class=next rel=next title=高斯消元学习笔记>高斯消元学习笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="external nofollow noopener noreffer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/Lruihao/FixIt target=_blank rel="external nofollow noopener noreffer" title="FixIt 0.2.13"><i class="fa-stack fa-xs logo-icon"><i class="fas fa-ban fa-stack-2x"></i><i class="fas fa-bug fa-stack-1x"></i></i> FixIt</a>
+</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/ target=_blank>ctj12461</a></span><span class=footer-divider></span><span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div><div class=footer-line>
+<span id=busuanzi_container_site_uv title=总访客数><i class="far fa-user"></i>
+<span id=busuanzi_value_site_uv><i class="fa fa-spinner fa-spin"></i></span></span><span id=busuanzi_container_site_pv class=footer-divider title=总访问量><i class="far fa-eye"></i>
+<span id=busuanzi_value_site_pv><i class="fa fa-spinner fa-spin"></i></span></span>
+</div></div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw"></i>
+</a>
+</div><link rel=stylesheet href=/lib/katex/katex.min.css><link rel=stylesheet href=/lib/katex/copy-tex.min.css><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js defer></script><script type=text/javascript src=/lib/lunr/lunr.min.js defer></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js defer></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js defer></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js async defer></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js defer></script><script type=text/javascript src=/lib/sharer/sharer.min.js async defer></script><script type=text/javascript src=/lib/katex/katex.min.js defer></script><script type=text/javascript src=/lib/katex/auto-render.min.js defer></script><script type=text/javascript src=/lib/katex/copy-tex.min.js defer></script><script type=text/javascript src=/lib/katex/mhchem.min.js defer></script><script type=text/javascript src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js async defer></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:200},comment:{},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{highlightTag:"em",lunrIndexURL:"/index.json",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"lunr"}}</script><script type=text/javascript src=/js/theme.min.js defer></script><script type=text/javascript>(()=>{'serviceWorker'in navigator&&(navigator.serviceWorker.register('/service-worker.min.js',{scope:'/'}).then(function(a){}).catch(function(a){console.error('error: ',a)}),navigator.serviceWorker.ready.then(function(a){})),document.addEventListener('DOMContentLoaded',()=>{})})()</script>
+</body>
+</html>
