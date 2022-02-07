@@ -93,28 +93,20 @@
 <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-02-04>2022-02-04</time>
 </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1059 字&nbsp;
 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
-</div><div class="details toc" id=toc-static kept=true>
+</div><div class="details toc" id=toc-static kept=false>
 <div class="details-summary toc-title">
 <span>目录</span>
 <span><i class="details-icon fas fa-angle-right"></i></span>
 </div>
 <div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
 <ul>
-<li>
-<ul>
-<li>
-<ul>
 <li><a href=#part-1>Part 1</a></li>
 <li><a href=#part-2>Part 2</a></li>
 <li><a href=#part-3>Part 3</a></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
 </nav></div>
 </div><div class=content id=content><p>这里给出一种无需换根的 DP 思路。</p>
-<h4 id=part-1>Part 1</h4>
+<h2 id=part-1>Part 1</h2>
 <p>我们从结点的添加方式入手，可以把结点分为三类：</p>
 <ul>
 <li>初始的结点，这种结点只有一个</li>
@@ -143,7 +135,7 @@
 </li>
 </ol>
 <p>上面的分类讨论中的“连向”可以看成 Append 或 Insert，根据题意计算就可以了。</p>
-<h4 id=part-2>Part 2</h4>
+<h2 id=part-2>Part 2</h2>
 <p>接下来根据分类讨论设出状态以及写出方程：</p>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
@@ -183,7 +175,7 @@ f[x][5]=\sum_{y\in son(x)}cont(y)+\max_{y\in son(x)}\{\max\{f[y][0], f[y][2], f[
 $$
 上面的转移都可以看成先从子结点按照 $cont(x)$ 转移，在钦定某个结点按照特定的方式转移，记录下最优的差值在加到 $f$ 里即可。$f[x][4]$ 有两个变量，可以考虑枚举其中一个，用 <code>std::multiset&lt;T></code> 维护另外一个的最值即可。</p>
 <p>时间复杂度 $O(n \log_2 n)$。</p>
-<h4 id=part-3>Part 3</h4>
+<h2 id=part-3>Part 3</h2>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt> 1
@@ -385,9 +377,7 @@ $$
 <div class=post-info-license></div>
 </div>
 <div class=post-info-line>
-<div class=post-info-md><span>
-<a class=link-to-markdown href=/contents/20220204-luogu-p3647-solution/index.md target=_blank>阅读原始文档</a>
-</span></div>
+<div class=post-info-md></div>
 <div class=post-info-share>
 <span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/ data-title="Luogu P3647 连珠线题解" data-hashtags="OI,DP,树形 DP,C++"><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/ data-hashtag=OI><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 WhatsApp" data-sharer=whatsapp data-url=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/ data-title="Luogu P3647 连珠线题解" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/ data-title="Luogu P3647 连珠线题解"><i data-svg-src=/lib/simple-icons/icons/line.min.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/ data-title="Luogu P3647 连珠线题解"><i class="fab fa-weibo fa-fw"></i></a><a href=javascript:void(0); title="分享到 Myspace" data-sharer=myspace data-url=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/ data-title="Luogu P3647 连珠线题解" data-description><i data-svg-src=/lib/simple-icons/icons/myspace.min.svg></i></a><a href=javascript:void(0); title="分享到 Blogger" data-sharer=blogger data-url=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/ data-title="Luogu P3647 连珠线题解" data-description><i class="fab fa-blogger fa-fw"></i></a><a href=javascript:void(0); title="分享到 Evernote" data-sharer=evernote data-url=https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/ data-title="Luogu P3647 连珠线题解"><i class="fab fa-evernote fa-fw"></i></a></span>
 </div>
