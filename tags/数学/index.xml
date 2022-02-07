@@ -1,4 +1,28 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>数学 - 标签 - ctj12461's Blog</title><link>https://ctj12461.vercel.app/tags/%E6%95%B0%E5%AD%A6/</link><description>数学 - 标签 - ctj12461's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ctj12461@163.com (ctj12461)</managingEditor><webMaster>ctj12461@163.com (ctj12461)</webMaster><lastBuildDate>Sun, 06 Feb 2022 16:06:35 +0800</lastBuildDate><atom:link href="https://ctj12461.vercel.app/tags/%E6%95%B0%E5%AD%A6/" rel="self" type="application/rss+xml"/><item><title>高斯消元学习笔记</title><link>https://ctj12461.vercel.app/contents/20220206-gauss-elimination-note/</link><pubDate>Sun, 06 Feb 2022 16:06:35 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220206-gauss-elimination-note/</guid><description><![CDATA[<p>高斯消元主要用于求解线性方程组的解，同时可以解决某些有后效性的 DP 问题，</p>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>数学 - 标签 - ctj12461's Blog</title><link>https://ctj12461.vercel.app/tags/%E6%95%B0%E5%AD%A6/</link><description>数学 - 标签 - ctj12461's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ctj12461@163.com (ctj12461)</managingEditor><webMaster>ctj12461@163.com (ctj12461)</webMaster><lastBuildDate>Mon, 07 Feb 2022 23:53:43 +0800</lastBuildDate><atom:link href="https://ctj12461.vercel.app/tags/%E6%95%B0%E5%AD%A6/" rel="self" type="application/rss+xml"/><item><title>拉格朗日插值学习笔记</title><link>https://ctj12461.vercel.app/contents/20220207-lagrange-interpolation-note/</link><pubDate>Mon, 07 Feb 2022 23:53:43 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220207-lagrange-interpolation-note/</guid><description><![CDATA[<p>拉格朗日插值是众多插值算法中的一种，插值是通过一些点来求出过这些点的多项式函数的过程。</p>
+<h2 id="算法思想">算法思想</h2>
+<h3 id="构造函数">构造函数</h3>
+<p>给出 $n + 1$ 个点 $(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n),(x_{n+1},y_{n+1})$，要求出过这些点的 $n$ 次多项式函数，先考虑对每个点构造一个函数，第 $i$ 个点的函数为 $f_i(x)$，满足：</p>
+<p>$$
+f_i(x) =
+\begin{cases}
+y_i &amp; x = x_i\\
+0 &amp; x \ne x_i
+\end{cases}
+\ (x\in \{x_1,x_2,\dots,x_n,x_{n+1}\})
+$$</p>
+<p>最后将这些函数组合为最终的函数：</p>
+<p>$$
+f(x) = \sum_{i=1}^{n+1}f_i(x)
+$$</p>
+<p>接下来就是找到一种合适的形式来表示 $f_i(x)$ 的分段规定，可以让 $f_i(x)$ 含有一些因式，满足 $x=x_j,j\ne i$ 时，其值为 $0$，$x=x_i$ 时，其值为 $y_i$。显然下面这种满足条件:</p>
+<p>$$
+f_i(x) = y_i \prod_{i\ne j} \frac{x-x_j}{x_i-x_j}
+$$</p>
+<p>所以最终的 $f(x)$ 的解析式为：</p>
+<p>$$
+f(x) = \sum_{i=1}^{n + 1} y_i \prod_{i\ne j} \frac{x-x_j}{x_i-x_j}
+$$</p>
+]]></description></item><item><title>高斯消元学习笔记</title><link>https://ctj12461.vercel.app/contents/20220206-gauss-elimination-note/</link><pubDate>Sun, 06 Feb 2022 16:06:35 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220206-gauss-elimination-note/</guid><description><![CDATA[<p>高斯消元主要用于求解线性方程组的解，同时可以解决某些有后效性的 DP 问题，</p>
 <h2 id="算法思想">算法思想</h2>
 <h3 id="增广矩阵">增广矩阵</h3>
 <p>为了更方便地求解方程组，可以将系数和常数项放入矩阵，接下来就可以用一些矩阵的操作来消元了。</p>
