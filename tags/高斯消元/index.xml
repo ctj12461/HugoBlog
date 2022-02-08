@@ -901,7 +901,7 @@ $$</p>
 f[x][0] = \sum_y \frac{f[y][w(x, y)]}{deg[x]}\\
 f[x][1] = \sum_y \frac{f[y][w(x, y) \oplus 1]}{deg[x]}\\
 $$</p>
-<p>设当前枚举的位数为 $b$，则对答案的贡献为 $2 ^ b f[1][1]$。上述转移显然可以高斯消元解决，时间复杂度 $\theta(n ^ 3 \log_2 w)$。</p>
+<p>设当前枚举的位数为 $b$，则对答案的贡献为 $2 ^ b f[1][1]$。上述转移显然可以高斯消元解决，时间复杂度 $\Theta(n ^ 3 \log_2 w)$。</p>
 <p>注意连接自环不要连两遍。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
