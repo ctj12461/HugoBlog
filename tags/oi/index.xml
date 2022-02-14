@@ -7,7 +7,7 @@ ax+by=c\ (a,b,c,x,y\in \mathrm{Z})
 $$</p>
 <p>形如上面这种形式，满足各项的系数和解均为整数的方程就是数论中的不定方程。</p>
 <h3 id="求解">求解</h3>
-<p><strong>Theorem 1：</strong> $\forall a, b \in \mathrm{Z}$，一定存在 $x,y\in \mathrm{Z}$，使得 $ax+by=\gcd(a,b)$。</p>
+<p><strong>Theorem 1</strong>：$\forall a, b \in \mathrm{Z}$，一定存在 $x,y\in \mathrm{Z}$，使得 $ax+by=\gcd(a,b)$。</p>
 <p>这个定理又叫做裴蜀定理，根据这个定理，可以得出不定方程 $ax+by=c$ 有解的充要条件就是 $\gcd(a,b)\mid c$。记 $d=\gcd(a,b)$，则我们可以先求出 $ax'+by'=d$ 的解，再令 $x=\frac{c}{d}x',y=\frac{c}{d}y'$，就得出原方程的一组解。</p>
 <p>求 $x',y'$ 的过程可以用扩展欧几里得算法，即 <code>exgcd</code> 解决。</p>
 <p><strong>Theorem 2</strong>：若 $\gcd(a,b)=1$，且 $x_0,y_0$ 是方程 $ax+by=c$ 的一组解，则该方程的通解为 $x=x_0+kb,y=y_0-ka$，其中 $k\in \mathrm{Z}$。</p>
@@ -31,6 +31,99 @@ ax \equiv c \pmod{p} \iff ax+py=c
 $$</p>
 <p>所以可以把线性同余方程转化为一个二元线性不定方程，求出 $x$ 即可，包括有无解的判定条件都是一样的。</p>
 <p>以下代码展示了如何求线性同余方程的最小非负整数解：</p>
+<h3 id="代码">代码</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">T</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span> <span class="n">b</span><span class="p">,</span> <span class="n">T</span> <span class="o">&amp;</span> <span class="n">x</span><span class="p">,</span> <span class="n">T</span> <span class="o">&amp;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">T</span> <span class="n">d</span> <span class="o">=</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+        <span class="n">T</span> <span class="n">t</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span> <span class="o">*</span> <span class="n">y</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">optional</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">solveEquation</span><span class="p">(</span><span class="n">T</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span> <span class="n">c</span><span class="p">,</span> <span class="n">T</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">%</span> <span class="n">p</span> <span class="o">+</span> <span class="n">p</span><span class="p">)</span> <span class="o">%</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span> <span class="o">%</span> <span class="n">p</span> <span class="o">+</span> <span class="n">p</span><span class="p">)</span> <span class="o">%</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">T</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+    <span class="n">T</span> <span class="n">d</span> <span class="o">=</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">%</span> <span class="n">d</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">nullopt</span><span class="p">;</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1ll</span> <span class="o">*</span> <span class="p">(</span><span class="n">c</span> <span class="o">/</span> <span class="n">d</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">%</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="n">d</span><span class="p">))</span> <span class="o">%</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="n">d</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="中国剩余定理">中国剩余定理</h2>
+<h3 id="形式-2">形式</h3>
+<p>$$
+\begin{cases}
+x \equiv a_1 \pmod{m_1}\\
+x \equiv a_2 \pmod{m_2}\\
+\cdots\\
+x \equiv a_n \pmod{m_n}\\
+\end{cases}
+\\
+\forall i\ne j,\gcd(m_i,m_j)=1
+$$</p>
+<p>形如上面这样的线性同余方程组且满足每个方程的模数两两互质，就可以用中国剩余定理解决。中国剩余定理也叫做 <code>CRT (Chinese Remainder Theorem)</code>。</p>
+<h3 id="求解-2">求解</h3>
+<ol>
+<li>令 $M=\prod_{i=1}^{n} m_i$，$M$ 不对任何数取模</li>
+<li>对于 $m_i$，令 $M_i=\prod_{i\ne j}=\frac{M}{m_i}$，$M_i^{-1}$ 为 $M_i$ 对 $m_i$ 的逆元，$c_i=M_iM_i^{-1}$，$c_i$ 不能对 $m_i$ 取模</li>
+<li>令 $x=\sum_{i=1}^{n}a_ic_i \bmod M$，则 $x$ 为模 $M$ 意义下的唯一解</li>
+</ol>
+<h3 id="算法正确性证明">算法正确性证明</h3>
+<p>对于 $\forall i\ne j$，$m_i\mid M_j$，故 $m_i\mid a_jc_j$，所以在模 $m_i$ 情况下，$x \equiv a_ic_i \pmod{m_i}$。</p>
+<p>因为 $M_i^{-1}$ 为 $M_i$ 对 $m_i$ 的逆元，故在模 $m_i$ 的同余式中 $c_i\equiv 1 \pmod{m_i}$，$a_ic_i\equiv a_i \pmod{m_i}$，即 $x \equiv a_i \pmod{m_i}$，满足第 $i$ 个方程。</p>
+<h3 id="解在模-m-意义下的唯一性证明">解在模 $M$ 意义下的唯一性证明</h3>
+<p>设 $x,y$ 不相等，$x,y&lt;M$，但都满足方程组，则可以有下面的方程组：</p>
+<p>$$
+\begin{cases}
+x - y\equiv 0 \pmod{m_1}\\
+x - y\equiv 0 \pmod{m_2}\\
+\cdots\\
+x - y\equiv 0 \pmod{m_n}\\
+\end{cases}
+$$</p>
+<p>则 $\forall i,m_i\mid |x-y|$，所以 $M \mid |x-y|$，即 $|x-y|=kM$，因为 $|x-y|&lt;M$，故 $k=0$，推出 $x=y$，与假设矛盾。</p>
+<h3 id="代码-1">代码</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -60,69 +153,511 @@ $$</p>
 </span><span class="lnt">25
 </span><span class="lnt">26
 </span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">T</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span> <span class="n">b</span><span class="p">,</span> <span class="n">T</span> <span class="o">&amp;</span> <span class="n">x</span><span class="p">,</span> <span class="n">T</span> <span class="o">&amp;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">exgcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
         <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">T</span> <span class="n">d</span> <span class="o">=</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
-        <span class="n">T</span> <span class="n">t</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span> <span class="o">*</span> <span class="n">y</span><span class="p">;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span><span class="p">;</span>
         <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">optional</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">solveEquation</span><span class="p">(</span><span class="n">T</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span> <span class="n">c</span><span class="p">,</span> <span class="n">T</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">int</span> <span class="nf">solveEquation</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+    <span class="n">exgcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1ll</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">c</span> <span class="o">%</span> <span class="n">p</span> <span class="o">+</span> <span class="n">p</span><span class="p">)</span> <span class="o">%</span> <span class="n">p</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span> <span class="kt">int</span> <span class="nf">inv</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">solveEquation</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">chineseRemainderTheorem</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">a</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">m</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">mod</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">mod</span> <span class="o">*=</span> <span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">modi</span> <span class="o">=</span> <span class="n">mod</span> <span class="o">/</span> <span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="p">(</span><span class="n">ans</span> <span class="o">+</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">modi</span> <span class="o">*</span> <span class="n">inv</span><span class="p">(</span><span class="n">modi</span><span class="p">))</span> <span class="o">%</span> <span class="n">mod</span><span class="p">;</span> <span class="c1">// 用 exgcd 求逆元
+</span><span class="c1"></span>    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="扩展中国剩余定理">扩展中国剩余定理</h2>
+<h3 id="形式-3">形式</h3>
+<p>$$
+\begin{cases}
+a_1 x \equiv c_1 \pmod{m_1}\\
+a_2 x \equiv c_2 \pmod{m_2}\\
+\cdots\\
+a_n x \equiv c_n \pmod{m_n}\\
+\end{cases}
+$$</p>
+<p>相比普通中国剩余定理求解的方程组，少了模数互质的限制。</p>
+<h3 id="求解-3">求解</h3>
+<p>考虑合并方程。设当前要合并前 $i$ 个方程，显然可以转化为合并前 $i-1$ 个方程与第 $i$ 个方程。</p>
+<p>设 $x_i$ 为合并前 $i$ 个方程的解，$d_i=\operatorname{lcm}(m_1,m_2,\dots,m_i)$。构造 $x_i=sx_{i-1}+t$，我们要使 $x_i$ 能够满足前 $i-1$ 个方程，就要满足以下条件：</p>
+<ol>
+<li>$\forall j &lt; i$，$a_j(sx_{i-1}+t)\equiv a_j x_{i-1} \pmod{m_j}$</li>
+<li>$a_i(sx_{i-1}+t) \equiv c_i \pmod{m_i}$</li>
+</ol>
+<p>最简单的办法就是令 $s=1,t=d_{i-1}y_i$，并求一个合适的 $y_i$，也就是要求出以下方程的解 $y_i$：
+$$
+a_i d_{i-1}y_i \equiv c_i - a_i x_{i-1} \pmod{m_i}
+$$</p>
+<p>用 <code>exgcd</code> 解决，若该线性同余方程无解，则方程组无解，否则求出前 $i$ 个方程的解 $x_i$，进行下一次合并。</p>
+<p>假设各个 $m_i$ 同阶，时间复杂度 $O(n \log_2 m_i)$。</p>
+<h3 id="代码-2">代码</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="nl">a</span> <span class="p">:</span> <span class="n">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">exgcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">optional</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">solveEquation</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">%</span> <span class="n">p</span> <span class="o">+</span> <span class="n">p</span><span class="p">)</span> <span class="o">%</span> <span class="n">p</span><span class="p">;</span>
     <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span> <span class="o">%</span> <span class="n">p</span> <span class="o">+</span> <span class="n">p</span><span class="p">)</span> <span class="o">%</span> <span class="n">p</span><span class="p">;</span>
-    <span class="n">T</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
-    <span class="n">T</span> <span class="n">d</span> <span class="o">=</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">%</span> <span class="n">d</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">%</span> <span class="n">d</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">nullopt</span><span class="p">;</span>
     
-    <span class="n">x</span> <span class="o">*=</span> <span class="n">c</span> <span class="o">/</span> <span class="n">d</span><span class="p">;</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">%</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="n">d</span><span class="p">))</span> <span class="o">%</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="n">d</span><span class="p">);</span>
+    <span class="n">x</span> <span class="o">*=</span> <span class="p">(</span><span class="n">c</span> <span class="o">/</span> <span class="n">d</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">p</span> <span class="o">/</span> <span class="n">d</span><span class="p">;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">%</span> <span class="n">m</span> <span class="o">+</span> <span class="n">m</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">optional</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">exChineseRemainderTheorem</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">a</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">c</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">m</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">auto</span> <span class="n">oy</span> <span class="o">=</span> <span class="n">solveEquation</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">d</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">oy</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span>
+            <span class="k">return</span> <span class="n">nullopt</span><span class="p">;</span>
+        
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">oy</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">g</span> <span class="o">=</span> <span class="n">gcd</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">d</span> <span class="o">/</span> <span class="n">g</span> <span class="o">*</span> <span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">/</span> <span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">g</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">%</span> <span class="n">d</span><span class="p">;</span>
+    <span class="p">}</span>
+
     <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="中国剩余定理及其扩展">中国剩余定理及其扩展</h2>
-<h3 id="中国剩余定理">中国剩余定理</h3>
+</div><h2 id="bsgs">BSGS</h2>
+<h3 id="离散对数">离散对数</h3>
+<p>与离散对数相对的是我们熟悉的连续对数，也就是最经常接触的对数。而离散对数是在同余中的一个概念。</p>
+<p>若在模 $m$ 意义下，$x$ 满足以下等式：</p>
 <p>$$
-\begin{cases}
-x \equiv a_1 \pmod{m_1}\\
-x \equiv a_2 \pmod{m_2}\\
-\cdots\\
-x \equiv a_n \pmod{m_n}\\
-\end{cases}
-\\
-\forall i\ne j,\gcd(m_i,m_j)=1
+a^x=b \pmod{m}
 $$</p>
-<p>形如上面这样的线性同余方程组且满足每个方程的模数两两互质，就可以用中国剩余定理解决。中国剩余定理也叫做 <code>CRT (Chinese Remainder Theorem)</code>。</p>
-<p><code>CRT</code> 的算法流程如下：</p>
+<p>则 $x$ 为以 $a$ 为底的 $b$ 的离散对数。注意离散对数不同于连续对数，一个数的离散对数有很多个，并不是唯一的。</p>
+<p>如果 $\gcd(a,m)=1$，则我们可以使用 <code>BSGS</code> 算法求解一个数的最小的离散对数。</p>
+<h3 id="求解-4">求解</h3>
+<p>因为 $\gcd(a,m)=1$，则 $a^k$ 对 $m$ 的逆元一定存在。所以我们可以把 $a^x$ 写成 $a^{ps-q}$ 并直接将 $a^{-q}$ 提取出来，即：</p>
+<p>$$
+a^{ps} \equiv ba^q \pmod{m}
+$$</p>
+<p>考虑暴力的思路，可以枚举两边的 $p,q$，如果有同余的两个 $a^{ps},a^q$，就更新答案。</p>
+<p>考虑到枚举会计算许多重复的东西，可以用某种数据结构维护映射表，存下每个 $(a^q,q)$，再枚举左边找相应的同余的项。我们先假设 $x=ps-q \in [0,m)$，则当 $s=\lceil\sqrt{m}\rceil$ 时，时间复杂度最优，为 $\Theta(\sqrt{m})$ 或 $\Theta(\sqrt{m}\log_2 \sqrt{m})$，具体为哪种复杂度，取决于是用哈希表还是平衡树实现。</p>
+<h3 id="可解性证明">可解性证明</h3>
+<p>至于为什么一定有 $x\in [0,m)$，使用抽屉原理证明：</p>
+<p>对于任意的 $x$，$a^x \bmod m$ 最多只有 $m$ 种取值，而在 $x\in [0,m]$ 时，一共有 $m+1$ 种指数，则根据抽屉原理得出必定存在一对 $x,y$ 满足 $a^x \equiv a^y \pmod{m}$。设 $t=|x-y|$，则 $a^x a^k=a^{x+t}a^k$，因为已经保证 $\gcd(a,m)=1$，则逆元一定存在，所以可以规定 $t\in\mathrm{Z}$，所以指数具有周期性，一定可以得到 $x\in [0,m)$。</p>
+<h3 id="代码-3">代码</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">power</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">y</span><span class="p">;</span> <span class="n">y</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">res</span> <span class="o">*</span> <span class="n">x</span> <span class="o">%</span> <span class="n">m</span><span class="p">;</span>
+        
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">%</span> <span class="n">m</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">optional</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">bsgs</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">a</span> <span class="o">%=</span> <span class="n">m</span><span class="p">;</span>
+    <span class="n">b</span> <span class="o">%=</span> <span class="n">m</span><span class="p">;</span>
+    
+    <span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">buc</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">m</span><span class="p">)),</span> <span class="n">prod</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">base</span> <span class="o">=</span> <span class="n">power</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="p">);</span>
+    <span class="n">buc</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">prod</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">prod</span> <span class="o">*</span> <span class="n">a</span> <span class="o">%</span> <span class="n">m</span><span class="p">;</span>
+        <span class="n">buc</span><span class="p">[</span><span class="n">prod</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">prod</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">s</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">buc</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">prod</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">it</span> <span class="o">!=</span> <span class="n">buc</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">*</span> <span class="n">s</span> <span class="o">-</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">i</span> <span class="o">*</span> <span class="n">s</span> <span class="o">-</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">;</span>
+            
+        <span class="n">prod</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">prod</span> <span class="o">*</span> <span class="n">base</span> <span class="o">%</span> <span class="n">m</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">nullopt</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="扩展-bsgs">扩展 BSGS</h2>
+<h3 id="形式-4">形式</h3>
+<p>$$
+a^x \equiv b \pmod{m}
+$$</p>
+<p>其中 $a,m$ 不一定互质。这种情况下，逆元不一定存在，也就不可以把指数拆成两个部分来优化。</p>
+<p>考虑先把式子化为 $\gcd(a,m)=1$ 的形式。方法是不断提取出 $a$ 与 $m$ 互质的部分，任何整个式子同除以这个数。</p>
+<p>$$
+a \equiv c \pmod{m} \iff \frac{a}{d} \equiv \frac{c}{d} \pmod{\frac{m}{d}}\ (d\mid a \wedge d\mid c \wedge d\mid m)
+$$</p>
+<p>这个式子是同余式的基本性质。所以按照这样的方法提取：</p>
+<p>$$
+a^x \equiv b \pmod{m}\\
+\Downarrow\\
+\frac{a}{d_1}a^{x-1} \equiv \frac{b}{d_1} \pmod{\frac{m}{d_1}}\\
+\Downarrow\\
+\frac{a}{d_1 d_2}a^{x-2} \equiv \frac{b}{d_1 d_2} \pmod{\frac{m}{d_1 d_2}}\\
+\Downarrow\\
+\vdots\\
+\Downarrow\\
+\frac{a}{d_1 d_2\cdots d_k}a^{x-k} \equiv \frac{b}{d_1 d_2\cdots d_k} \pmod{\frac{m}{d_1 d_2\cdots d_k}}\\
+$$</p>
+<p>假设现在 $a$ 与 $\frac{m}{d_1 d_2\cdots d_k}$ 互质，就可以用 <code>BSGS</code> 求出最后一个方程的解 $x-k$，再加上 $k$ 就是 $x$ 了。</p>
+<p>需要注意两点：</p>
 <ol>
-<li>令 $M=\prod_{i=1}^{n} m_i$，$M$ 不对任何数取模</li>
-<li>对于 $m_i$，令 $M_i=\prod_{i\ne j}=\frac{M}{m_i}$，$M_i^{-1}$ 为 $M_i$ 对 $m_i$ 的逆元，$c_i=M_iM_i^{-1}$，$c_i$ 不能对 $m_i$ 取模</li>
-<li>令 $x=\sum_{i=1}^{n}a_ic_i \bmod M$，则 $x$ 为模 $M$ 意义下的唯一解</li>
+<li>若在提取过程中，出现 $d_1 d_2 \cdots d_i \nmid b$，则方程无法再继续提取，方程无解</li>
+<li>有可能答案在 $[0,k)$ 内，只要 $O(k)$ 枚举检验即可。</li>
 </ol>
-<p>证明算法的正确性：</p>
-<p>对于 $\forall i\ne j$，$m_i\mid M_j$，故 $m_i\mid a_jc_j$，所以在模 $m_i$ 情况下，$x \equiv a_ic_i \pmod{m_i}$。因为 $M_i^{-1}$ 为 $M_i$ 对 $m_i$ 的逆元，故在模 $m_i$ 的同余式中 $c_i\equiv 1 \pmod{m_i}$，$a_ic_i\equiv a_i \pmod{m_i}$，即 $x \equiv a_i \pmod{m_i}$，满足第 $i$ 个方程。</p>
-<p>解在模 $M$ 意义下的唯一性证明：</p>
-<p>设 $x,y$ 不相等，$x,y&lt;M$，但都满足方程组，则可以有下面的方程组：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">t</span><span class="p">;</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">power</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">y</span><span class="p">;</span> <span class="n">y</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">res</span> <span class="o">*</span> <span class="n">x</span> <span class="o">%</span> <span class="n">m</span><span class="p">;</span>
+        
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">%</span> <span class="n">m</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">optional</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">bsgs</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">a</span> <span class="o">%=</span> <span class="n">m</span><span class="p">;</span>
+    <span class="n">b</span> <span class="o">%=</span> <span class="n">m</span><span class="p">;</span>
+    
+    <span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">buc</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">m</span><span class="p">)),</span> <span class="n">prod</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">base</span> <span class="o">=</span> <span class="n">power</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="p">);</span>
+    <span class="n">buc</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">prod</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">prod</span> <span class="o">*</span> <span class="n">a</span> <span class="o">%</span> <span class="n">m</span><span class="p">;</span>
+        <span class="n">buc</span><span class="p">[</span><span class="n">prod</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">prod</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">s</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">buc</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">prod</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">it</span> <span class="o">!=</span> <span class="n">buc</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">*</span> <span class="n">s</span> <span class="o">-</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">i</span> <span class="o">*</span> <span class="n">s</span> <span class="o">-</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">;</span>
+            
+        <span class="n">prod</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">prod</span> <span class="o">*</span> <span class="n">base</span> <span class="o">%</span> <span class="n">m</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">nullopt</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">optional</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">exBsgs</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">%</span> <span class="n">m</span> <span class="o">+</span> <span class="n">m</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span><span class="p">;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">%</span> <span class="n">m</span> <span class="o">+</span> <span class="n">m</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span><span class="p">;</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        
+    <span class="kt">int</span> <span class="n">prod</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">m</span><span class="p">);</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">d</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">break</span><span class="p">;</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">%</span> <span class="n">d</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">nullopt</span><span class="p">;</span>
+        
+        <span class="n">b</span> <span class="o">/=</span> <span class="n">d</span><span class="p">;</span>
+        <span class="n">m</span> <span class="o">/=</span> <span class="n">d</span><span class="p">;</span>
+        <span class="o">++</span><span class="n">k</span><span class="p">;</span>
+        <span class="n">prod</span> <span class="o">=</span> <span class="n">prod</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">d</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">prod</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">k</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">auto</span> <span class="n">res</span> <span class="o">=</span> <span class="n">bsgs</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">m</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">res</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">nullopt</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">value</span><span class="p">()</span> <span class="o">+</span> <span class="n">k</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="阶与原根">阶与原根</h2>
+<h3 id="阶">阶</h3>
+<p>对于一对互质的整数 $a,m$，若 $r$ 满足 $r \ne 0$ 且 $a^r \equiv 1 \pmod{m}$ 且不存在任何小于 $r$ 的正整数满足该同余式，则称 $r$ 为 $a$ 对 $m$ 的阶，记作 $r = \delta_m(a)$。</p>
+<p><strong>Theorem 1</strong>：$0 &lt; \delta_m(a) \le \varphi(m)$。</p>
+<p>若 $\gcd(a,m)=1$，则欧拉定理一定成立，即 $a^{\varphi(m)} \equiv 1 \pmod{m}$，显然 $0 &lt; \delta_m(a) \le \varphi(m)$。</p>
+<p><strong>Theorem 2</strong>：若 $a^k \equiv 1 \pmod{m}$，则 $\delta_m(a) \mid k$。</p>
+<p>假设满足 $\delta_m(a) \nmid k$ 但 $a^k \equiv 1 \pmod{m}$，则 $k=s\delta_m(a)+t$，其中 $t \in (0,\delta_m(a))$，所以：</p>
 <p>$$
-\begin{cases}
-x - y\equiv 0 \pmod{m_1}\\
-x - y\equiv 0 \pmod{m_2}\\
-\cdots\\
-x - y\equiv 0 \pmod{m_n}\\
-\end{cases}
+a^k \equiv (a^{\delta_m(a)})^sa^t \equiv a^t \pmod{m}
 $$</p>
-<p>则 $\forall i,m_i\mid |x-y|$，所以 $M \mid |x-y|$，即 $|x-y|=kM$，因为 $|x-y|&lt;M$，故 $k=0$，推出 $x=y$，与假设矛盾。</p>
+<p>根据阶的定义，$a^t \not\equiv 1 \pmod{m}$，所以矛盾，故 $\delta_m(a) \mid k$。</p>
+<h3 id="原根">原根</h3>
+<p>若 $a$ 满足 $\delta_m(a)=\varphi(m)$，则 $a$ 为 $m$ 的原根。</p>
 ]]></description></item><item><title>Burnside 引理 &amp; Pólya 定理学习笔记</title><link>https://ctj12461.vercel.app/contents/20220212-burnside-lemma-and-polya-theorem-note/</link><pubDate>Sat, 12 Feb 2022 19:14:24 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220212-burnside-lemma-and-polya-theorem-note/</guid><description><![CDATA[<p>Burnside 引理和 Pólya 定理主要用于解决计算本质不同方案数的计数问题。</p>
 <h2 id="群论">群论</h2>
 <h3 id="基本定义">基本定义</h3>
@@ -138,7 +673,7 @@ $$</p>
 <p>举一个简单的例子，$(\mathrm{Z},+)$ 就是一个群，无论取哪两个元素进行加法运算，结果仍然是整数；加法满足结合律；单位元 $e = 0$；任意一个元素 $x$ 的逆元 $x^{-1} = -x$。</p>
 <h2 id="置换与置换群">置换与置换群</h2>
 <h3 id="置换的基本定义">置换的基本定义</h3>
-<p>顾名思义，置换群就是置换组成的群。置换可以看成一个有限集合到自身的双射，具体一点，假设有两个长度相同的集合 $p,q$（这里假设集合可以有序），则置换 $f$ 作用于 $p$ 就是生成一个新的集合 $p'$，满足 $p'<em>i=p</em>{q_i}$。</p>
+<p>顾名思义，置换群就是置换组成的群。置换可以看成一个有限集合到自身的双射，具体一点，假设有两个长度相同的集合 $p,q$（这里假设集合可以有序），则置换 $f$ 作用于 $p$ 就是生成一个新的集合 $p'$，满足 $p'_i=p_{q_i}$。</p>
 <p>置换表示成下面这样：</p>
 <p>$$
 f=
