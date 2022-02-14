@@ -1,0 +1,126 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>原根 - 标签 - ctj12461's Blog</title><link>https://ctj12461.vercel.app/tags/%E5%8E%9F%E6%A0%B9/</link><description>原根 - 标签 - ctj12461's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ctj12461@163.com (ctj12461)</managingEditor><webMaster>ctj12461@163.com (ctj12461)</webMaster><lastBuildDate>Sun, 13 Feb 2022 21:40:02 +0800</lastBuildDate><atom:link href="https://ctj12461.vercel.app/tags/%E5%8E%9F%E6%A0%B9/" rel="self" type="application/rss+xml"/><item><title>同余方程学习笔记</title><link>https://ctj12461.vercel.app/contents/20220213-congruence-equation-note/</link><pubDate>Sun, 13 Feb 2022 21:40:02 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220213-congruence-equation-note/</guid><description><![CDATA[<p>解各种同余方程是同余问题的一个重要部分，本文介绍各种同余方程的求解方法。</p>
+<h2 id="二元线性不定方程">二元线性不定方程</h2>
+<h3 id="形式">形式</h3>
+<p>不定方程的范围很广泛，只要没有确定的解的方程都可以叫不定方程。本文主要讨论数论中的不定方程。</p>
+<p>$$
+ax+by=c\ (a,b,c,x,y\in \mathrm{Z})
+$$</p>
+<p>形如上面这种形式，满足各项的系数和解均为整数的方程就是数论中的不定方程。</p>
+<h3 id="求解">求解</h3>
+<p><strong>Theorem 1：</strong> $\forall a, b \in \mathrm{Z}$，一定存在 $x,y\in \mathrm{Z}$，使得 $ax+by=\gcd(a,b)$。</p>
+<p>这个定理又叫做裴蜀定理，根据这个定理，可以得出不定方程 $ax+by=c$ 有解的充要条件就是 $\gcd(a,b)\mid c$。记 $d=\gcd(a,b)$，则我们可以先求出 $ax'+by'=d$ 的解，再令 $x=\frac{c}{d}x',y=\frac{c}{d}y'$，就得出原方程的一组解。</p>
+<p>求 $x',y'$ 的过程可以用扩展欧几里得算法，即 <code>exgcd</code> 解决。</p>
+<p><strong>Theorem 2</strong>：若 $\gcd(a,b)=1$，且 $x_0,y_0$ 是方程 $ax+by=c$ 的一组解，则该方程的通解为 $x=x_0+kb,y=y_0-ka$，其中 $k\in \mathrm{Z}$。</p>
+<p>换句话说，$x,y$ 这两个解是具有周期性的。根据这个定理，我们知道一定有一个 $x\in [0,b)$，而对于方程 $ax+by=c$，则一定有一个 $x\in [0,\frac{b}{\gcd(a,b)})$，由此可以求一个不定方程的一个元的最小非负整数解，具体地，假设知道了一个解 $x_0$，则最小非负整数 $x=(x_0 \bmod m + m) \bmod m$，其中 $m=\frac{b}{\gcd(a,b)}$。</p>
+<p>总结一下，求解二元线性不定方程 $ax+by=c$ 的流程如下：</p>
+<ol>
+<li>求出 $ax+by=\gcd(a,b)$ 的一组解 $x',y'$，并根据 $\gcd(a,b)\mid c$ 判断方程有无解</li>
+<li>令 $x=\frac{c}{\gcd(a,b)}x',y=\frac{c}{\gcd(a,b)}y'$，$x,y$ 为 $ax+by=c$ 的一组解</li>
+<li>若需要求 $x$ 的最小非负整数解，则将 $x=(x_0 \bmod m + m) \bmod m$ 作为最终的答案，其中 $m=\frac{b}{\gcd(a,b)}$</li>
+</ol>
+<h2 id="线性同余方程">线性同余方程</h2>
+<h3 id="形式-1">形式</h3>
+<p>$$
+ax \equiv c \pmod{p}
+$$</p>
+<p>形如这样的方程，就被称线性同余方程。</p>
+<h3 id="求解-1">求解</h3>
+<p>任意的线性同余方程都可以与一个二元线性不定方程互相转化，比如上面的方程就与二元线性不定方程有如下关系：</p>
+<p>$$
+ax \equiv c \pmod{p} \iff ax+py=c
+$$</p>
+<p>所以可以把线性同余方程转化为一个二元线性不定方程，求出 $x$ 即可，包括有无解的判定条件都是一样的。</p>
+<p>以下代码展示了如何求线性同余方程的最小非负整数解：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">T</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span> <span class="n">b</span><span class="p">,</span> <span class="n">T</span> <span class="o">&amp;</span> <span class="n">x</span><span class="p">,</span> <span class="n">T</span> <span class="o">&amp;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">T</span> <span class="n">d</span> <span class="o">=</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+        <span class="n">T</span> <span class="n">t</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span> <span class="o">*</span> <span class="n">y</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">optional</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">solveEquation</span><span class="p">(</span><span class="n">T</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span> <span class="n">c</span><span class="p">,</span> <span class="n">T</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">%</span> <span class="n">p</span> <span class="o">+</span> <span class="n">p</span><span class="p">)</span> <span class="o">%</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span> <span class="o">%</span> <span class="n">p</span> <span class="o">+</span> <span class="n">p</span><span class="p">)</span> <span class="o">%</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">T</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+    <span class="n">T</span> <span class="n">d</span> <span class="o">=</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">%</span> <span class="n">d</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">nullopt</span><span class="p">;</span>
+    
+    <span class="n">x</span> <span class="o">*=</span> <span class="n">c</span> <span class="o">/</span> <span class="n">d</span><span class="p">;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">%</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="n">d</span><span class="p">))</span> <span class="o">%</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="n">d</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="中国剩余定理及其扩展">中国剩余定理及其扩展</h2>
+<h3 id="中国剩余定理">中国剩余定理</h3>
+<p>$$
+\begin{cases}
+x \equiv a_1 \pmod{m_1}\\
+x \equiv a_2 \pmod{m_2}\\
+\cdots\\
+x \equiv a_n \pmod{m_n}\\
+\end{cases}
+\\
+\forall i\ne j,\gcd(m_i,m_j)=1
+$$</p>
+<p>形如上面这样的线性同余方程组且满足每个方程的模数两两互质，就可以用中国剩余定理解决。中国剩余定理也叫做 <code>CRT (Chinese Remainder Theorem)</code>。</p>
+<p><code>CRT</code> 的算法流程如下：</p>
+<ol>
+<li>令 $M=\prod_{i=1}^{n} m_i$，$M$ 不对任何数取模</li>
+<li>对于 $m_i$，令 $M_i=\prod_{i\ne j}=\frac{M}{m_i}$，$M_i^{-1}$ 为 $M_i$ 对 $m_i$ 的逆元，$c_i=M_iM_i^{-1}$，$c_i$ 不能对 $m_i$ 取模</li>
+<li>令 $x=\sum_{i=1}^{n}a_ic_i \bmod M$，则 $x$ 为模 $M$ 意义下的唯一解</li>
+</ol>
+<p>证明算法的正确性：</p>
+<p>对于 $\forall i\ne j$，$m_i\mid M_j$，故 $m_i\mid a_jc_j$，所以在模 $m_i$ 情况下，$x \equiv a_ic_i \pmod{m_i}$。因为 $M_i^{-1}$ 为 $M_i$ 对 $m_i$ 的逆元，故在模 $m_i$ 的同余式中 $c_i\equiv 1 \pmod{m_i}$，$a_ic_i\equiv a_i \pmod{m_i}$，即 $x \equiv a_i \pmod{m_i}$，满足第 $i$ 个方程。</p>
+<p>解在模 $M$ 意义下的唯一性证明：</p>
+<p>设 $x,y$ 不相等，$x,y&lt;M$，但都满足方程组，则可以有下面的方程组：</p>
+<p>$$
+\begin{cases}
+x - y\equiv 0 \pmod{m_1}\\
+x - y\equiv 0 \pmod{m_2}\\
+\cdots\\
+x - y\equiv 0 \pmod{m_n}\\
+\end{cases}
+$$</p>
+<p>则 $\forall i,m_i\mid |x-y|$，所以 $M \mid |x-y|$，即 $|x-y|=kM$，因为 $|x-y|&lt;M$，故 $k=0$，推出 $x=y$，与假设矛盾。</p>
+]]></description></item></channel></rss>
