@@ -9,7 +9,7 @@
 <meta name=keywords content="OI,数论,同余,中国剩余定理,BSGS,原根,N 次剩余"><meta itemprop=name content="同余方程学习笔记">
 <meta itemprop=description content="解各种同余方程是同余问题的一个重要部分，本文介绍各种同余方程的求解方法。 二元线性不定方程 形式 不定方程的范围很广泛，只要没有确定的解的方程都可"><meta itemprop=datePublished content="2022-02-13T21:40:02+08:00">
 <meta itemprop=dateModified content="2022-02-13T21:40:02+08:00">
-<meta itemprop=wordCount content="5381"><meta itemprop=image content="https://ctj12461.vercel.app/logo.png">
+<meta itemprop=wordCount content="5473"><meta itemprop=image content="https://ctj12461.vercel.app/logo.png">
 <meta itemprop=keywords content="OI,数论,同余,中国剩余定理,BSGS,原根,N 次剩余,"><meta property="og:title" content="同余方程学习笔记">
 <meta property="og:description" content="解各种同余方程是同余问题的一个重要部分，本文介绍各种同余方程的求解方法。 二元线性不定方程 形式 不定方程的范围很广泛，只要没有确定的解的方程都可">
 <meta property="og:type" content="article">
@@ -23,7 +23,7 @@
 <meta name=application-name content="ctj12461">
 <meta name=apple-mobile-web-app-title content="ctj12461"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#252627"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://ctj12461.vercel.app/contents/20220213-congruence-equation-note/><link rel=prev href=https://ctj12461.vercel.app/contents/20220212-burnside-lemma-and-polya-theorem-note/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"同余方程学习笔记","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/ctj12461.vercel.app\/contents\/20220213-congruence-equation-note\/"},"genre":"posts","keywords":"OI, 数论, 同余, 中国剩余定理, BSGS, 原根, N 次剩余","wordcount":5381,"url":"https:\/\/ctj12461.vercel.app\/contents\/20220213-congruence-equation-note\/","datePublished":"2022-02-13T21:40:02+08:00","dateModified":"2022-02-13T21:40:02+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"ctj12461"},"description":""}</script></head>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://ctj12461.vercel.app/contents/20220213-congruence-equation-note/><link rel=prev href=https://ctj12461.vercel.app/contents/20220212-burnside-lemma-and-polya-theorem-note/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"同余方程学习笔记","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/ctj12461.vercel.app\/contents\/20220213-congruence-equation-note\/"},"genre":"posts","keywords":"OI, 数论, 同余, 中国剩余定理, BSGS, 原根, N 次剩余","wordcount":5473,"url":"https:\/\/ctj12461.vercel.app\/contents\/20220213-congruence-equation-note\/","datePublished":"2022-02-13T21:40:02+08:00","dateModified":"2022-02-13T21:40:02+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"ctj12461"},"description":""}</script></head>
 <body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -91,7 +91,7 @@
 <div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>ctj12461</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/draft/><i class="far fa-folder fa-fw"></i>draft</a></span></div>
 <div class=post-meta-line><span title="2022-02-13 21:40:02">
 <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-02-13>2022-02-13</time>
-</span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5381 字&nbsp;
+</span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5473 字&nbsp;
 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;</div>
 </div><div class="details toc" id=toc-static kept=false>
 <div class="details-summary toc-title">
@@ -188,7 +188,6 @@ $$</p>
 ax \equiv c \pmod{p} \iff ax+py=c
 $$</p>
 <p>所以可以把线性同余方程转化为一个二元线性不定方程，求出 $x$ 即可，包括有无解的判定条件都是一样的。</p>
-<p>以下代码展示了如何求线性同余方程的最小非负整数解：</p>
 <h3 id=代码>代码</h3>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
@@ -264,7 +263,7 @@ $$</p>
 <h3 id=求解-2>求解</h3>
 <ol>
 <li>令 $M=\prod_{i=1}^{n} m_i$，$M$ 不对任何数取模</li>
-<li>对于 $m_i$，令 $M_i=\prod_{i\ne j}=\frac{M}{m_i}$，$M_i^{-1}$ 为 $M_i$ 对 $m_i$ 的逆元，$c_i=M_iM_i^{-1}$，$c_i$ 不能对 $m_i$ 取模</li>
+<li>对于 $m_i$，令 $M_i=\prod_{i\ne j}m_j=\frac{M}{m_i}$，$M_i^{-1}$ 为 $M_i$ 对 $m_i$ 的逆元，$c_i=M_iM_i^{-1}$，$c_i$ 不能对 $m_i$ 取模</li>
 <li>令 $x=\sum_{i=1}^{n}a_ic_i \bmod M$，则 $x$ 为模 $M$ 意义下的唯一解</li>
 </ol>
 <h3 id=算法正确性证明>算法正确性证明</h3>
@@ -498,7 +497,7 @@ $$</p>
 <p>与离散对数相对的是我们熟悉的连续对数，也就是最经常接触的对数。而离散对数是在同余中的一个概念。</p>
 <p>若在模 $m$ 意义下，$x$ 满足以下等式：</p>
 <p>$$
-a^x=b \pmod{m}
+a^x \equiv b \pmod{m}
 $$</p>
 <p>则 $x$ 为以 $a$ 为底的 $b$ 的离散对数。注意离散对数不同于连续对数，一个数的离散对数有很多个，并不是唯一的。</p>
 <p>如果 $\gcd(a,m)=1$，则我们可以使用 <code>BSGS</code> 算法求解一个数的最小的离散对数。</p>
@@ -507,8 +506,8 @@ $$</p>
 <p>$$
 a^{ps} \equiv ba^q \pmod{m}
 $$</p>
-<p>考虑暴力的思路，可以枚举两边的 $p,q$，如果有同余的两个 $a^{ps},a^q$，就更新答案。</p>
-<p>考虑到枚举会计算许多重复的东西，可以用某种数据结构维护映射表，存下每个 $(a^q,q)$，再枚举左边找相应的同余的项。我们先假设 $x=ps-q \in [0,m)$，则当 $s=\lceil\sqrt{m}\rceil$ 时，时间复杂度最优，为 $\Theta(\sqrt{m})$ 或 $\Theta(\sqrt{m}\log_2 \sqrt{m})$，具体为哪种复杂度，取决于是用哈希表还是平衡树实现。</p>
+<p>考虑暴力的思路，可以枚举两边的 $p,q$，如果有同余的两个 $a^{ps},ba^q$，就更新答案。</p>
+<p>考虑到枚举会计算许多重复的东西，可以用某种数据结构维护映射表，存下每个 $(ba^q,q)$，再枚举左边找相应的同余的项。我们先假设 $x=ps-q \in [0,m)$，则当 $s=\lceil\sqrt{m}\rceil$ 时，时间复杂度最优，为 $\Theta(\sqrt{m})$ 或 $\Theta(\sqrt{m}\log_2 \sqrt{m})$，具体为哪种复杂度，取决于是用哈希表还是平衡树实现。</p>
 <h3 id=可解性证明>可解性证明</h3>
 <p>至于为什么一定有 $x\in [0,m)$，使用抽屉原理证明：</p>
 <p>对于任意的 $x$，$a^x \bmod m$ 最多只有 $m$ 种取值，而在 $x\in [0,m]$ 时，一共有 $m+1$ 种指数，则根据抽屉原理得出必定存在一对 $x,y$ 满足 $a^x \equiv a^y \pmod{m}$。设 $t=|x-y|$，则 $a^x a^k=a^{x+t}a^k$，因为已经保证 $\gcd(a,m)=1$，则逆元一定存在，所以可以规定 $t\in\mathrm{Z}$，所以指数具有周期性，一定可以得到 $x\in [0,m)$。</p>
@@ -613,11 +612,11 @@ a^x \equiv b \pmod{m}\\
 \Downarrow\\
 \frac{a}{d_1}a^{x-1} \equiv \frac{b}{d_1} \pmod{\frac{m}{d_1}}\\
 \Downarrow\\
-\frac{a}{d_1 d_2}a^{x-2} \equiv \frac{b}{d_1 d_2} \pmod{\frac{m}{d_1 d_2}}\\
+\frac{a^2}{d_1 d_2}a^{x-2} \equiv \frac{b}{d_1 d_2} \pmod{\frac{m}{d_1 d_2}}\\
 \Downarrow\\
 \vdots\\
 \Downarrow\\
-\frac{a}{d_1 d_2\cdots d_k}a^{x-k} \equiv \frac{b}{d_1 d_2\cdots d_k} \pmod{\frac{m}{d_1 d_2\cdots d_k}}\\
+\frac{a^k}{d_1 d_2\cdots d_k}a^{x-k} \equiv \frac{b}{d_1 d_2\cdots d_k} \pmod{\frac{m}{d_1 d_2\cdots d_k}}\\
 $$</p>
 <p>假设现在 $a$ 与 $\frac{m}{d_1 d_2\cdots d_k}$ 互质，就可以用 <code>BSGS</code> 求出最后一个方程的解 $x-k$，再加上 $k$ 就是 $x$ 了。</p>
 <p>需要注意两点：</p>
@@ -627,92 +626,113 @@ $$</p>
 </ol>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span><span class=lnt>32
-</span><span class=lnt>33
-</span><span class=lnt>34
-</span><span class=lnt>35
-</span><span class=lnt>36
-</span><span class=lnt>37
-</span><span class=lnt>38
-</span><span class=lnt>39
-</span><span class=lnt>40
-</span><span class=lnt>41
-</span><span class=lnt>42
-</span><span class=lnt>43
-</span><span class=lnt>44
-</span><span class=lnt>45
-</span><span class=lnt>46
-</span><span class=lnt>47
-</span><span class=lnt>48
-</span><span class=lnt>49
-</span><span class=lnt>50
-</span><span class=lnt>51
-</span><span class=lnt>52
-</span><span class=lnt>53
-</span><span class=lnt>54
-</span><span class=lnt>55
-</span><span class=lnt>56
-</span><span class=lnt>57
-</span><span class=lnt>58
-</span><span class=lnt>59
-</span><span class=lnt>60
-</span><span class=lnt>61
-</span><span class=lnt>62
-</span><span class=lnt>63
-</span><span class=lnt>64
-</span><span class=lnt>65
-</span><span class=lnt>66
-</span><span class=lnt>67
-</span><span class=lnt>68
-</span><span class=lnt>69
-</span><span class=lnt>70
-</span><span class=lnt>71
-</span><span class=lnt>72
-</span><span class=lnt>73
-</span><span class=lnt>74
-</span><span class=lnt>75
-</span><span class=lnt>76
-</span><span class=lnt>77
-</span><span class=lnt>78
-</span><span class=lnt>79
-</span><span class=lnt>80
-</span><span class=lnt>81
-</span><span class=lnt>82
-</span><span class=lnt>83
-</span><span class=lnt>84
-</span><span class=lnt>85
-</span><span class=lnt>86
+<pre tabindex=0 class=chroma><code><span class=lnt>  1
+</span><span class=lnt>  2
+</span><span class=lnt>  3
+</span><span class=lnt>  4
+</span><span class=lnt>  5
+</span><span class=lnt>  6
+</span><span class=lnt>  7
+</span><span class=lnt>  8
+</span><span class=lnt>  9
+</span><span class=lnt> 10
+</span><span class=lnt> 11
+</span><span class=lnt> 12
+</span><span class=lnt> 13
+</span><span class=lnt> 14
+</span><span class=lnt> 15
+</span><span class=lnt> 16
+</span><span class=lnt> 17
+</span><span class=lnt> 18
+</span><span class=lnt> 19
+</span><span class=lnt> 20
+</span><span class=lnt> 21
+</span><span class=lnt> 22
+</span><span class=lnt> 23
+</span><span class=lnt> 24
+</span><span class=lnt> 25
+</span><span class=lnt> 26
+</span><span class=lnt> 27
+</span><span class=lnt> 28
+</span><span class=lnt> 29
+</span><span class=lnt> 30
+</span><span class=lnt> 31
+</span><span class=lnt> 32
+</span><span class=lnt> 33
+</span><span class=lnt> 34
+</span><span class=lnt> 35
+</span><span class=lnt> 36
+</span><span class=lnt> 37
+</span><span class=lnt> 38
+</span><span class=lnt> 39
+</span><span class=lnt> 40
+</span><span class=lnt> 41
+</span><span class=lnt> 42
+</span><span class=lnt> 43
+</span><span class=lnt> 44
+</span><span class=lnt> 45
+</span><span class=lnt> 46
+</span><span class=lnt> 47
+</span><span class=lnt> 48
+</span><span class=lnt> 49
+</span><span class=lnt> 50
+</span><span class=lnt> 51
+</span><span class=lnt> 52
+</span><span class=lnt> 53
+</span><span class=lnt> 54
+</span><span class=lnt> 55
+</span><span class=lnt> 56
+</span><span class=lnt> 57
+</span><span class=lnt> 58
+</span><span class=lnt> 59
+</span><span class=lnt> 60
+</span><span class=lnt> 61
+</span><span class=lnt> 62
+</span><span class=lnt> 63
+</span><span class=lnt> 64
+</span><span class=lnt> 65
+</span><span class=lnt> 66
+</span><span class=lnt> 67
+</span><span class=lnt> 68
+</span><span class=lnt> 69
+</span><span class=lnt> 70
+</span><span class=lnt> 71
+</span><span class=lnt> 72
+</span><span class=lnt> 73
+</span><span class=lnt> 74
+</span><span class=lnt> 75
+</span><span class=lnt> 76
+</span><span class=lnt> 77
+</span><span class=lnt> 78
+</span><span class=lnt> 79
+</span><span class=lnt> 80
+</span><span class=lnt> 81
+</span><span class=lnt> 82
+</span><span class=lnt> 83
+</span><span class=lnt> 84
+</span><span class=lnt> 85
+</span><span class=lnt> 86
+</span><span class=lnt> 87
+</span><span class=lnt> 88
+</span><span class=lnt> 89
+</span><span class=lnt> 90
+</span><span class=lnt> 91
+</span><span class=lnt> 92
+</span><span class=lnt> 93
+</span><span class=lnt> 94
+</span><span class=lnt> 95
+</span><span class=lnt> 96
+</span><span class=lnt> 97
+</span><span class=lnt> 98
+</span><span class=lnt> 99
+</span><span class=lnt>100
+</span><span class=lnt>101
+</span><span class=lnt>102
+</span><span class=lnt>103
+</span><span class=lnt>104
+</span><span class=lnt>105
+</span><span class=lnt>106
+</span><span class=lnt>107
 </span></code></pre></td>
 <td class=lntd>
 <pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=kt>int</span> <span class=nf>gcd</span><span class=p>(</span><span class=kt>int</span> <span class=n>a</span><span class=p>,</span> <span class=kt>int</span> <span class=n>b</span><span class=p>)</span> <span class=p>{</span>
@@ -738,6 +758,27 @@ $$</p>
     <span class=p>}</span>
 
     <span class=k>return</span> <span class=n>res</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=kt>int</span> <span class=nf>exgcd</span><span class=p>(</span><span class=kt>int</span> <span class=n>a</span><span class=p>,</span> <span class=kt>int</span> <span class=n>b</span><span class=p>,</span> <span class=kt>int</span> <span class=o>&amp;</span> <span class=n>x</span><span class=p>,</span> <span class=kt>int</span> <span class=o>&amp;</span> <span class=n>y</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=n>b</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>x</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+        <span class=n>y</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+        <span class=k>return</span> <span class=n>a</span><span class=p>;</span>
+    <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+        <span class=kt>int</span> <span class=n>d</span> <span class=o>=</span> <span class=n>exgcd</span><span class=p>(</span><span class=n>b</span><span class=p>,</span> <span class=n>a</span> <span class=o>%</span> <span class=n>b</span><span class=p>,</span> <span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>);</span>
+        <span class=kt>int</span> <span class=n>t</span> <span class=o>=</span> <span class=n>x</span><span class=p>;</span>
+        <span class=n>x</span> <span class=o>=</span> <span class=n>y</span><span class=p>;</span>
+        <span class=n>y</span> <span class=o>=</span> <span class=n>t</span> <span class=o>-</span> <span class=n>a</span> <span class=o>/</span> <span class=n>b</span> <span class=o>*</span> <span class=n>y</span><span class=p>;</span>
+        <span class=k>return</span> <span class=n>d</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+
+<span class=kt>int</span> <span class=nf>inverse</span><span class=p>(</span><span class=kt>int</span> <span class=n>a</span><span class=p>,</span> <span class=kt>int</span> <span class=n>p</span><span class=p>)</span> <span class=p>{</span>
+    <span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>;</span>
+    <span class=n>exgcd</span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=n>p</span><span class=p>,</span> <span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>);</span>
+    <span class=n>x</span> <span class=o>=</span> <span class=p>(</span><span class=n>x</span> <span class=o>%</span> <span class=n>p</span> <span class=o>+</span> <span class=n>p</span><span class=p>)</span> <span class=o>%</span> <span class=n>p</span><span class=p>;</span>
+    <span class=k>return</span> <span class=n>x</span><span class=p>;</span>
 <span class=p>}</span>
 
 <span class=n>optional</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>bsgs</span><span class=p>(</span><span class=kt>int</span> <span class=n>a</span><span class=p>,</span> <span class=kt>int</span> <span class=n>b</span><span class=p>,</span> <span class=kt>int</span> <span class=n>m</span><span class=p>)</span> <span class=p>{</span>
@@ -794,7 +835,7 @@ $$</p>
             <span class=k>return</span> <span class=n>k</span><span class=p>;</span>
     <span class=p>}</span>
 
-    <span class=k>auto</span> <span class=n>res</span> <span class=o>=</span> <span class=n>bsgs</span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>,</span> <span class=n>m</span><span class=p>);</span>
+    <span class=k>auto</span> <span class=n>res</span> <span class=o>=</span> <span class=n>bsgs</span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=mi>1ll</span> <span class=o>*</span> <span class=n>b</span> <span class=o>*</span> <span class=n>inverse</span><span class=p>(</span><span class=n>prod</span><span class=p>,</span> <span class=n>m</span><span class=p>)</span> <span class=o>%</span> <span class=n>p</span><span class=p>,</span> <span class=n>m</span><span class=p>);</span>
 
     <span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=n>res</span><span class=p>.</span><span class=n>has_value</span><span class=p>())</span>
         <span class=k>return</span> <span class=n>nullopt</span><span class=p>;</span>
