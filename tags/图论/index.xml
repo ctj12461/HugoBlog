@@ -1,0 +1,119 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>图论 - 标签 - ctj12461's Blog</title><link>https://ctj12461.vercel.app/tags/%E5%9B%BE%E8%AE%BA/</link><description>图论 - 标签 - ctj12461's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ctj12461@163.com (ctj12461)</managingEditor><webMaster>ctj12461@163.com (ctj12461)</webMaster><lastBuildDate>Tue, 22 Feb 2022 13:31:06 +0800</lastBuildDate><atom:link href="https://ctj12461.vercel.app/tags/%E5%9B%BE%E8%AE%BA/" rel="self" type="application/rss+xml"/><item><title>二分图匹配学习笔记</title><link>https://ctj12461.vercel.app/contents/20220222-bipartite-graph-matching-note/</link><pubDate>Tue, 22 Feb 2022 13:31:06 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220222-bipartite-graph-matching-note/</guid><description><![CDATA[<h2 id="二分图">二分图</h2>
+<h3 id="定义">定义</h3>
+<p>如果一个图 $G=(V,E)$ 中的结点可以被分为两个部分，且两个部分之内的点互相没有连边，则称这种图为二分图。如果每个结点的度数相等且都为 $k$，则称这种二分图为 $k$ - 正则二分图。</p>
+<h3 id="判断">判断</h3>
+<p>对图的结点进行黑白染色，相连的结点染不同的颜色，若最后满足每条边的两个端点颜色不相同，则这个图是二分图。树也是二分图。</p>
+<h3 id="匹配">匹配</h3>
+<p>在二分图的边集中选出一个非空子集，且这个非空子集内没有两条边连接了一个相同的端点，则这个非空子集被称为二分图的一个匹配，同样对于一般图也有类似的概念。</p>
+<p>若一个匹配的所含的边数最大，则称这个匹配为最大匹配。</p>
+<p>若二分图两边的结点个数相同，且存在一个匹配满足其中的边连接了所有的点，则这个匹配被称为这个二分图的完美匹配或者完备匹配。</p>
+<p>若每条边有边权，且一个匹配的所含的边的权值和最大，则这个匹配被称为这个二分图的最大权匹配。</p>
+<h2 id="匈牙利算法">匈牙利算法</h2>
+<h3 id="交替路">交替路</h3>
+<p>假设在二分图最大匹配的过程中，已经找到了一些边作为一个匹配，则一条交替路就是一个匹配边和非匹配边交替连接组成的简单路径。</p>
+<p>根据二分图的定义，假设一条交替路的起点在左边，且第一条边是匹配边，则这条交替路中的匹配边一定都是从左边到右边，而非匹配边一定是从右边到左边。</p>
+<p>交替路上的结点最多连接一条匹配边和一条非匹配边，所以如果把交替路上的匹配边变为非匹配边，非匹配边变为匹配边，则仍然满足条件，也就是交替路边集的匹配边集的补集也可以是匹配。</p>
+<h3 id="增广路">增广路</h3>
+<p>匈牙利算法的核心就是找增广路，这条增广路是一条交替路。每次增广从左边开始，第一条边是非匹配边，最后一条边也是非匹配边，根据上文的描述，这样的路径的边数为奇数，非匹配边个数比匹配边个数多 $1$，若把匹配边与非匹配边反转，则反转后的边集仍然是一个合法的匹配，且比原来的匹配的边数多了 $1$。如果能找到一条这样的增广路，则此次增广成功。</p>
+<p>具体来说，比如一个左边的结点 $x$ 找到了一个右边的结点 $y$，它没有与其他左边的结点匹配过，则 $e(x,y)$ 可以作为一个匹配边，反转边集前，有 $1$ 条匹配边，$0$ 条非匹配边，增广成功。</p>
+<p>如果右边的结点 $y$ 已经有匹配了，那么就可以让原来 $y$ 的匹配 $x'$ 新找一个点 $y'$，如果能够找到这个 $y'$，那么 $e(x',y')$ 成为一个匹配边，$y$ 就无需和 $x'$ 匹配了，也就是说 $y$ 已经变为了一个没有匹配的点，$x$ 就可以与 $y$ 匹配了。如果 $x'$ 找不到 $y'$，那么 $x'$ 就要保持原样，和 $y$ 匹配，那么 $x$ 就不可以和 $y$ 匹配，只能继续寻找下一个可能的结点。</p>
+<p>对于 $x'$，它找 $y'$ 的过程和 $x$ 找 $y$ 的过程是一样的，所以可以递归实现。</p>
+<p>总结一下，一个结点 $x$ 的寻找过程可以分为两种情况：</p>
+<ol>
+<li>找到一个未匹配结点 $y$，与它匹配</li>
+<li>让一个已匹配的结点 $y$ 和 $y$ 的另一边的结点 $x'$ 取消匹配，让 $x'$ 找新匹配点 $y'$，若取消成功，则 $x$ 与 $y$ 可以匹配</li>
+</ol>
+<p>可以发现 $x$ 寻找成功，则匹配边都变成了非匹配边，原来的非匹配边都变成了匹配边，也就是找增广路的过程，然后对这条增广路的匹配边与非匹配边反转，匹配边数加 $1$，就这样对于左边的每个结点都增广，尝试找到左边的每个结点对应的匹配，最后就找到了最大匹配。</p>
+<h3 id="代码实现">代码实现</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">bool</span> <span class="nf">augment</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">y</span> <span class="p">:</span> <span class="n">graph</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">vis</span><span class="p">[</span><span class="n">y</span><span class="p">])</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="c1">// 无论是否增广成功，对于当前增广路上的结点，下次都可以不用再走这个点
+</span><span class="c1"></span>        <span class="n">vis</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="c1">// y 没有匹配或者取消 y 的匹配成功
+</span><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">match</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">||</span> <span class="n">augment</span><span class="p">(</span><span class="n">match</span><span class="p">[</span><span class="n">y</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="n">match</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span> <span class="c1">// 找到匹配点，增广成功
+</span><span class="c1"></span>        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> <span class="c1">// 没有找到结点，增广失败
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">hungary</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">match</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="c1">// 每次增广都要清空
+</span><span class="c1"></span>            <span class="n">vis</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">augment</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="o">++</span><span class="n">res</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="二分图最大匹配性质">二分图最大匹配性质</h2>
+<h3 id="相关概念">相关概念</h3>
+<p>假设有一个图 $G=(V,E)$，下面是一些常见的概念：</p>
+<ul>
+<li><strong>边覆盖</strong>：边覆盖是 $E$ 的一个子集 $E'$，$\forall\ x \in E$，满足 $x$ 是边 $e$ 的端点，且 $e \in E'$，也就是 $E'$ 中的边的端点的并集是 $V$</li>
+<li><strong>独立集</strong>：独立集是 $V$ 的一个子集 $V'$，$\forall\ x,y \in V$，满足 $e(x,y) \notin E$，也就是独立集中的点互不相连</li>
+<li><strong>团</strong>：团是图 $G$ 的一个子图$G'=(V',E')$，$V' \subset V$，$E' \subset E$，且团是完全图，即 $\forall\ x,y \in V$，满足 $e(x,y) \in E'$，也就是团中的点互相连边</li>
+<li><strong>点覆盖</strong>：点覆盖是 $V$ 的一个子集 $V'$，$\forall\ e(x,y) \in V$，满足 $x \in V'$ 或 $y \in V'$，也就是 $V'$ 中的点所连的边的并集是 $E$</li>
+</ul>
+<h3 id="等式">等式</h3>
+<p>若一个图是二分图，则有如下性质：</p>
+<ul>
+<li>$|$最小边覆盖$| = |V| - |$最大匹配$|$</li>
+<li>$|$最大独立集$| = |V| - |$最大匹配$|$</li>
+<li>$|$补图的最大团$| = |$最大独立集$|$</li>
+<li>$|$最小点覆盖$| = |$最大匹配$|$</li>
+</ul>
+<h3 id="与-dag-的关系">与 DAG 的关系</h3>
+<p>对于一个 DAG $G$，构造二分图 $G'$，满足 $G$ 中的有向边 $e(x,y)$ 与 $G'$ 中的边 $e(x,y')$ 一一对应，其中 $x$ 和 $y'$ 在两边。此时满足 $|G$ 的最小路径覆盖$| = |G'$ 的最小点覆盖$|$。路径覆盖指选出一些路径 $p$ 组成一个集合 $P$，满足图中所有点都被至少一个 $p$ 经过，且 $p \in P$。</p>
+<h3 id="建模相关">建模相关</h3>
+<p>可以通过一些转化把题目转化为二分图的问题，用上面的性质解决，详情见下面的例题。</p>
+]]></description></item></channel></rss>
