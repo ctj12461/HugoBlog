@@ -4,13 +4,13 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=robots content="noodp">
 <meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
-<title>莫比乌斯反演 - ctj12461's Blog</title><meta name=author content="ctj12461: ">
+<title>莫比乌斯反演学习笔记 - ctj12461's Blog</title><meta name=author content="ctj12461: ">
 <meta name=description content="莫比乌斯反演可以用于优化一类式子的计算。 莫比乌斯函数 定义 莫比乌斯函数的定义如下： $$ \mu(n)= \begin{cases} 0 & \exist\ p^2 \mid n \wedge p>1\\ (-1)^k & n=\prod_{i=1}^{k} p_i \end{cases} $$ 也就是说，如果 $n$ 含有平方约">
-<meta name=keywords content="OI,数论,莫比乌斯反演,莫比乌斯函数,数论方块,积性函数,筛法,C++"><meta itemprop=name content="莫比乌斯反演">
+<meta name=keywords content="OI,数论,莫比乌斯反演,莫比乌斯函数,数论方块,积性函数,筛法,C++"><meta itemprop=name content="莫比乌斯反演学习笔记">
 <meta itemprop=description content="莫比乌斯反演可以用于优化一类式子的计算。 莫比乌斯函数 定义 莫比乌斯函数的定义如下： $$ \mu(n)= \begin{cases} 0 & \exist\ p^2 \mid n \wedge p>1\\ (-1)^k & n=\prod_{i=1}^{k} p_i \end{cases} $$ 也就是说，如果 $n$ 含有平方约"><meta itemprop=datePublished content="2022-02-20T11:23:07+08:00">
 <meta itemprop=dateModified content="2022-02-20T11:23:07+08:00">
-<meta itemprop=wordCount content="6308"><meta itemprop=image content="https://ctj12461.vercel.app/logo.png">
-<meta itemprop=keywords content="OI,数论,莫比乌斯反演,莫比乌斯函数,数论方块,积性函数,筛法,C++,"><meta property="og:title" content="莫比乌斯反演">
+<meta itemprop=wordCount content="6307"><meta itemprop=image content="https://ctj12461.vercel.app/logo.png">
+<meta itemprop=keywords content="OI,数论,莫比乌斯反演,莫比乌斯函数,数论方块,积性函数,筛法,C++,"><meta property="og:title" content="莫比乌斯反演学习笔记">
 <meta property="og:description" content="莫比乌斯反演可以用于优化一类式子的计算。 莫比乌斯函数 定义 莫比乌斯函数的定义如下： $$ \mu(n)= \begin{cases} 0 & \exist\ p^2 \mid n \wedge p>1\\ (-1)^k & n=\prod_{i=1}^{k} p_i \end{cases} $$ 也就是说，如果 $n$ 含有平方约">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/"><meta property="og:image" content="https://ctj12461.vercel.app/logo.png"><meta property="article:section" content="posts">
@@ -18,12 +18,12 @@
 <meta property="article:modified_time" content="2022-02-20T11:23:07+08:00">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://ctj12461.vercel.app/logo.png">
-<meta name=twitter:title content="莫比乌斯反演">
+<meta name=twitter:title content="莫比乌斯反演学习笔记">
 <meta name=twitter:description content="莫比乌斯反演可以用于优化一类式子的计算。 莫比乌斯函数 定义 莫比乌斯函数的定义如下： $$ \mu(n)= \begin{cases} 0 & \exist\ p^2 \mid n \wedge p>1\\ (-1)^k & n=\prod_{i=1}^{k} p_i \end{cases} $$ 也就是说，如果 $n$ 含有平方约">
 <meta name=application-name content="ctj12461">
 <meta name=apple-mobile-web-app-title content="ctj12461"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#252627"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/><link rel=prev href=https://ctj12461.vercel.app/contents/20220213-congruence-equation-note/><link rel=next href=https://ctj12461.vercel.app/contents/20220222-bipartite-graph-matching-note/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"莫比乌斯反演","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/ctj12461.vercel.app\/contents\/20220220-mobius-inversion-note\/"},"genre":"posts","keywords":"OI, 数论, 莫比乌斯反演, 莫比乌斯函数, 数论方块, 积性函数, 筛法, C\u002b\u002b","wordcount":6308,"url":"https:\/\/ctj12461.vercel.app\/contents\/20220220-mobius-inversion-note\/","datePublished":"2022-02-20T11:23:07+08:00","dateModified":"2022-02-20T11:23:07+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"ctj12461"},"description":""}</script></head>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/><link rel=prev href=https://ctj12461.vercel.app/contents/20220213-congruence-equation-note/><link rel=next href=https://ctj12461.vercel.app/contents/20220222-bipartite-graph-matching-note/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"莫比乌斯反演学习笔记","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/ctj12461.vercel.app\/contents\/20220220-mobius-inversion-note\/"},"genre":"posts","keywords":"OI, 数论, 莫比乌斯反演, 莫比乌斯函数, 数论方块, 积性函数, 筛法, C\u002b\u002b","wordcount":6307,"url":"https:\/\/ctj12461.vercel.app\/contents\/20220220-mobius-inversion-note\/","datePublished":"2022-02-20T11:23:07+08:00","dateModified":"2022-02-20T11:23:07+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"ctj12461"},"description":""}</script></head>
 <body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -87,11 +87,11 @@
 <div class=container><div class=toc id=toc-auto>
 <h2 class=toc-title>目录</h2>
 <div class=toc-content id=toc-content-auto></div>
-</div><article class="page single"><h1 class="single-title animated flipInX">莫比乌斯反演</h1><div class=post-meta>
+</div><article class="page single"><h1 class="single-title animated flipInX">莫比乌斯反演学习笔记</h1><div class=post-meta>
 <div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>ctj12461</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E7%AC%94%E8%AE%B0/><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
 <div class=post-meta-line><span title="2022-02-20 11:23:07">
 <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-02-20>2022-02-20</time>
-</span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6308 字&nbsp;
+</span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6307 字&nbsp;
 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 13 分钟&nbsp;</div>
 </div><div class="details toc" id=toc-static kept=false>
 <div class="details-summary toc-title">
@@ -120,11 +120,7 @@
 <li><a href=#倍数反演公式>倍数反演公式</a></li>
 </ul>
 </li>
-<li><a href=#常见结论>常见结论</a>
-<ul>
-<li><a href=#heading></a></li>
-</ul>
-</li>
+<li><a href=#常见结论>常见结论</a></li>
 <li><a href=#应用>应用</a></li>
 </ul>
 </li>
@@ -182,16 +178,16 @@ $$</p>
 <li>若 $\exist\ p_i$ 满足 $p_i^2 \mid d$，则 $\mu(d)=0$，容易发现这样的 $d$ 的唯一分解中，存在一个 $c'_i>1$。</li>
 <li>若 $n\ne 1$，则 $k\ne 0$，对答案有贡献的 $d$ 一定满足 $\forall\ i\in [1,k],c_i\in [0,1]$，也就是每个 $p_i$ 选一次或不选。枚举 $d$ 选的质约数个数 $i$：
 $$
-\sum_{i=0}^{k} (-1)^i \binom{k}{i}=</li>
+\sum_{i=0}^{k} (-1)^i \binom{k}{i}=
+\sum_{i=0}^{k} \binom{k}{i} 1^{k-i} (-1)^i=
+[1+(-1)]^k=0
+$$</li>
+<li>特殊考虑 $n=1$，此时 $k=0$：
+$$
+\sum_{i=0}^{k} (-1)^i \binom{k}{i}=
+(-1)^0 \binom{0}{0}=1
+$$</li>
 </ol>
-<p>\sum_{i=0}^{k} \binom{k}{i} 1^{k-i} (-1)^i=</p>
-<p>[1+(-1)]^k=0
-$$
-3. 特殊考虑 $n=1$，此时 $k=0$：
-$$
-\sum_{i=0}^{k} (-1)^i \binom{k}{i}=</p>
-<p>(-1)^0 \binom{0}{0}=1
-$$</p>
 <p>综上，$\sum_{d\mid n} \mu(d) = \sum_{i=0}^{k} (-1)^i \binom{k}{i} = [n=1]$</p>
 <p><code>Q.E.D.</code></p>
 <h4 id=容斥系数>容斥系数</h4>
@@ -247,9 +243,8 @@ $$</p>
 d = I * I\\
 \sigma = I * id
 $$</p>
-<h4 id=heading></h4>
 <h3 id=应用>应用</h3>
-<p>如果一个函数 $g(n)$ 难以计算，但知道了它与另一个函数 $f(x)$ 的关系，如 <code>Dirchlet</code> 卷积的形式，则可以通过莫比乌斯反演得到。或者可以通过莫比乌斯反演对式子进行变换化简，分别计算。</p>
+<p>如果一个函数 $g(n)$ 难以计算，但知道了它与另一个函数 $f(x)$ 的关系，如 <code>Dirchlet</code> 卷积的形式，则可以通过莫比乌斯反演得到。或者可以通过莫比乌斯反演对式子进行变换化简，方便计算。</p>
 <h2 id=例题>例题</h2>
 <h3 id=luogu-p2522-problem-b>Luogu P2522 Problem b</h3>
 <blockquote>
@@ -1297,7 +1292,7 @@ $$</p>
 <div class=post-info-line>
 <div class=post-info-md></div>
 <div class=post-info-share>
-<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ data-title=莫比乌斯反演 data-hashtags=OI,数论,莫比乌斯反演,莫比乌斯函数,数论方块,积性函数,筛法,C++><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ data-hashtag=OI><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 WhatsApp" data-sharer=whatsapp data-url=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ data-title=莫比乌斯反演 data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ data-title=莫比乌斯反演><i data-svg-src=/lib/simple-icons/icons/line.min.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ data-title=莫比乌斯反演><i class="fab fa-weibo fa-fw"></i></a><a href=javascript:void(0); title="分享到 Myspace" data-sharer=myspace data-url=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ data-title=莫比乌斯反演 data-description><i data-svg-src=/lib/simple-icons/icons/myspace.min.svg></i></a><a href=javascript:void(0); title="分享到 Blogger" data-sharer=blogger data-url=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ data-title=莫比乌斯反演 data-description><i class="fab fa-blogger fa-fw"></i></a><a href=javascript:void(0); title="分享到 Evernote" data-sharer=evernote data-url=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ data-title=莫比乌斯反演><i class="fab fa-evernote fa-fw"></i></a></span>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ data-title=莫比乌斯反演学习笔记 data-hashtags=OI,数论,莫比乌斯反演,莫比乌斯函数,数论方块,积性函数,筛法,C++><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ data-hashtag=OI><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 WhatsApp" data-sharer=whatsapp data-url=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ data-title=莫比乌斯反演学习笔记 data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ data-title=莫比乌斯反演学习笔记><i data-svg-src=/lib/simple-icons/icons/line.min.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ data-title=莫比乌斯反演学习笔记><i class="fab fa-weibo fa-fw"></i></a><a href=javascript:void(0); title="分享到 Myspace" data-sharer=myspace data-url=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ data-title=莫比乌斯反演学习笔记 data-description><i data-svg-src=/lib/simple-icons/icons/myspace.min.svg></i></a><a href=javascript:void(0); title="分享到 Blogger" data-sharer=blogger data-url=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ data-title=莫比乌斯反演学习笔记 data-description><i class="fab fa-blogger fa-fw"></i></a><a href=javascript:void(0); title="分享到 Evernote" data-sharer=evernote data-url=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ data-title=莫比乌斯反演学习笔记><i class="fab fa-evernote fa-fw"></i></a></span>
 </div>
 </div>
 </div>
