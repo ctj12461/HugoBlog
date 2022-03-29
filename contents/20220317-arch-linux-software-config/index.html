@@ -56,7 +56,7 @@
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl>$ yay -S visual-studio-code-bin
 </span></span></code></pre></td></tr></table></div></div><p>也是直接输入 <code>code</code> 运行。</p><h2 id=wps-2019-for-linux><code>WPS 2019 for Linux</code></h2><p>目前 <code>WPS</code> 对 <code>Microsoft Office</code> 的支持是最好的，而且还在稳定更新，推荐使用。</p><p>使用 <code>yay</code> 安装，并且要安装可选的依赖包：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl>$ yay -S wps-office-cn wps-office-mime-cn wps-office-mui-cn <span class=c1># 安装中文环境的 WPS</span>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl>$ yay -S wps-office-cn wps-office-mime-cn wps-office-mui-zh-cn <span class=c1># 安装中文环境的 WPS</span>
 </span></span><span class=line><span class=cl>$ yay -S ttf-wps-fonts wps-office-fonts <span class=c1># 安装字体</span>
 </span></span></code></pre></td></tr></table></div></div><p>如果使用 <code>KDE</code>，可能会遇到字体模糊的情况，这是由缩放不为 100% 引起的问题，<code>WPS</code> 使用了 <code>Qt</code> 所以只要在运行前加上环境变量 <code>QT_SCREEN_SCALE_FACTORS=1</code> 即可，对于启动器或桌面上的 <code>Desktop Entry</code>（快捷方式），只要在 <code>/usr/share/applications</code> 下修改所有含 <code>wps</code> 的 <code>Desktop Entry</code> 文件即可，安装下面修改即可：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2

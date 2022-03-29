@@ -143,7 +143,7 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ yay -S wps-office-cn wps-office-mime-cn wps-office-mui-cn <span class="c1"># 安装中文环境的 WPS</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ yay -S wps-office-cn wps-office-mime-cn wps-office-mui-zh-cn <span class="c1"># 安装中文环境的 WPS</span>
 </span></span><span class="line"><span class="cl">$ yay -S ttf-wps-fonts wps-office-fonts <span class="c1"># 安装字体</span>
 </span></span></code></pre></td></tr></table>
 </div>
