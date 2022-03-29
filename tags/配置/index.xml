@@ -169,7 +169,7 @@
 <pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sudo pacman -S fcitx5-im fcitx5-configtool fcitx5-chinese-addons fcitx5-rime
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>添加环境变量以正常使用 <code>fcitx5</code>：</p>
+</div><p>添加环境变量到 <code>/etc/environment</code> 以正常使用 <code>fcitx5</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
