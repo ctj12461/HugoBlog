@@ -1,1 +1,264 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DP on ctj12461's Blog</title><link>https://ctj12461.vercel.app/tags/dp/</link><description>Recent content in DP on ctj12461's Blog</description><generator>Hugo -- gohugo.io</generator><copyright>CC BY-NC 4.0</copyright><lastBuildDate>Fri, 04 Feb 2022 19:41:12 +0800</lastBuildDate><atom:link href="https://ctj12461.vercel.app/tags/dp/index.xml" rel="self" type="application/rss+xml"/><item><title>MultiGenerator 使用文档</title><link>https://ctj12461.vercel.app/contents/20220404-multigenerator-document/</link><pubDate>Mon, 04 Apr 2022 22:15:15 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220404-multigenerator-document/</guid><description>概述 MultiGenerator 是一个为 OI 而生的多线程并行数据生成库，基于 C++ 17，使用面向对象和泛型等 Morden C++ 高级特性，只需要添加最少的额外代码，就可以获得最高的性能。以</description></item><item><title>std::function 和 std::bind 的使用陷阱</title><link>https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/</link><pubDate>Tue, 29 Mar 2022 18:21:31 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/</guid><description>std::function 和 std::bind 是 C++ 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。 最近写项目时遇到需要将不可复制构造的对象传给 std::bind 的情况，结果遇到了编</description></item><item><title>Arch Linux 常用软件配置</title><link>https://ctj12461.vercel.app/contents/20220317-arch-linux-software-config/</link><pubDate>Thu, 17 Mar 2022 22:28:02 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220317-arch-linux-software-config/</guid><description>记录一下安装 Arch Linux 后的常用软件安装以及配置。 yay 使用 yay 从 AUR 上下载各种官方仓库所没有的包。 项目主页：https://github.com/Jgue</description></item><item><title>二分图匹配学习笔记</title><link>https://ctj12461.vercel.app/contents/20220222-bipartite-graph-matching-note/</link><pubDate>Tue, 22 Feb 2022 13:31:06 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220222-bipartite-graph-matching-note/</guid><description>二分图 定义 如果一个图 $G=(V,E)$ 中的结点可以被分为两个部分，且两个部分之内的点互相没有连边，则称这种图为二分图。如果每个结点的度数相等且都为 $k$，则</description></item><item><title>莫比乌斯反演学习笔记</title><link>https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/</link><pubDate>Sun, 20 Feb 2022 11:23:07 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/</guid><description>莫比乌斯反演可以用于优化一类式子的计算。 莫比乌斯函数 定义 莫比乌斯函数的定义如下： $$ \mu(n)= \begin{cases} 0 &amp;amp; \exists\ p^2 \mid n \wedge p&amp;gt;1\\ (-1)^k &amp;amp; n=\prod_{i=1}^{k} p_i \end{cases} $$ 也就是说，如果 $n$ 含有平方约</description></item><item><title>同余方程学习笔记</title><link>https://ctj12461.vercel.app/contents/20220213-congruence-equation-note/</link><pubDate>Sun, 13 Feb 2022 21:40:02 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220213-congruence-equation-note/</guid><description>解各种同余方程是同余问题的一个重要部分，本文介绍各种同余方程的求解方法。 二元线性不定方程 形式 不定方程的范围很广泛，只要没有确定的解的方程都可</description></item><item><title>About</title><link>https://ctj12461.vercel.app/about/</link><pubDate>Sun, 13 Feb 2022 19:37:31 +0800</pubDate><guid>https://ctj12461.vercel.app/about/</guid><description>福建省长乐第一中学学生 2020.7.23 ~ OIer 2019.03.09 ~ Minecraft 红石 &amp;amp; 建筑玩家 2016.??.?? ~</description></item><item><title>Burnside 引理 &amp; Pólya 定理学习笔记</title><link>https://ctj12461.vercel.app/contents/20220212-burnside-lemma-and-polya-theorem-note/</link><pubDate>Sat, 12 Feb 2022 19:14:24 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220212-burnside-lemma-and-polya-theorem-note/</guid><description>Burnside 引理和 Pólya 定理主要用于解决计算本质不同方案数的计数问题。 群论 基本定义 群可以看成是一个由集合和某个二元运算组成的二元组 $(S,\cdo</description></item><item><title>欧拉函数 &amp; 欧拉定理学习笔记</title><link>https://ctj12461.vercel.app/contents/20220210-euler-function-and-euler-theorem-note/</link><pubDate>Thu, 10 Feb 2022 08:37:50 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220210-euler-function-and-euler-theorem-note/</guid><description>欧拉函数 $\varphi(n)$ 是一个重要的数论函数，它表示 $[1, n]$ 中与 $n$ 互质的数的个数。 欧拉函数性质 积性函数 积性函数的定义是：如果一个函数 $f(n)$ 满足 $\gcd(a,b)=1$ 时 $f(ab)=f</description></item><item><title>拉格朗日插值学习笔记</title><link>https://ctj12461.vercel.app/contents/20220207-lagrange-interpolation-note/</link><pubDate>Mon, 07 Feb 2022 23:53:43 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220207-lagrange-interpolation-note/</guid><description>拉格朗日插值是众多插值算法中的一种，插值是通过一些点来求出过这些点的多项式函数的过程。 算法思想 构造函数 给出 $n + 1$ 个点 $(x_1,y_1),(</description></item><item><title>高斯消元学习笔记</title><link>https://ctj12461.vercel.app/contents/20220206-gauss-elimination-note/</link><pubDate>Sun, 06 Feb 2022 16:06:35 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220206-gauss-elimination-note/</guid><description>高斯消元主要用于求解线性方程组的解，同时可以解决某些有后效性的 DP 问题， 算法思想 增广矩阵 为了更方便地求解方程组，可以将系数和常数项放入矩阵，接</description></item><item><title>Luogu P3647 连珠线题解</title><link>https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/</link><pubDate>Fri, 04 Feb 2022 19:41:12 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/</guid><description>这里给出一种无需换根的 DP 思路。 Part 1 我们从结点的添加方式入手，可以把结点分为三类： 初始的结点，这种结点只有一个 通过 Append 添加的结点，以下简称 A 类结</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>DP - 标签 - ctj12461's Blog</title><link>https://ctj12461.vercel.app/tags/dp/</link><description>DP - 标签 - ctj12461's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ctj12461@163.com (ctj12461)</managingEditor><webMaster>ctj12461@163.com (ctj12461)</webMaster><lastBuildDate>Fri, 04 Feb 2022 19:41:12 +0800</lastBuildDate><atom:link href="https://ctj12461.vercel.app/tags/dp/" rel="self" type="application/rss+xml"/><item><title>Luogu P3647 连珠线题解</title><link>https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/</link><pubDate>Fri, 04 Feb 2022 19:41:12 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/</guid><description><![CDATA[<p>这里给出一种无需换根的 DP 思路。</p>
+<h2 id="part-1">Part 1</h2>
+<p>我们从结点的添加方式入手，可以把结点分为三类：</p>
+<ul>
+<li>初始的结点，这种结点只有一个</li>
+<li>通过 Append 添加的结点，以下简称 A 类结点</li>
+<li>通过 Insert 添加的结点，以下简称 I 类结点</li>
+</ul>
+<p>不换根的思路核心就在于保证转移时的过程符合结点的添加规则。为了方便，我们可以给每条线定向。同时假设 $1$ 为根，$x$ 为当前结点，$y$ 为 $x$ 的一个儿子结点，$fa$ 为 $x$ 的父亲结点。很显然接下来可以分 $6$ 类讨论：</p>
+<ol>
+<li>
+<p>若 $x$ 为初始结点，则其子结点、$fa$ 都应该连向  $x$</p>
+</li>
+<li>
+<p>若 $x$ 为 A 类结点</p>
+<ol>
+<li>$x$ 向 $fa$ 连一条红线，子结点连向 $x$</li>
+<li>$x$ 向其中一个子结点 $y$ 连一条红线，其他子结点以及 $fa$ 连向  $x$</li>
+</ol>
+</li>
+<li>
+<p>若 $x$ 为 I 类结点</p>
+<ol>
+<li>$x$ 取代一个子结点 $y$ 连向 $fa$ 的红线，然后换成蓝线</li>
+<li>$x$ 取代两个个子结点 $y_1$ 和 $y_2$ 之间的红线，然后换成蓝线</li>
+<li>$x$ 取代 $fa$ 连向一个子结点 $y$ 的红线，然后换成蓝线</li>
+</ol>
+</li>
+</ol>
+<p>上面的分类讨论中的“连向”可以看成 Append 或 Insert，根据题意计算就可以了。</p>
+<h2 id="part-2">Part 2</h2>
+<p>接下来根据分类讨论设出状态以及写出方程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">long</span> <span class="kt">long</span> <span class="n">f</span><span class="p">[</span><span class="n">MAXN</span><span class="p">][</span><span class="mi">6</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * f[x][0]: x is initial
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * f[x][1]: x -&gt; fa
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * f[x][2]: x -&gt; y
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * f[x][3]: y -&gt; x -&gt; fa
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * f[x][4]: y1 -&gt; x -&gt; y2
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * f[x][5]: fa -&gt; x -&gt; y
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>设 $cont(x)$ 表示 $x$ 向其父结点连线的贡献，则 $cont(x)=\max\{f[x][1],f[x][3]+len(x,fa(x))\}$。
+$$
+f[x][0]=\sum_{y\in son(x)}cont(y)\\
+f[x][1]=\sum_{y\in son(x)}cont(y)\\
+f[x][2]=\sum_{y\in son(x)}cont(y)+\max_{y\in son(x)}\{\max\{f[y][0], f[y][2], f[y][4], f[y][5] + len(y,x)\}-cont(y)\}\\
+f[x][3]=\sum_{y\in son(x)}cont(y)+\max_{y\in son(x)}\{f[y][1]+len(y,x)-cont(y)\}\\
+f[x][4]=\sum_{y\in son(x)}cont(y)+\\\max_{y_1,y_2\in son(x)\wedge y_1\ne y_2}\{
+f[y_1][1]+len(y_1,x)-cont(y_1)+\max\{f[y_2][0], f[y_2][2], f[y_2][4]\}+len(y_2,x)-cont(y_2)\}\\
+f[x][5]=\sum_{y\in son(x)}cont(y)+\max_{y\in son(x)}\{\max\{f[y][0], f[y][2], f[y][4]\}+len(y,x)-cont(y)\}
+$$
+上面的转移都可以看成先从子结点按照 $cont(x)$ 转移，在钦定某个结点按照特定的方式转移，记录下最优的差值在加到 $f$ 里即可。$f[x][4]$ 有两个变量，可以考虑枚举其中一个，用 <code>std::multiset&lt;T&gt;</code> 维护另外一个的最值即可。</p>
+<p>时间复杂度 $O(n \log_2 n)$。</p>
+<h2 id="part-3">Part 3</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;set&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">constexpr</span> <span class="kt">int</span> <span class="n">MAXN</span> <span class="o">=</span> <span class="mi">200000</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">constexpr</span> <span class="kt">int</span> <span class="n">INFINITY</span> <span class="o">=</span> <span class="mh">0x7fffffff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">tree</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kt">long</span> <span class="kt">long</span> <span class="n">f</span><span class="p">[</span><span class="n">MAXN</span><span class="p">][</span><span class="mi">6</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * f[x][0]: x is initial
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * f[x][1]: x -&gt; fa
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * f[x][2]: x -&gt; y
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * f[x][3]: y -&gt; x -&gt; fa
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * f[x][4]: y1 -&gt; x -&gt; y2
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * f[x][5]: fa -&gt; x -&gt; y
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">link</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tree</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">push_back</span><span class="p">({</span><span class="n">y</span><span class="p">,</span> <span class="n">l</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tree</span><span class="p">[</span><span class="n">y</span><span class="p">].</span><span class="n">push_back</span><span class="p">({</span><span class="n">x</span><span class="p">,</span> <span class="n">l</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">fa</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">fa</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">INFINITY</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">long</span> <span class="kt">long</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">delta</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="n">INFINITY</span><span class="p">,</span> <span class="o">-</span><span class="n">INFINITY</span><span class="p">,</span> <span class="o">-</span><span class="n">INFINITY</span><span class="p">,</span> <span class="o">-</span><span class="n">INFINITY</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">multiset</span><span class="o">&lt;</span><span class="kt">long</span> <span class="kt">long</span><span class="o">&gt;</span> <span class="n">val</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">val</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="o">-</span><span class="n">INFINITY</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">:</span> <span class="n">tree</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">fa</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">dfs</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kt">long</span> <span class="kt">long</span> <span class="n">cont</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">l</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sum</span> <span class="o">+=</span> <span class="n">cont</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">cont</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">delta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">delta</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">max</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">2</span><span class="p">]),</span> <span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">4</span><span class="p">]),</span> <span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span> <span class="o">+</span> <span class="n">l</span><span class="p">)</span> <span class="o">-</span> <span class="n">cont</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">delta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">delta</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">l</span> <span class="o">-</span> <span class="n">cont</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">delta</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">delta</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">max</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">2</span><span class="p">]),</span> <span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">4</span><span class="p">])</span> <span class="o">+</span> <span class="n">l</span> <span class="o">-</span> <span class="n">cont</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">val</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">l</span> <span class="o">-</span> <span class="n">cont</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">:</span> <span class="n">tree</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">fa</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">cont</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">l</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">val</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">val</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">l</span> <span class="o">-</span> <span class="n">cont</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">delta</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">delta</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="o">*</span><span class="n">val</span><span class="p">.</span><span class="n">rbegin</span><span class="p">()</span> <span class="o">+</span> <span class="n">max</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">2</span><span class="p">]),</span> <span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">4</span><span class="p">])</span> <span class="o">+</span> <span class="n">l</span> <span class="o">-</span> <span class="n">cont</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">val</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">l</span> <span class="o">-</span> <span class="n">cont</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">INFINITY</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ios</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">l</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">y</span> <span class="o">&gt;&gt;</span> <span class="n">l</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">link</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">l</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">dfs</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">max</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]),</span> <span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">4</span><span class="p">])</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>]]></description></item></channel></rss>

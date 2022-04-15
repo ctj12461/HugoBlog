@@ -1,1 +1,554 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>多线程 on ctj12461's Blog</title><link>https://ctj12461.vercel.app/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link><description>Recent content in 多线程 on ctj12461's Blog</description><generator>Hugo -- gohugo.io</generator><copyright>CC BY-NC 4.0</copyright><lastBuildDate>Mon, 04 Apr 2022 22:15:15 +0800</lastBuildDate><atom:link href="https://ctj12461.vercel.app/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.xml" rel="self" type="application/rss+xml"/><item><title>MultiGenerator 使用文档</title><link>https://ctj12461.vercel.app/contents/20220404-multigenerator-document/</link><pubDate>Mon, 04 Apr 2022 22:15:15 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220404-multigenerator-document/</guid><description>概述 MultiGenerator 是一个为 OI 而生的多线程并行数据生成库，基于 C++ 17，使用面向对象和泛型等 Morden C++ 高级特性，只需要添加最少的额外代码，就可以获得最高的性能。以</description></item><item><title>std::function 和 std::bind 的使用陷阱</title><link>https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/</link><pubDate>Tue, 29 Mar 2022 18:21:31 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/</guid><description>std::function 和 std::bind 是 C++ 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。 最近写项目时遇到需要将不可复制构造的对象传给 std::bind 的情况，结果遇到了编</description></item><item><title>Arch Linux 常用软件配置</title><link>https://ctj12461.vercel.app/contents/20220317-arch-linux-software-config/</link><pubDate>Thu, 17 Mar 2022 22:28:02 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220317-arch-linux-software-config/</guid><description>记录一下安装 Arch Linux 后的常用软件安装以及配置。 yay 使用 yay 从 AUR 上下载各种官方仓库所没有的包。 项目主页：https://github.com/Jgue</description></item><item><title>二分图匹配学习笔记</title><link>https://ctj12461.vercel.app/contents/20220222-bipartite-graph-matching-note/</link><pubDate>Tue, 22 Feb 2022 13:31:06 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220222-bipartite-graph-matching-note/</guid><description>二分图 定义 如果一个图 $G=(V,E)$ 中的结点可以被分为两个部分，且两个部分之内的点互相没有连边，则称这种图为二分图。如果每个结点的度数相等且都为 $k$，则</description></item><item><title>莫比乌斯反演学习笔记</title><link>https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/</link><pubDate>Sun, 20 Feb 2022 11:23:07 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/</guid><description>莫比乌斯反演可以用于优化一类式子的计算。 莫比乌斯函数 定义 莫比乌斯函数的定义如下： $$ \mu(n)= \begin{cases} 0 &amp;amp; \exists\ p^2 \mid n \wedge p&amp;gt;1\\ (-1)^k &amp;amp; n=\prod_{i=1}^{k} p_i \end{cases} $$ 也就是说，如果 $n$ 含有平方约</description></item><item><title>同余方程学习笔记</title><link>https://ctj12461.vercel.app/contents/20220213-congruence-equation-note/</link><pubDate>Sun, 13 Feb 2022 21:40:02 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220213-congruence-equation-note/</guid><description>解各种同余方程是同余问题的一个重要部分，本文介绍各种同余方程的求解方法。 二元线性不定方程 形式 不定方程的范围很广泛，只要没有确定的解的方程都可</description></item><item><title>About</title><link>https://ctj12461.vercel.app/about/</link><pubDate>Sun, 13 Feb 2022 19:37:31 +0800</pubDate><guid>https://ctj12461.vercel.app/about/</guid><description>福建省长乐第一中学学生 2020.7.23 ~ OIer 2019.03.09 ~ Minecraft 红石 &amp;amp; 建筑玩家 2016.??.?? ~</description></item><item><title>Burnside 引理 &amp; Pólya 定理学习笔记</title><link>https://ctj12461.vercel.app/contents/20220212-burnside-lemma-and-polya-theorem-note/</link><pubDate>Sat, 12 Feb 2022 19:14:24 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220212-burnside-lemma-and-polya-theorem-note/</guid><description>Burnside 引理和 Pólya 定理主要用于解决计算本质不同方案数的计数问题。 群论 基本定义 群可以看成是一个由集合和某个二元运算组成的二元组 $(S,\cdo</description></item><item><title>欧拉函数 &amp; 欧拉定理学习笔记</title><link>https://ctj12461.vercel.app/contents/20220210-euler-function-and-euler-theorem-note/</link><pubDate>Thu, 10 Feb 2022 08:37:50 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220210-euler-function-and-euler-theorem-note/</guid><description>欧拉函数 $\varphi(n)$ 是一个重要的数论函数，它表示 $[1, n]$ 中与 $n$ 互质的数的个数。 欧拉函数性质 积性函数 积性函数的定义是：如果一个函数 $f(n)$ 满足 $\gcd(a,b)=1$ 时 $f(ab)=f</description></item><item><title>拉格朗日插值学习笔记</title><link>https://ctj12461.vercel.app/contents/20220207-lagrange-interpolation-note/</link><pubDate>Mon, 07 Feb 2022 23:53:43 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220207-lagrange-interpolation-note/</guid><description>拉格朗日插值是众多插值算法中的一种，插值是通过一些点来求出过这些点的多项式函数的过程。 算法思想 构造函数 给出 $n + 1$ 个点 $(x_1,y_1),(</description></item><item><title>高斯消元学习笔记</title><link>https://ctj12461.vercel.app/contents/20220206-gauss-elimination-note/</link><pubDate>Sun, 06 Feb 2022 16:06:35 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220206-gauss-elimination-note/</guid><description>高斯消元主要用于求解线性方程组的解，同时可以解决某些有后效性的 DP 问题， 算法思想 增广矩阵 为了更方便地求解方程组，可以将系数和常数项放入矩阵，接</description></item><item><title>Luogu P3647 连珠线题解</title><link>https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/</link><pubDate>Fri, 04 Feb 2022 19:41:12 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/</guid><description>这里给出一种无需换根的 DP 思路。 Part 1 我们从结点的添加方式入手，可以把结点分为三类： 初始的结点，这种结点只有一个 通过 Append 添加的结点，以下简称 A 类结</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>多线程 - 标签 - ctj12461's Blog</title><link>https://ctj12461.vercel.app/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link><description>多线程 - 标签 - ctj12461's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ctj12461@163.com (ctj12461)</managingEditor><webMaster>ctj12461@163.com (ctj12461)</webMaster><lastBuildDate>Mon, 04 Apr 2022 22:15:15 +0800</lastBuildDate><atom:link href="https://ctj12461.vercel.app/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="self" type="application/rss+xml"/><item><title>MultiGenerator 使用文档</title><link>https://ctj12461.vercel.app/contents/20220404-multigenerator-document/</link><pubDate>Mon, 04 Apr 2022 22:15:15 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220404-multigenerator-document/</guid><description><![CDATA[<h2 id="概述">概述</h2>
+<p><code>MultiGenerator</code> 是一个为 <code>OI</code> 而生的多线程并行数据生成库，基于 <code>C++ 17</code>，使用面向对象和泛型等 <code>Morden C++</code> 高级特性，只需要添加最少的额外代码，就可以获得最高的性能。以下是一个能够指定数据范围的 <code>A + B Problem</code> 数据生成器的示例代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;random&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;MultiGenerator.hpp&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">DataConfig</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">GeneratingTask</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">SolutionTask</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">NormalTemplate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">entry</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">testcase</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/** 指定数据生成器，仅需继承一个抽象类和实现一个成员函数 */</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AddGenerator</span> <span class="o">:</span> <span class="k">public</span> <span class="n">GeneratingTask</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">generate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataConfig</span> <span class="o">&amp;</span><span class="n">config</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** DataConfig 为配置信息，可以用于储存数据范围等元信息 */</span>
+</span></span><span class="line"><span class="cl">        <span class="k">auto</span> <span class="n">minValue</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">stoi</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#34;minValue&#34;</span><span class="p">).</span><span class="n">value</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">auto</span> <span class="n">maxValue</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">stoi</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#34;maxValue&#34;</span><span class="p">).</span><span class="n">value</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">random_device</span> <span class="n">rd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">mt19937</span> <span class="n">gen</span><span class="p">(</span><span class="n">rd</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">uniform_int_distribution</span><span class="o">&lt;&gt;</span> <span class="n">dist</span><span class="p">(</span><span class="n">minValue</span><span class="p">,</span> <span class="n">maxValue</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 像 cout 一样输出生成结果 */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">&lt;&lt;</span> <span class="n">dist</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">dist</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/** 指定数据求解器，也仅需继承一个抽象类和实现一个成员函数 */</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AddSolution</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SolutionTask</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/** 假如你有标程，仅需要把程序用这个类包装起来，再把 main() 改为这个成员函数即可 */</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">solve</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span><span class="n">dataIn</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">dataOut</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataConfig</span> <span class="o">&amp;</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 像 cin 一样读入数据 */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dataIn</span> <span class="o">&gt;&gt;</span> <span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 像 cout 一样输出答案 */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dataOut</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">constexpr</span> <span class="kt">int</span> <span class="n">MAX_THREAD_COUNT</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">constexpr</span> <span class="kt">int</span> <span class="n">MAX_TESTCASE_COUNT</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">constexpr</span> <span class="kt">char</span> <span class="n">PROBLEM_NAME</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&#34;add&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/** 创建一个题目生成模板，指定数据文件名为 add#.in/add#.out，# 是测试点编号，可以含子任务编号 */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">NormalTemplate</span> <span class="n">temp</span><span class="p">(</span><span class="n">PROBLEM_NAME</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">MAX_TESTCASE_COUNT</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 添加测试点配置，并指定生成器和求解器 */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">temp</span><span class="p">.</span><span class="n">add</span><span class="o">&lt;</span><span class="n">AddGenerator</span><span class="p">,</span> <span class="n">AddSolution</span><span class="o">&gt;</span><span class="p">(</span><span class="n">testcase</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">entry</span><span class="p">(</span><span class="s">&#34;minValue&#34;</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">1000000</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">entry</span><span class="p">(</span><span class="s">&#34;maxValue&#34;</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/** 开始根据指定的线程数生成数据 */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">temp</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">MAX_THREAD_COUNT</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="要求">要求</h2>
+<ul>
+<li><code>C++ 17 Compiler</code></li>
+<li><code>C++</code> 基础知识，包括最基本的模板的使用（基本都可以满足）</li>
+<li>能够认真阅读文档</li>
+</ul>
+<h2 id="安装">安装</h2>
+<h3 id="编译器支持">编译器支持</h3>
+<p>首先确保你有支持 <code>C++ 17</code> 的编译器，如果你已经有了，可以跳过这一步。</p>
+<h4 id="linux">Linux</h4>
+<p>绝大多数的 <code>Linux</code> 发行版预装的 <code>GCC</code> 版本都比较低，仅能支持 <code>C++ 11</code>，建议使用包管理器进行安装更新版本的 <code>GCC</code>，至少为 <code>GCC 8</code>，建议 <code>GCC 11</code>，这里仅列举部分安装方法，具体请查阅发行版的包管理器文档。</p>
+<p><strong>Debian/Ubuntu/Deepin</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+</span></span><span class="line"><span class="cl">$ sudo apt-get update
+</span></span><span class="line"><span class="cl">$ sudo apt install gcc g++
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Arch Linux/Manjaro</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sudo pacman -S gcc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>CentOS/RHEL</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sudo yum -y install centos-release-scl
+</span></span><span class="line"><span class="cl">$ yum -y install devtoolset-11-gcc devtoolset-11-gcc-c++ devtoolset-11-binutils
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;source /opt/rh/devtoolset-11/enable&#34;</span> &gt;&gt; /etc/profile
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="windows">Windows</h4>
+<p>推荐使用 <code>TDM-GCC</code>，进入下载页面 <a
+  href="https://jmeubank.github.io/tdm-gcc/download/"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="noopener noreffer"
+  
+  
+  
+  
+>https://jmeubank.github.io/tdm-gcc/download/</a>，选择 <code>64+32-bit</code> 的安装包，安装即可。</p>
+<h4 id="macos">macOS</h4>
+<p>一般 <code>macOS</code> 都已经自带 <code>LLVM</code> 环境和 <code>Clang</code>，如果没有还可以通过安装 <code>Xcode</code> 来安装 <code>g++</code>。</p>
+<h3 id="安装-multigenerator">安装 MultiGenerator</h3>
+<p><code>MultiGenerator</code> 是一个 <code>header-only</code> 库，所以无需任何编译即可使用，只需要复制 <code>https://github.com/ctj12461/MultiGenerator/tree/master/src</code> 下的所有文件到 <code>include</code> 路径即可。</p>
+<h4 id="linux-1">Linux</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ git clone https://github.com/ctj12461/MultiGenerator.git
+</span></span><span class="line"><span class="cl">$ sudo cp -r src/* /usr/local/include
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果你有 <code>xmake</code>，也可以按照如下方式安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ git clone https://github.com/ctj12461/MultiGenerator.git
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> MultiGenerator
+</span></span><span class="line"><span class="cl">$ sudo xmake install --root MultiGenerator
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="windowsmacos">Windows/macOS</h4>
+<p>复制 <code>https://github.com/ctj12461/MultiGenerator/tree/master/src</code> 下的所有文件到编译器提供的 <code>include</code> 路径下，具体请在编译器安装路径下搜索或查看相关文档。一个简单的办法是找到 <code>iostream</code> 的位置，然后粘贴到相同的目录下即可。</p>
+<h2 id="快速入门">快速入门</h2>
+<h3 id="导入库">导入库</h3>
+<p>仅需要使用 <code>#include &lt;MultiGenerator.hpp&gt;</code> 即可导入本库，库中所有的类和函数全部定义在 <code>MultiGenerator</code> 命名空间下，可以通过 <code>using namespace MultiGenerator</code> 来更加方便地使用本库，但是更推荐的方法是仅对有需要的类或函数使用 <code>using</code> 声明。</p>
+<p>以下是一个简单的例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;MultiGenerator.hpp&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">DataConfig</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">GeneratingTask</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">SolutionTask</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">NormalTemplate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">entry</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">testcase</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>事实上 <code>MultiGenerator</code> 对内部实现细节做了较多的封装，如果有使用 <code>IDE</code> 的智能提示功能，可能会发现有若干子命名空间，如 <code>MultiGenerator::Context</code>，<code>MultiGenerator::Interface</code> 等等，在绝大多数情况下，您都不需要使用这些内部的组件，只需使用定义在 <code>MultiGenerator</code> 下的部分，下文也仅会介绍这一部分。</p>
+<p>以下是本项目的目录结构。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">MultiGenerator/src
+</span></span><span class="line"><span class="cl">├── MultiGenerator
+</span></span><span class="line"><span class="cl">│   ├── Context
+</span></span><span class="line"><span class="cl">│   │   ├── Environment.hpp
+</span></span><span class="line"><span class="cl">│   │   └── Stream.hpp
+</span></span><span class="line"><span class="cl">│   ├── Executor
+</span></span><span class="line"><span class="cl">│   │   ├── Channel.hpp
+</span></span><span class="line"><span class="cl">│   │   ├── TaskExecutor.hpp
+</span></span><span class="line"><span class="cl">│   │   └── ThreadPool.hpp
+</span></span><span class="line"><span class="cl">│   ├── Interface
+</span></span><span class="line"><span class="cl">│   │   ├── Component.hpp
+</span></span><span class="line"><span class="cl">│   │   ├── Template.hpp
+</span></span><span class="line"><span class="cl">│   │   └── Utility.hpp
+</span></span><span class="line"><span class="cl">│   ├── Variable
+</span></span><span class="line"><span class="cl">│   │   ├── Argument.hpp
+</span></span><span class="line"><span class="cl">│   │   └── DataConfig.hpp
+</span></span><span class="line"><span class="cl">│   └── Workflow
+</span></span><span class="line"><span class="cl">│       ├── Callable.hpp
+</span></span><span class="line"><span class="cl">│       ├── Runner.hpp
+</span></span><span class="line"><span class="cl">│       ├── TaskGroup.hpp
+</span></span><span class="line"><span class="cl">│       └── Task.hpp
+</span></span><span class="line"><span class="cl">└── MultiGenerator.hpp
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="基本概念">基本概念</h3>
+<h4 id="task">Task</h4>
+<p>在 <code>MultiGenerator</code> 中，生成的过程可以被拆分为若干个部分，每个部分有不同的功能，比如根据参数生成数据，或者读入数据并输出正确答案。这样的每个部分被成为 <code>Task</code>。</p>
+<p><code>MultiGenerator</code> 预定义了 3 种 <code>Task</code>，它们是更加具体的 <code>Task</code>，并规定了相关功能的接口，以便使用：</p>
+<ul>
+<li><code>GeneratingTask</code>：表示所有生成数据的 <code>Task</code> 的抽象类，可以继承该抽象类并实现接口函数来获得生成数据的功能。</li>
+<li><code>SolutionTask</code>：表示所有根据给定数据求解答案的 <code>Task</code> 的抽象类，可以继承该抽象类并实现接口函数来获得求解答案的功能。一般使用您的标准程序即 <code>std</code> 来实现。</li>
+<li><code>IntegratedGeneratingTask</code>：表示所有同时生成数据和求解答案的 <code>Task</code> 的抽象类，可以用于实现必须同时生成和求解的生成器，比如一些强制在线题目。</li>
+</ul>
+<p>您只需实现这些抽象类的接口，并通过给定的流进行 <code>IO</code> 操作，无需考虑文件系统相关的问题，<code>MultiGenerator</code> 可以处理它们。</p>
+<h4 id="template">Template</h4>
+<p><code>Template</code> 规定了一道题目的生成程序应该如何调用 <code>Task</code>，比如普通的题目，没有强制在线操作，此时只需要分别生成数据和求解答案，就可以使用 <code>NormalTemplate</code> 来管理这些 <code>GeneratingTask</code> 和 <code>SolutionTask</code>。</p>
+<p><code>MultiGenerator</code> 预定义了 2 种 <code>Template</code>：</p>
+<ul>
+<li><code>NormalTemplate</code>：可以调用实现了 <code>GeneratingTask</code> 和 <code>SolutionTask</code> 的类，用于普通的数据生成，由于生成和求解是可分离的，所以可以更好地利用系统资源进行并行优化。</li>
+<li><code>IntegratedTemplate</code>：可以调用实现了 <code>IntegratedGeneratingTask</code> 的类，可以用于需要强制在线的题目的数据生成。</li>
+</ul>
+<p><code>Template</code> 可以接受一个字符串作为题目的名称，所有生成的数据都会自动带上该名称。然后您可以向 <code>Template</code> 添加测试点信息，如要使用的生成器（实现了 <code>GeneratingTask</code>）和求解器（实现了 <code>SolutionTask</code>），测试点编号，测试点的数据规模配置等。随后 <code>Template</code> 会自动将这些参数传给 <code>Task</code>，实现数据生成的定制。</p>
+<p>如果您需要对不同的测试点应用不同的生成器，比如在使用 <code>NormalTemplate</code> 时，需要构造具有特殊性质的数据，您可以定义多个生成器，只要它们实现了 <code>GeneratingTask</code>，就可以被 <code>Template</code> 调用，而无需做任何的特殊判断。</p>
+<h4 id="testcase">testcase</h4>
+<p><code>testcase</code> 是一个函数，可以用于生成一个测试点的配置，这个测试点可以是一个子任务中的测试点。它还接受一个 <code>std::unordered_map&lt;std::string, std::string&gt;</code> 作为测试点配置，这里选用 <code>std::string</code> 作为键和值是因为这样可以最简单的实现配置，假如您需要同时传入 <code>int</code> 和 <code>double</code> 的值作为配置，<code>std::string</code> 可以很好地储存它们。后面会详细介绍如何使用该函数。</p>
+<h4 id="dataconfig">DataConfig</h4>
+<p><code>DataConfig</code> 储存了测试点配置信息（不包括测试点编号，事实上很少情况会需要编号，因为 <code>MultiGenerator</code> 会在外部自动处理测试点编号，无需 <code>Task</code> 内部插手），<code>testcase</code> 函数所接受的 <code>std::unordered_map&lt;std::string, std::string&gt;</code> 也就是构造它的参数。</p>
+<p><code>DataConfig</code> 不会自动转换值到您所需要的类型，它只会返回一个 <code>std::string</code>，但是转换类型大多数情况下只需要使用 <code>std::stoi()</code> 或 <code>std::stof()</code> 完成，更加高级的也仅需要使用 <code>std::stringstream</code> 即可。</p>
+<h3 id="创建-task">创建 Task</h3>
+<p><code>MultiGenerator</code> 所提供的 <code>Task</code> 已经拥有大部分功能，如如何处理文件名，如何与文件系统交互，但它唯独不知道具体该如何生成数据，所以您只需要通过继承相关 <code>Task</code> 来实现接口，从而补上缺失的一部分功能。</p>
+<h4 id="generatingtask">GeneratingTask</h4>
+<p>前面提到 <code>GeneratingTask</code> 表示所有生成数据的 <code>Task</code>，所以我们可以这么写：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyGenerator</span> <span class="o">:</span> <span class="k">public</span> <span class="n">GeneratingTask</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/** 这里只可以使用 private 或 protected */</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/** 实现这个接口 */</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">generate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataConfig</span> <span class="o">&amp;</span><span class="n">config</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 通过 DataConfig 获取配置，get 内填上自定义的键 */</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">someValue</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">stoi</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#34;some key&#34;</span><span class="p">).</span><span class="n">value</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 在这里实现生成数据 */</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">someResult</span> <span class="o">=</span> <span class="n">someFunction</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 输出结果 */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">&lt;&lt;</span> <span class="n">someResult</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="nf">sumeFunction</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="cm">/* ... */</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果您不了解 <code>C++</code> 的面向对象特性，您可查阅相关资料，或者直接复制上面的模板，您只要保留上述 <code>generate(std::ostream &amp;data, const DataConfig &amp;config)</code> 成员函数即可。</p>
+<h4 id="solutiontask">SolutionTask</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MySolution</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SolutionTask</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">solve</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span><span class="n">dataIn</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">dataOut</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataConfig</span> <span class="o">&amp;</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">someValue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 像 std::cin 一样读入数据 */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dataIn</span> <span class="o">&gt;&gt;</span> <span class="n">someValue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">someResult</span> <span class="o">=</span> <span class="n">someFunction</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 像 std::cout 一样输出答案 */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dataOut</span> <span class="o">&lt;&lt;</span> <span class="n">someResult</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="nf">sumeFunction</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="cm">/* ... */</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>还是同样的道理，您只需要保留 <code>void solve(std::istream &amp;dataIn, std::ostream &amp;dataOut, const DataConfig &amp;config)</code> 成员函数，并在其中填上自己的东西即可。</p>
+<p>理论上您可以直接将 <code>std</code> 的东西复制进 <code>MySolution</code> 这个类，并把 <code>main()</code> 函数改为这个成员函数，然后做好初始化工作，因为所有的 <code>Task</code> 都是要在堆上分配内存然后运行的，所以不能够保证所有数据都和全局变量一样被初始化为 <code>0</code>。对于数组，可以将其替换为 <code>std::array</code>，它会默认初始化所有的元素为 <code>0</code>，且在使用上和原生数组没有任何差别，包括性能开销。</p>
+<h4 id="integratedgeneratingtask">IntegratedGeneratingTask</h4>
+<p>如果您需要同时生成和求解，那 <code>IntegratedGeneratingTask</code> 会是一个很好的选择，它同时提供了两个输出流，分别连接了数据的文件（<code>*.in</code>）和答案的文件（<code>*.out</code>）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyIntegratedGenerator</span> <span class="o">:</span> <span class="k">public</span> <span class="n">IntegratedGeneratingTask</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">generate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">dataIn</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">dataOut</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataConfig</span> <span class="o">&amp;</span><span class="n">config</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="cm">/* 条件 */</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">auto</span> <span class="n">someData</span> <span class="o">=</span> <span class="cm">/* ... */</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">auto</span> <span class="n">someAnswer</span> <span class="o">=</span> <span class="cm">/* ... */</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">dataIn</span> <span class="o">&lt;&lt;</span> <span class="n">someData</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">dataOut</span> <span class="o">&lt;&lt;</span> <span class="n">someAnswer</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>IntegratedGeneratingTask</code> 一般用于为强制在线题目或一些复杂的数据结构题目生成数据。</p>
+<h3 id="使用-testcase-创建测试点配置">使用 testcase 创建测试点配置</h3>
+<p><code>testcase</code> 函数可以用于创建测试点的配置，其有两个重载：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Variable</span><span class="o">::</span><span class="n">Argument</span><span class="o">&gt;</span> <span class="n">testcase</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">config</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Variable</span><span class="o">::</span><span class="n">Argument</span><span class="o">&gt;</span> <span class="n">testcase</span><span class="p">(</span><span class="kt">int</span> <span class="n">subtaskId</span><span class="p">,</span> <span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">config</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这两个函数都返回 <code>Variable::Argument</code> 的智能指针，其储存着测试点的配置参数。从函数签名可以很容易地看出第一个是用于创建无子任务的测试点，而第二个是创建有子任务的测试点。</p>
+<p>这两个函数都在最后接受一个 <code>std::unordered_map&lt;std::string, std::string&gt;</code> 作为测试点配置，使用初始化列表可以很方便地传入这个参数。您还可以使用 <code>entry</code> 函数创建一个键值对，使代码更加简单易读：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Value</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">entry</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">key</span><span class="p">,</span> <span class="k">const</span> <span class="n">Value</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>一般情况下，只需要将返回的 <code>Variable::Argument</code> 指针再传给 <code>Template</code> 即可，无需做额外的工作。</p>
+<p>如果要创建编号为 <code>2</code>，带有 <code>n = 10</code> 且 <code>m = 5</code> 的配置，可以这样获得配置参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">arg</span> <span class="o">=</span> <span class="n">testcase</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">{</span> <span class="n">entry</span><span class="p">(</span><span class="s">&#34;n&#34;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">entry</span><span class="p">(</span><span class="s">&#34;m&#34;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果要创建子任务编号为 <code>1</code>，子任务内的编号为 <code>5</code>，带有 <code>str = &quot;abc&quot;</code> 且 <code>n = 1</code> 的配置，可以这样获得配置参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">arg</span> <span class="o">=</span> <span class="n">testcase</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">{</span> <span class="n">entry</span><span class="p">(</span><span class="s">&#34;str&#34;</span><span class="p">,</span> <span class="s">&#34;abc&#34;</span><span class="p">),</span> <span class="n">entry</span><span class="p">(</span><span class="s">&#34;n&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="把-task-传给-template">把 Task 传给 Template</h3>
+<p>如上文所述，<code>Template</code> 规定了一道题目的生成程序应该如何调用 <code>Task</code>，且 <code>MultiGenerator</code> 定义了 <code>NormalTemplate</code> 和 <code>IntegratedTemplate</code>，两种 <code>Template</code> 使用方法是一样的，以下以 <code>NormalTemplate</code> 为例。</p>
+<p>构造 <code>NormalTemplate</code> 需要传入一个字符串作为题目的名字。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">NormalTemplate</span> <span class="nf">temp</span><span class="p">(</span><span class="s">&#34;problem&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>随后可以使用 <code>add</code> 成员函数创建测试点配置，签名如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Generator</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Solution</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">NormalTemplate</span><span class="o">::</span><span class="n">add</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Variable</span><span class="o">::</span><span class="n">Argument</span><span class="o">&gt;</span> <span class="n">arg</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中 <code>Generator</code> 是用户自定义的实现了 <code>GeneratingTask</code> 的类，比如上文示例中的 <code>MyGenerator</code>，<code>Solution</code> 则是实现了  <code>SolutionTask</code> 的类，比如上文示例中的 <code>MySolution</code>。</p>
+<p><code>IntegratedTemplate</code> 的 <code>add</code> 函数签名如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">IntegratedGenerator</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">IntegratedTemplate</span><span class="o">::</span><span class="n">add</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Variable</span><span class="o">::</span><span class="n">Argument</span><span class="o">&gt;</span> <span class="n">arg</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中 <code>IntegratedGenerator</code> 是用户自定义的实现了 <code>IntegratedGeneratingTask</code> 的类，比如上文示例中的 <code>MyIntegratedGenerator</code>。</p>
+<p>您需要把 <code>testcase</code> 函数返回的结果传给这些函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">temp</span><span class="p">.</span><span class="n">add</span><span class="o">&lt;</span><span class="n">MyGenerator</span><span class="p">,</span> <span class="n">MySolution</span><span class="o">&gt;</span><span class="p">(</span><span class="n">testcase</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">{}));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样 <code>NormalTemplate</code> 就会知道要对第 1 个测试点应用 <code>MyGenerator</code> 生成数据，用 <code>MySolution</code> 求解答案，并且生成的文件为 <code>problem1.in</code> 和 <code>problem1.out</code>。</p>
+<p>可以继续使用 <code>add</code> 函数添加测试点，使用方法是一样的，只需修改 <code>testcase</code> 函数中的测试点编号即可。注意如果测试点编号出现重复，可能会导致程序崩溃。</p>
+<h3 id="开始生成数据">开始生成数据</h3>
+<p>这一部分很简单，只需要指定并行任务数即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">temp</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>一般并行任务数会设定为您的 <code>CPU</code> 核心数或者线程数。如果您不知道您的 <code>CPU</code> 核心数，可以使用 <code>std::thread::hardware_concurrency</code> 函数查询：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">temp</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="o">::</span><span class="n">hardware_concurrency</span><span class="p">());</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="完整示例">完整示例</h3>
+<p>最上面的示例就是一个很好的例子，参考那个即可。</p>
+<h2 id="faq">FAQ</h2>
+<p>Q1：我在 <code>Linux</code> 平台下，如果编译不能够通过，并且含有错误信息中含有 <code>pthread</code> 相关的东西，怎么解决？</p>
+<p>A1：<code>Linux</code> 下使用多线程需要调用 <code>pthread</code>，需要给 <code>g++</code> 加上 <code>-pthread</code> 参数。</p>
+]]></description></item></channel></rss>

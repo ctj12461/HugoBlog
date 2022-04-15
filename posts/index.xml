@@ -1,1 +1,1442 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on ctj12461's Blog</title><link>https://ctj12461.vercel.app/posts/</link><description>Recent content in Posts on ctj12461's Blog</description><generator>Hugo -- gohugo.io</generator><copyright>CC BY-NC 4.0</copyright><lastBuildDate>Mon, 04 Apr 2022 22:15:15 +0800</lastBuildDate><atom:link href="https://ctj12461.vercel.app/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>MultiGenerator 使用文档</title><link>https://ctj12461.vercel.app/contents/20220404-multigenerator-document/</link><pubDate>Mon, 04 Apr 2022 22:15:15 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220404-multigenerator-document/</guid><description>概述 MultiGenerator 是一个为 OI 而生的多线程并行数据生成库，基于 C++ 17，使用面向对象和泛型等 Morden C++ 高级特性，只需要添加最少的额外代码，就可以获得最高的性能。以</description></item><item><title>std::function 和 std::bind 的使用陷阱</title><link>https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/</link><pubDate>Tue, 29 Mar 2022 18:21:31 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/</guid><description>std::function 和 std::bind 是 C++ 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。 最近写项目时遇到需要将不可复制构造的对象传给 std::bind 的情况，结果遇到了编</description></item><item><title>Arch Linux 常用软件配置</title><link>https://ctj12461.vercel.app/contents/20220317-arch-linux-software-config/</link><pubDate>Thu, 17 Mar 2022 22:28:02 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220317-arch-linux-software-config/</guid><description>记录一下安装 Arch Linux 后的常用软件安装以及配置。 yay 使用 yay 从 AUR 上下载各种官方仓库所没有的包。 项目主页：https://github.com/Jgue</description></item><item><title>二分图匹配学习笔记</title><link>https://ctj12461.vercel.app/contents/20220222-bipartite-graph-matching-note/</link><pubDate>Tue, 22 Feb 2022 13:31:06 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220222-bipartite-graph-matching-note/</guid><description>二分图 定义 如果一个图 $G=(V,E)$ 中的结点可以被分为两个部分，且两个部分之内的点互相没有连边，则称这种图为二分图。如果每个结点的度数相等且都为 $k$，则</description></item><item><title>莫比乌斯反演学习笔记</title><link>https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/</link><pubDate>Sun, 20 Feb 2022 11:23:07 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/</guid><description>莫比乌斯反演可以用于优化一类式子的计算。 莫比乌斯函数 定义 莫比乌斯函数的定义如下： $$ \mu(n)= \begin{cases} 0 &amp;amp; \exists\ p^2 \mid n \wedge p&amp;gt;1\\ (-1)^k &amp;amp; n=\prod_{i=1}^{k} p_i \end{cases} $$ 也就是说，如果 $n$ 含有平方约</description></item><item><title>同余方程学习笔记</title><link>https://ctj12461.vercel.app/contents/20220213-congruence-equation-note/</link><pubDate>Sun, 13 Feb 2022 21:40:02 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220213-congruence-equation-note/</guid><description>解各种同余方程是同余问题的一个重要部分，本文介绍各种同余方程的求解方法。 二元线性不定方程 形式 不定方程的范围很广泛，只要没有确定的解的方程都可</description></item><item><title>About</title><link>https://ctj12461.vercel.app/about/</link><pubDate>Sun, 13 Feb 2022 19:37:31 +0800</pubDate><guid>https://ctj12461.vercel.app/about/</guid><description>福建省长乐第一中学学生 2020.7.23 ~ OIer 2019.03.09 ~ Minecraft 红石 &amp;amp; 建筑玩家 2016.??.?? ~</description></item><item><title>Burnside 引理 &amp; Pólya 定理学习笔记</title><link>https://ctj12461.vercel.app/contents/20220212-burnside-lemma-and-polya-theorem-note/</link><pubDate>Sat, 12 Feb 2022 19:14:24 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220212-burnside-lemma-and-polya-theorem-note/</guid><description>Burnside 引理和 Pólya 定理主要用于解决计算本质不同方案数的计数问题。 群论 基本定义 群可以看成是一个由集合和某个二元运算组成的二元组 $(S,\cdo</description></item><item><title>欧拉函数 &amp; 欧拉定理学习笔记</title><link>https://ctj12461.vercel.app/contents/20220210-euler-function-and-euler-theorem-note/</link><pubDate>Thu, 10 Feb 2022 08:37:50 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220210-euler-function-and-euler-theorem-note/</guid><description>欧拉函数 $\varphi(n)$ 是一个重要的数论函数，它表示 $[1, n]$ 中与 $n$ 互质的数的个数。 欧拉函数性质 积性函数 积性函数的定义是：如果一个函数 $f(n)$ 满足 $\gcd(a,b)=1$ 时 $f(ab)=f</description></item><item><title>拉格朗日插值学习笔记</title><link>https://ctj12461.vercel.app/contents/20220207-lagrange-interpolation-note/</link><pubDate>Mon, 07 Feb 2022 23:53:43 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220207-lagrange-interpolation-note/</guid><description>拉格朗日插值是众多插值算法中的一种，插值是通过一些点来求出过这些点的多项式函数的过程。 算法思想 构造函数 给出 $n + 1$ 个点 $(x_1,y_1),(</description></item><item><title>高斯消元学习笔记</title><link>https://ctj12461.vercel.app/contents/20220206-gauss-elimination-note/</link><pubDate>Sun, 06 Feb 2022 16:06:35 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220206-gauss-elimination-note/</guid><description>高斯消元主要用于求解线性方程组的解，同时可以解决某些有后效性的 DP 问题， 算法思想 增广矩阵 为了更方便地求解方程组，可以将系数和常数项放入矩阵，接</description></item><item><title>Luogu P3647 连珠线题解</title><link>https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/</link><pubDate>Fri, 04 Feb 2022 19:41:12 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/</guid><description>这里给出一种无需换根的 DP 思路。 Part 1 我们从结点的添加方式入手，可以把结点分为三类： 初始的结点，这种结点只有一个 通过 Append 添加的结点，以下简称 A 类结</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>所有文章 - ctj12461's Blog</title><link>https://ctj12461.vercel.app/posts/</link><description>所有文章 | ctj12461's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ctj12461@163.com (ctj12461)</managingEditor><webMaster>ctj12461@163.com (ctj12461)</webMaster><lastBuildDate>Fri, 15 Apr 2022 23:39:44 +0800</lastBuildDate><atom:link href="https://ctj12461.vercel.app/posts/" rel="self" type="application/rss+xml"/><item><title>AtCoder ARC 073E Ball Coloring 题解</title><link>https://ctj12461.vercel.app/contents/20220415-atcoder-arc073e-solution/</link><pubDate>Fri, 15 Apr 2022 23:39:44 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220415-atcoder-arc073e-solution/</guid><description><![CDATA[<p>题目链接：<a
+  href="https://atcoder.jp/contests/arc073/tasks/arc073_c"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="noopener noreffer"
+  
+  
+  
+  
+>https://atcoder.jp/contests/arc073/tasks/arc073_c</a>，题目大意如下：</p>
+<blockquote>
+<p>给出 $n$ 个数对 $(a_i, b_i)$，可以给数对中的数染色，一种是 $a_i$ 红 $b_i$ 蓝，另一种则反过来。
+定义以下 4 个变量：</p>
+<ul>
+<li>$R_{max}$：所有被染为红色的数的最大值</li>
+<li>$R_{min}$：所有被染为红色的数的最小值</li>
+<li>$B_{max}$：所有被染为蓝色的数的最大值</li>
+<li>$B_{min}$：所有被染为蓝色的数的最小值</li>
+</ul>
+<p>要求最小化 $(R_{max} - R_{min})(B_{max} - B_{min})$。</p>
+</blockquote>
+<p>这是一道比较巧妙的思维题。</p>
+<h2 id="part-1">Part 1</h2>
+<p>直接考虑每个数对对答案的影响比较困难，但是可以发现所有的数中，最大值一定是 $R_{max}$ 或者 $B_{max}$，最小值一定是 $R_{min}$ 或者 $B_{min}$，又因为交换数的颜色对答案没有影响，所以可以考虑以下两种情况：</p>
+<ul>
+<li>最大值和最小值同色</li>
+<li>最大值和最小值异色</li>
+</ul>
+<h2 id="part-2">Part 2</h2>
+<p>先考虑同色的情况。为了方便，默认 $a_i &gt; b_i$。</p>
+<p>先求出最大值和最小值的位置 $maxValPos, minValPos$，则最大值和最小值分别为 $a_{maxValPos}, b_{minValPos}$，再设 $up$ 和 $down$ 为另一种颜色的最大值和最小值。求出最大值和最小值后就可以先给 $up$ 和 $down$ 赋初值，也就是最值所在的数对中的另一个数，接下来考虑更新 $up$ 和 $down$。</p>
+<p>对于其他的数对 $(a_i,b_i)$，首先可以确定他们都不会超过 $a_{maxValPos}, b_{minValPos}$，因此我们要尽可能让这些数对的数靠近 $up$ 和 $down$，让 $up$ 和 $down$ 的变动尽可能小。</p>
+<p>可以分 4 种情况讨论：</p>
+<ul>
+<li>如果 $a_i$ 或 $b_i$ 满足在 $[down, up]$ 之间，则可以把在中间的这个数染成和 $up$ 和 $down$ 一样的颜色，显然 $up$ 和 $down$ 不变</li>
+<li>如果 $b_i &lt; a_i &lt; down$，此时必须更新 $down$，最优方案是用 $a_i$ 更新 $down$</li>
+<li>如果 $up &lt; b_i &lt; a_i$，此时必须更新 $up$，最优方案是用 $b_i$ 更新 $up$</li>
+<li>如果 $b_i &lt; down \le up &lt; a_i$，则无法即使计算出这个数对的影响，考虑稍后处理</li>
+</ul>
+<p>按照上述方法初步更新 $up, down$ 后，再找出仍然满足 $b_i &lt; down \le up &lt; a_i$ 的数对，现在问题转化为给出若干区间 $[b_i, a_i]$，每个区间选择一个端点 $p_i$，使得这些端点和 $up, down$ 这两个点组成的区间 $[\min \{p_i,up,down\},\max \{p_i,up,down\}]$ 的长度最短。</p>
+<p>考虑区间的关系，若一个区间被另一个区间完全覆盖，则这个区间对答案没有贡献，因为在被覆盖的情况下，大区间选择任意一个端点，小区间都可选择与大区间同一侧的端点，此时对答案没有影响，若选择相反方向，则可能使答案更劣。因此，我们可以去掉被包含的区间，剩下的就是两两相交的区间，且它们还满足一个很好的性质，就是左右端点都是单调递增的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">a b c            a b c
+</span></span><span class="line"><span class="cl">| | | [down, up] | | |
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后就是一个很显然的结论：将这些区间安装左端点排序后，一定存在一个分界点，满足分界点之前的区间都是选择右端点，分界点之后的区间都是选择左端点，证明就省略了，现在直接枚举分界的更新 $[up, down]$ 即可。</p>
+<h2 id="part-3">Part 3</h2>
+<p>再考虑异色的情况，此时同样设出上一节的变量，但是 $up$ 是与 $a_{maxValPos}$ 同色的，$down$ 是与 $b_{minValPos}$ 同色的。为了最小化答案，就要使 $up$ 尽可能接近 $a_{maxValPos}$，$down$ 尽可能接近 $b_{minValPos}$。</p>
+<p>所以找到最值后，先初始化 $up$ 为 $a_{minValPos}$，$down$ 为 $b_{maxValPos}$，然后再用 $a_i$ 更新 $up$，用 $b_i$ 更新 $down$。</p>
+<p>时间复杂度为 $\mathcal O(n \log_2 n)$。</p>
+<h2 id="part-4">Part 4</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">constexpr</span> <span class="kt">int</span> <span class="n">MAX_N</span> <span class="o">=</span> <span class="mi">200000</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">constexpr</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">INF</span> <span class="o">=</span> <span class="mh">0x3f3f3f3f3f3f3f3f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="n">MAX_N</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">MAX_N</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kt">long</span> <span class="kt">long</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">INF</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">ranges</span><span class="p">[</span><span class="n">MAX_N</span><span class="p">],</span> <span class="n">tmp</span><span class="p">[</span><span class="n">MAX_N</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">inline</span> <span class="kt">bool</span> <span class="nf">between</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">updateUpAndDown</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">up</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">down</span><span class="p">,</span> <span class="kt">int</span> <span class="n">maxValPos</span><span class="p">,</span> <span class="kt">int</span> <span class="n">minValPos</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">tot</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tot2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">maxValPos</span> <span class="o">||</span> <span class="n">i</span> <span class="o">==</span> <span class="n">minValPos</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">down</span> <span class="o">&amp;&amp;</span> <span class="n">up</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="n">ranges</span><span class="p">[</span><span class="o">++</span><span class="n">tot</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">tot</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span><span class="n">ranges</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ranges</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">tot</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">tot</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">ranges</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">first</span> <span class="o">==</span> <span class="n">ranges</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">].</span><span class="n">first</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">tmp</span><span class="p">[</span><span class="o">++</span><span class="n">tot2</span><span class="p">]</span> <span class="o">=</span> <span class="n">ranges</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">tot</span> <span class="o">=</span> <span class="n">tot2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">tot</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ranges</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">up</span> <span class="o">-</span> <span class="n">ranges</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">first</span> <span class="o">&lt;</span> <span class="n">ranges</span><span class="p">[</span><span class="n">tot</span><span class="p">].</span><span class="n">second</span> <span class="o">-</span> <span class="n">down</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">down</span> <span class="o">=</span> <span class="n">ranges</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">first</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="n">up</span> <span class="o">=</span> <span class="n">ranges</span><span class="p">[</span><span class="n">tot</span><span class="p">].</span><span class="n">second</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">tot</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">ranges</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">second</span> <span class="o">-</span> <span class="n">ranges</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">].</span><span class="n">first</span> <span class="o">&lt;</span> <span class="n">up</span> <span class="o">-</span> <span class="n">down</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">up</span> <span class="o">=</span> <span class="n">ranges</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">second</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">down</span> <span class="o">=</span> <span class="n">ranges</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">].</span><span class="n">first</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">long</span> <span class="kt">long</span> <span class="nf">calcMaxMinColorSame</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">maxValPos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">minValPos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">down</span><span class="p">,</span> <span class="n">up</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">maxValPos</span> <span class="o">||</span> <span class="n">a</span><span class="p">[</span><span class="n">maxValPos</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">maxValPos</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">up</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">minValPos</span> <span class="o">||</span> <span class="n">b</span><span class="p">[</span><span class="n">minValPos</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">minValPos</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">down</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">maxValPos</span> <span class="o">==</span> <span class="n">minValPos</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">INF</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">down</span> <span class="o">&gt;</span> <span class="n">up</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">down</span><span class="p">,</span> <span class="n">up</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">maxValPos</span> <span class="o">||</span> <span class="n">i</span> <span class="o">==</span> <span class="n">minValPos</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">between</span><span class="p">(</span><span class="n">down</span><span class="p">,</span> <span class="n">up</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">||</span> <span class="n">between</span><span class="p">(</span><span class="n">down</span><span class="p">,</span> <span class="n">up</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">down</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">down</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">up</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="n">up</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">updateUpAndDown</span><span class="p">(</span><span class="n">up</span><span class="p">,</span> <span class="n">down</span><span class="p">,</span> <span class="n">maxValPos</span><span class="p">,</span> <span class="n">minValPos</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">maxValPos</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="n">minValPos</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">up</span> <span class="o">-</span> <span class="n">down</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">long</span> <span class="kt">long</span> <span class="nf">calcMaxMinColorNotSame</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">maxValPos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">minValPos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">down</span><span class="p">,</span> <span class="n">up</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">maxValPos</span> <span class="o">||</span> <span class="n">a</span><span class="p">[</span><span class="n">maxValPos</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">maxValPos</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">down</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">minValPos</span> <span class="o">||</span> <span class="n">b</span><span class="p">[</span><span class="n">minValPos</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">minValPos</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">up</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">maxValPos</span> <span class="o">||</span> <span class="n">i</span> <span class="o">==</span> <span class="n">minValPos</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">up</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">up</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">down</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">down</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">maxValPos</span><span class="p">]</span> <span class="o">-</span> <span class="n">up</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">down</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="n">minValPos</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">ans</span> <span class="o">=</span> <span class="n">calcMaxMinColorSame</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ans</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">calcMaxMinColorNotSame</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ans</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>]]></description></item><item><title>MultiGenerator 使用文档</title><link>https://ctj12461.vercel.app/contents/20220404-multigenerator-document/</link><pubDate>Mon, 04 Apr 2022 22:15:15 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220404-multigenerator-document/</guid><description><![CDATA[<h2 id="概述">概述</h2>
+<p><code>MultiGenerator</code> 是一个为 <code>OI</code> 而生的多线程并行数据生成库，基于 <code>C++ 17</code>，使用面向对象和泛型等 <code>Morden C++</code> 高级特性，只需要添加最少的额外代码，就可以获得最高的性能。以下是一个能够指定数据范围的 <code>A + B Problem</code> 数据生成器的示例代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;random&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;MultiGenerator.hpp&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">DataConfig</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">GeneratingTask</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">SolutionTask</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">NormalTemplate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">entry</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">testcase</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/** 指定数据生成器，仅需继承一个抽象类和实现一个成员函数 */</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AddGenerator</span> <span class="o">:</span> <span class="k">public</span> <span class="n">GeneratingTask</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">generate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataConfig</span> <span class="o">&amp;</span><span class="n">config</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** DataConfig 为配置信息，可以用于储存数据范围等元信息 */</span>
+</span></span><span class="line"><span class="cl">        <span class="k">auto</span> <span class="n">minValue</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">stoi</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#34;minValue&#34;</span><span class="p">).</span><span class="n">value</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">auto</span> <span class="n">maxValue</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">stoi</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#34;maxValue&#34;</span><span class="p">).</span><span class="n">value</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">random_device</span> <span class="n">rd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">mt19937</span> <span class="n">gen</span><span class="p">(</span><span class="n">rd</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">uniform_int_distribution</span><span class="o">&lt;&gt;</span> <span class="n">dist</span><span class="p">(</span><span class="n">minValue</span><span class="p">,</span> <span class="n">maxValue</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 像 cout 一样输出生成结果 */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">&lt;&lt;</span> <span class="n">dist</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">dist</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/** 指定数据求解器，也仅需继承一个抽象类和实现一个成员函数 */</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AddSolution</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SolutionTask</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/** 假如你有标程，仅需要把程序用这个类包装起来，再把 main() 改为这个成员函数即可 */</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">solve</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span><span class="n">dataIn</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">dataOut</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataConfig</span> <span class="o">&amp;</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 像 cin 一样读入数据 */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dataIn</span> <span class="o">&gt;&gt;</span> <span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 像 cout 一样输出答案 */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dataOut</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">constexpr</span> <span class="kt">int</span> <span class="n">MAX_THREAD_COUNT</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">constexpr</span> <span class="kt">int</span> <span class="n">MAX_TESTCASE_COUNT</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">constexpr</span> <span class="kt">char</span> <span class="n">PROBLEM_NAME</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&#34;add&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/** 创建一个题目生成模板，指定数据文件名为 add#.in/add#.out，# 是测试点编号，可以含子任务编号 */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">NormalTemplate</span> <span class="n">temp</span><span class="p">(</span><span class="n">PROBLEM_NAME</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">MAX_TESTCASE_COUNT</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 添加测试点配置，并指定生成器和求解器 */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">temp</span><span class="p">.</span><span class="n">add</span><span class="o">&lt;</span><span class="n">AddGenerator</span><span class="p">,</span> <span class="n">AddSolution</span><span class="o">&gt;</span><span class="p">(</span><span class="n">testcase</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">entry</span><span class="p">(</span><span class="s">&#34;minValue&#34;</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">1000000</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">entry</span><span class="p">(</span><span class="s">&#34;maxValue&#34;</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/** 开始根据指定的线程数生成数据 */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">temp</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">MAX_THREAD_COUNT</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="要求">要求</h2>
+<ul>
+<li><code>C++ 17 Compiler</code></li>
+<li><code>C++</code> 基础知识，包括最基本的模板的使用（基本都可以满足）</li>
+<li>能够认真阅读文档</li>
+</ul>
+<h2 id="安装">安装</h2>
+<h3 id="编译器支持">编译器支持</h3>
+<p>首先确保你有支持 <code>C++ 17</code> 的编译器，如果你已经有了，可以跳过这一步。</p>
+<h4 id="linux">Linux</h4>
+<p>绝大多数的 <code>Linux</code> 发行版预装的 <code>GCC</code> 版本都比较低，仅能支持 <code>C++ 11</code>，建议使用包管理器进行安装更新版本的 <code>GCC</code>，至少为 <code>GCC 8</code>，建议 <code>GCC 11</code>，这里仅列举部分安装方法，具体请查阅发行版的包管理器文档。</p>
+<p><strong>Debian/Ubuntu/Deepin</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+</span></span><span class="line"><span class="cl">$ sudo apt-get update
+</span></span><span class="line"><span class="cl">$ sudo apt install gcc g++
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Arch Linux/Manjaro</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sudo pacman -S gcc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>CentOS/RHEL</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sudo yum -y install centos-release-scl
+</span></span><span class="line"><span class="cl">$ yum -y install devtoolset-11-gcc devtoolset-11-gcc-c++ devtoolset-11-binutils
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;source /opt/rh/devtoolset-11/enable&#34;</span> &gt;&gt; /etc/profile
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="windows">Windows</h4>
+<p>推荐使用 <code>TDM-GCC</code>，进入下载页面 <a
+  href="https://jmeubank.github.io/tdm-gcc/download/"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="noopener noreffer"
+  
+  
+  
+  
+>https://jmeubank.github.io/tdm-gcc/download/</a>，选择 <code>64+32-bit</code> 的安装包，安装即可。</p>
+<h4 id="macos">macOS</h4>
+<p>一般 <code>macOS</code> 都已经自带 <code>LLVM</code> 环境和 <code>Clang</code>，如果没有还可以通过安装 <code>Xcode</code> 来安装 <code>g++</code>。</p>
+<h3 id="安装-multigenerator">安装 MultiGenerator</h3>
+<p><code>MultiGenerator</code> 是一个 <code>header-only</code> 库，所以无需任何编译即可使用，只需要复制 <code>https://github.com/ctj12461/MultiGenerator/tree/master/src</code> 下的所有文件到 <code>include</code> 路径即可。</p>
+<h4 id="linux-1">Linux</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ git clone https://github.com/ctj12461/MultiGenerator.git
+</span></span><span class="line"><span class="cl">$ sudo cp -r src/* /usr/local/include
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果你有 <code>xmake</code>，也可以按照如下方式安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ git clone https://github.com/ctj12461/MultiGenerator.git
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> MultiGenerator
+</span></span><span class="line"><span class="cl">$ sudo xmake install --root MultiGenerator
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="windowsmacos">Windows/macOS</h4>
+<p>复制 <code>https://github.com/ctj12461/MultiGenerator/tree/master/src</code> 下的所有文件到编译器提供的 <code>include</code> 路径下，具体请在编译器安装路径下搜索或查看相关文档。一个简单的办法是找到 <code>iostream</code> 的位置，然后粘贴到相同的目录下即可。</p>
+<h2 id="快速入门">快速入门</h2>
+<h3 id="导入库">导入库</h3>
+<p>仅需要使用 <code>#include &lt;MultiGenerator.hpp&gt;</code> 即可导入本库，库中所有的类和函数全部定义在 <code>MultiGenerator</code> 命名空间下，可以通过 <code>using namespace MultiGenerator</code> 来更加方便地使用本库，但是更推荐的方法是仅对有需要的类或函数使用 <code>using</code> 声明。</p>
+<p>以下是一个简单的例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;MultiGenerator.hpp&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">DataConfig</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">GeneratingTask</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">SolutionTask</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">NormalTemplate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">entry</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">MultiGenerator</span><span class="o">::</span><span class="n">testcase</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>事实上 <code>MultiGenerator</code> 对内部实现细节做了较多的封装，如果有使用 <code>IDE</code> 的智能提示功能，可能会发现有若干子命名空间，如 <code>MultiGenerator::Context</code>，<code>MultiGenerator::Interface</code> 等等，在绝大多数情况下，您都不需要使用这些内部的组件，只需使用定义在 <code>MultiGenerator</code> 下的部分，下文也仅会介绍这一部分。</p>
+<p>以下是本项目的目录结构。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">MultiGenerator/src
+</span></span><span class="line"><span class="cl">├── MultiGenerator
+</span></span><span class="line"><span class="cl">│   ├── Context
+</span></span><span class="line"><span class="cl">│   │   ├── Environment.hpp
+</span></span><span class="line"><span class="cl">│   │   └── Stream.hpp
+</span></span><span class="line"><span class="cl">│   ├── Executor
+</span></span><span class="line"><span class="cl">│   │   ├── Channel.hpp
+</span></span><span class="line"><span class="cl">│   │   ├── TaskExecutor.hpp
+</span></span><span class="line"><span class="cl">│   │   └── ThreadPool.hpp
+</span></span><span class="line"><span class="cl">│   ├── Interface
+</span></span><span class="line"><span class="cl">│   │   ├── Component.hpp
+</span></span><span class="line"><span class="cl">│   │   ├── Template.hpp
+</span></span><span class="line"><span class="cl">│   │   └── Utility.hpp
+</span></span><span class="line"><span class="cl">│   ├── Variable
+</span></span><span class="line"><span class="cl">│   │   ├── Argument.hpp
+</span></span><span class="line"><span class="cl">│   │   └── DataConfig.hpp
+</span></span><span class="line"><span class="cl">│   └── Workflow
+</span></span><span class="line"><span class="cl">│       ├── Callable.hpp
+</span></span><span class="line"><span class="cl">│       ├── Runner.hpp
+</span></span><span class="line"><span class="cl">│       ├── TaskGroup.hpp
+</span></span><span class="line"><span class="cl">│       └── Task.hpp
+</span></span><span class="line"><span class="cl">└── MultiGenerator.hpp
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="基本概念">基本概念</h3>
+<h4 id="task">Task</h4>
+<p>在 <code>MultiGenerator</code> 中，生成的过程可以被拆分为若干个部分，每个部分有不同的功能，比如根据参数生成数据，或者读入数据并输出正确答案。这样的每个部分被成为 <code>Task</code>。</p>
+<p><code>MultiGenerator</code> 预定义了 3 种 <code>Task</code>，它们是更加具体的 <code>Task</code>，并规定了相关功能的接口，以便使用：</p>
+<ul>
+<li><code>GeneratingTask</code>：表示所有生成数据的 <code>Task</code> 的抽象类，可以继承该抽象类并实现接口函数来获得生成数据的功能。</li>
+<li><code>SolutionTask</code>：表示所有根据给定数据求解答案的 <code>Task</code> 的抽象类，可以继承该抽象类并实现接口函数来获得求解答案的功能。一般使用您的标准程序即 <code>std</code> 来实现。</li>
+<li><code>IntegratedGeneratingTask</code>：表示所有同时生成数据和求解答案的 <code>Task</code> 的抽象类，可以用于实现必须同时生成和求解的生成器，比如一些强制在线题目。</li>
+</ul>
+<p>您只需实现这些抽象类的接口，并通过给定的流进行 <code>IO</code> 操作，无需考虑文件系统相关的问题，<code>MultiGenerator</code> 可以处理它们。</p>
+<h4 id="template">Template</h4>
+<p><code>Template</code> 规定了一道题目的生成程序应该如何调用 <code>Task</code>，比如普通的题目，没有强制在线操作，此时只需要分别生成数据和求解答案，就可以使用 <code>NormalTemplate</code> 来管理这些 <code>GeneratingTask</code> 和 <code>SolutionTask</code>。</p>
+<p><code>MultiGenerator</code> 预定义了 2 种 <code>Template</code>：</p>
+<ul>
+<li><code>NormalTemplate</code>：可以调用实现了 <code>GeneratingTask</code> 和 <code>SolutionTask</code> 的类，用于普通的数据生成，由于生成和求解是可分离的，所以可以更好地利用系统资源进行并行优化。</li>
+<li><code>IntegratedTemplate</code>：可以调用实现了 <code>IntegratedGeneratingTask</code> 的类，可以用于需要强制在线的题目的数据生成。</li>
+</ul>
+<p><code>Template</code> 可以接受一个字符串作为题目的名称，所有生成的数据都会自动带上该名称。然后您可以向 <code>Template</code> 添加测试点信息，如要使用的生成器（实现了 <code>GeneratingTask</code>）和求解器（实现了 <code>SolutionTask</code>），测试点编号，测试点的数据规模配置等。随后 <code>Template</code> 会自动将这些参数传给 <code>Task</code>，实现数据生成的定制。</p>
+<p>如果您需要对不同的测试点应用不同的生成器，比如在使用 <code>NormalTemplate</code> 时，需要构造具有特殊性质的数据，您可以定义多个生成器，只要它们实现了 <code>GeneratingTask</code>，就可以被 <code>Template</code> 调用，而无需做任何的特殊判断。</p>
+<h4 id="testcase">testcase</h4>
+<p><code>testcase</code> 是一个函数，可以用于生成一个测试点的配置，这个测试点可以是一个子任务中的测试点。它还接受一个 <code>std::unordered_map&lt;std::string, std::string&gt;</code> 作为测试点配置，这里选用 <code>std::string</code> 作为键和值是因为这样可以最简单的实现配置，假如您需要同时传入 <code>int</code> 和 <code>double</code> 的值作为配置，<code>std::string</code> 可以很好地储存它们。后面会详细介绍如何使用该函数。</p>
+<h4 id="dataconfig">DataConfig</h4>
+<p><code>DataConfig</code> 储存了测试点配置信息（不包括测试点编号，事实上很少情况会需要编号，因为 <code>MultiGenerator</code> 会在外部自动处理测试点编号，无需 <code>Task</code> 内部插手），<code>testcase</code> 函数所接受的 <code>std::unordered_map&lt;std::string, std::string&gt;</code> 也就是构造它的参数。</p>
+<p><code>DataConfig</code> 不会自动转换值到您所需要的类型，它只会返回一个 <code>std::string</code>，但是转换类型大多数情况下只需要使用 <code>std::stoi()</code> 或 <code>std::stof()</code> 完成，更加高级的也仅需要使用 <code>std::stringstream</code> 即可。</p>
+<h3 id="创建-task">创建 Task</h3>
+<p><code>MultiGenerator</code> 所提供的 <code>Task</code> 已经拥有大部分功能，如如何处理文件名，如何与文件系统交互，但它唯独不知道具体该如何生成数据，所以您只需要通过继承相关 <code>Task</code> 来实现接口，从而补上缺失的一部分功能。</p>
+<h4 id="generatingtask">GeneratingTask</h4>
+<p>前面提到 <code>GeneratingTask</code> 表示所有生成数据的 <code>Task</code>，所以我们可以这么写：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyGenerator</span> <span class="o">:</span> <span class="k">public</span> <span class="n">GeneratingTask</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/** 这里只可以使用 private 或 protected */</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/** 实现这个接口 */</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">generate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataConfig</span> <span class="o">&amp;</span><span class="n">config</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 通过 DataConfig 获取配置，get 内填上自定义的键 */</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">someValue</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">stoi</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#34;some key&#34;</span><span class="p">).</span><span class="n">value</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 在这里实现生成数据 */</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">someResult</span> <span class="o">=</span> <span class="n">someFunction</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 输出结果 */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">&lt;&lt;</span> <span class="n">someResult</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="nf">sumeFunction</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="cm">/* ... */</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果您不了解 <code>C++</code> 的面向对象特性，您可查阅相关资料，或者直接复制上面的模板，您只要保留上述 <code>generate(std::ostream &amp;data, const DataConfig &amp;config)</code> 成员函数即可。</p>
+<h4 id="solutiontask">SolutionTask</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MySolution</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SolutionTask</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">solve</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span><span class="n">dataIn</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">dataOut</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataConfig</span> <span class="o">&amp;</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">someValue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 像 std::cin 一样读入数据 */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dataIn</span> <span class="o">&gt;&gt;</span> <span class="n">someValue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">someResult</span> <span class="o">=</span> <span class="n">someFunction</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/** 像 std::cout 一样输出答案 */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dataOut</span> <span class="o">&lt;&lt;</span> <span class="n">someResult</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="nf">sumeFunction</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="cm">/* ... */</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>还是同样的道理，您只需要保留 <code>void solve(std::istream &amp;dataIn, std::ostream &amp;dataOut, const DataConfig &amp;config)</code> 成员函数，并在其中填上自己的东西即可。</p>
+<p>理论上您可以直接将 <code>std</code> 的东西复制进 <code>MySolution</code> 这个类，并把 <code>main()</code> 函数改为这个成员函数，然后做好初始化工作，因为所有的 <code>Task</code> 都是要在堆上分配内存然后运行的，所以不能够保证所有数据都和全局变量一样被初始化为 <code>0</code>。对于数组，可以将其替换为 <code>std::array</code>，它会默认初始化所有的元素为 <code>0</code>，且在使用上和原生数组没有任何差别，包括性能开销。</p>
+<h4 id="integratedgeneratingtask">IntegratedGeneratingTask</h4>
+<p>如果您需要同时生成和求解，那 <code>IntegratedGeneratingTask</code> 会是一个很好的选择，它同时提供了两个输出流，分别连接了数据的文件（<code>*.in</code>）和答案的文件（<code>*.out</code>）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyIntegratedGenerator</span> <span class="o">:</span> <span class="k">public</span> <span class="n">IntegratedGeneratingTask</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">generate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">dataIn</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">dataOut</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataConfig</span> <span class="o">&amp;</span><span class="n">config</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="cm">/* 条件 */</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">auto</span> <span class="n">someData</span> <span class="o">=</span> <span class="cm">/* ... */</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">auto</span> <span class="n">someAnswer</span> <span class="o">=</span> <span class="cm">/* ... */</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">dataIn</span> <span class="o">&lt;&lt;</span> <span class="n">someData</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">dataOut</span> <span class="o">&lt;&lt;</span> <span class="n">someAnswer</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>IntegratedGeneratingTask</code> 一般用于为强制在线题目或一些复杂的数据结构题目生成数据。</p>
+<h3 id="使用-testcase-创建测试点配置">使用 testcase 创建测试点配置</h3>
+<p><code>testcase</code> 函数可以用于创建测试点的配置，其有两个重载：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Variable</span><span class="o">::</span><span class="n">Argument</span><span class="o">&gt;</span> <span class="n">testcase</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">config</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Variable</span><span class="o">::</span><span class="n">Argument</span><span class="o">&gt;</span> <span class="n">testcase</span><span class="p">(</span><span class="kt">int</span> <span class="n">subtaskId</span><span class="p">,</span> <span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">config</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这两个函数都返回 <code>Variable::Argument</code> 的智能指针，其储存着测试点的配置参数。从函数签名可以很容易地看出第一个是用于创建无子任务的测试点，而第二个是创建有子任务的测试点。</p>
+<p>这两个函数都在最后接受一个 <code>std::unordered_map&lt;std::string, std::string&gt;</code> 作为测试点配置，使用初始化列表可以很方便地传入这个参数。您还可以使用 <code>entry</code> 函数创建一个键值对，使代码更加简单易读：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Value</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">entry</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">key</span><span class="p">,</span> <span class="k">const</span> <span class="n">Value</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>一般情况下，只需要将返回的 <code>Variable::Argument</code> 指针再传给 <code>Template</code> 即可，无需做额外的工作。</p>
+<p>如果要创建编号为 <code>2</code>，带有 <code>n = 10</code> 且 <code>m = 5</code> 的配置，可以这样获得配置参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">arg</span> <span class="o">=</span> <span class="n">testcase</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">{</span> <span class="n">entry</span><span class="p">(</span><span class="s">&#34;n&#34;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">entry</span><span class="p">(</span><span class="s">&#34;m&#34;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果要创建子任务编号为 <code>1</code>，子任务内的编号为 <code>5</code>，带有 <code>str = &quot;abc&quot;</code> 且 <code>n = 1</code> 的配置，可以这样获得配置参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">arg</span> <span class="o">=</span> <span class="n">testcase</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">{</span> <span class="n">entry</span><span class="p">(</span><span class="s">&#34;str&#34;</span><span class="p">,</span> <span class="s">&#34;abc&#34;</span><span class="p">),</span> <span class="n">entry</span><span class="p">(</span><span class="s">&#34;n&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="把-task-传给-template">把 Task 传给 Template</h3>
+<p>如上文所述，<code>Template</code> 规定了一道题目的生成程序应该如何调用 <code>Task</code>，且 <code>MultiGenerator</code> 定义了 <code>NormalTemplate</code> 和 <code>IntegratedTemplate</code>，两种 <code>Template</code> 使用方法是一样的，以下以 <code>NormalTemplate</code> 为例。</p>
+<p>构造 <code>NormalTemplate</code> 需要传入一个字符串作为题目的名字。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">NormalTemplate</span> <span class="nf">temp</span><span class="p">(</span><span class="s">&#34;problem&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>随后可以使用 <code>add</code> 成员函数创建测试点配置，签名如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Generator</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Solution</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">NormalTemplate</span><span class="o">::</span><span class="n">add</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Variable</span><span class="o">::</span><span class="n">Argument</span><span class="o">&gt;</span> <span class="n">arg</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中 <code>Generator</code> 是用户自定义的实现了 <code>GeneratingTask</code> 的类，比如上文示例中的 <code>MyGenerator</code>，<code>Solution</code> 则是实现了  <code>SolutionTask</code> 的类，比如上文示例中的 <code>MySolution</code>。</p>
+<p><code>IntegratedTemplate</code> 的 <code>add</code> 函数签名如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">IntegratedGenerator</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">IntegratedTemplate</span><span class="o">::</span><span class="n">add</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Variable</span><span class="o">::</span><span class="n">Argument</span><span class="o">&gt;</span> <span class="n">arg</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中 <code>IntegratedGenerator</code> 是用户自定义的实现了 <code>IntegratedGeneratingTask</code> 的类，比如上文示例中的 <code>MyIntegratedGenerator</code>。</p>
+<p>您需要把 <code>testcase</code> 函数返回的结果传给这些函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">temp</span><span class="p">.</span><span class="n">add</span><span class="o">&lt;</span><span class="n">MyGenerator</span><span class="p">,</span> <span class="n">MySolution</span><span class="o">&gt;</span><span class="p">(</span><span class="n">testcase</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">{}));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样 <code>NormalTemplate</code> 就会知道要对第 1 个测试点应用 <code>MyGenerator</code> 生成数据，用 <code>MySolution</code> 求解答案，并且生成的文件为 <code>problem1.in</code> 和 <code>problem1.out</code>。</p>
+<p>可以继续使用 <code>add</code> 函数添加测试点，使用方法是一样的，只需修改 <code>testcase</code> 函数中的测试点编号即可。注意如果测试点编号出现重复，可能会导致程序崩溃。</p>
+<h3 id="开始生成数据">开始生成数据</h3>
+<p>这一部分很简单，只需要指定并行任务数即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">temp</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>一般并行任务数会设定为您的 <code>CPU</code> 核心数或者线程数。如果您不知道您的 <code>CPU</code> 核心数，可以使用 <code>std::thread::hardware_concurrency</code> 函数查询：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">temp</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="o">::</span><span class="n">hardware_concurrency</span><span class="p">());</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="完整示例">完整示例</h3>
+<p>最上面的示例就是一个很好的例子，参考那个即可。</p>
+<h2 id="faq">FAQ</h2>
+<p>Q1：我在 <code>Linux</code> 平台下，如果编译不能够通过，并且含有错误信息中含有 <code>pthread</code> 相关的东西，怎么解决？</p>
+<p>A1：<code>Linux</code> 下使用多线程需要调用 <code>pthread</code>，需要给 <code>g++</code> 加上 <code>-pthread</code> 参数。</p>
+]]></description></item><item><title>std::function 和 std::bind 的使用陷阱</title><link>https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/</link><pubDate>Tue, 29 Mar 2022 18:21:31 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/</guid><description><![CDATA[<p><code>std::function</code> 和 <code>std::bind</code> 是 <code>C++</code> 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。</p>
+<p>最近写项目时遇到需要将不可复制构造的对象传给 <code>std::bind</code> 的情况，结果遇到了编译错误。代码逻辑可以抽象为下面这样：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;functional&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Class</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">()</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">(</span><span class="k">const</span> <span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">(</span><span class="n">Class</span> <span class="o">&amp;&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">Class</span> <span class="o">&amp;&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">call</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span> <span class="n">func</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">func</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">func</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">([](</span><span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* code */</span> <span class="p">},</span> <span class="n">Class</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="n">call</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">func</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个错误 <code>Language Server</code> 是检测不到的，只有在编译后才能发现。编译错误信息如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">In file included from project.cpp:1:
+</span></span><span class="line"><span class="cl">In file included from /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/functional:59:
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:159:10: error: call to implicitly-deleted copy constructor of &#39;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&#39;
+</span></span><span class="line"><span class="cl">            new _Functor(*__source._M_access&lt;const _Functor*&gt;());
+</span></span><span class="line"><span class="cl">                ^        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:196:8: note: in instantiation of member function &#39;std::_Function_base::_Base_manager&lt;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&gt;::_M_clone&#39; requested here
+</span></span><span class="line"><span class="cl">              _M_clone(__dest, __source, _Local_storage());
+</span></span><span class="line"><span class="cl">              ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:283:13: note: in instantiation of member function &#39;std::_Function_base::_Base_manager&lt;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&gt;::_M_manager&#39; requested here
+</span></span><span class="line"><span class="cl">            _Base::_M_manager(__dest, __source, __op);
+</span></span><span class="line"><span class="cl">                   ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:423:35: note: in instantiation of member function &#39;std::_Function_handler&lt;void (), std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&gt;::_M_manager&#39; requested here
+</span></span><span class="line"><span class="cl">              _M_manager = &amp;_My_handler::_M_manager;
+</span></span><span class="line"><span class="cl">                                         ^
+</span></span><span class="line"><span class="cl">project.cpp:20:10: note: in instantiation of function template specialization &#39;std::function&lt;void ()&gt;::function&lt;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;, void, void&gt;&#39; requested here
+</span></span><span class="line"><span class="cl">    call(std::move(func));
+</span></span><span class="line"><span class="cl">         ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/functional:493:7: note: explicitly defaulted function was implicitly deleted here
+</span></span><span class="line"><span class="cl">      _Bind(const _Bind&amp;) = default;
+</span></span><span class="line"><span class="cl">      ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/functional:412:29: note: copy constructor of &#39;_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&#39; is implicitly deleted because field &#39;_M_bound_args&#39; has a deleted copy constructor
+</span></span><span class="line"><span class="cl">      tuple&lt;_Bound_args...&gt; _M_bound_args;
+</span></span><span class="line"><span class="cl">                            ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:744:17: note: explicitly defaulted function was implicitly deleted here
+</span></span><span class="line"><span class="cl">      constexpr tuple(const tuple&amp;) = default;
+</span></span><span class="line"><span class="cl">                ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:599:19: note: copy constructor of &#39;tuple&lt;Class&gt;&#39; is implicitly deleted because base class &#39;_Tuple_impl&lt;0, Class&gt;&#39; has a deleted copy constructor
+</span></span><span class="line"><span class="cl">    class tuple : public _Tuple_impl&lt;0, _Elements...&gt;
+</span></span><span class="line"><span class="cl">                  ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:435:17: note: explicitly defaulted function was implicitly deleted here
+</span></span><span class="line"><span class="cl">      constexpr _Tuple_impl(const _Tuple_impl&amp;) = default;
+</span></span><span class="line"><span class="cl">                ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:408:7: note: copy constructor of &#39;_Tuple_impl&lt;0, Class&gt;&#39; is implicitly deleted because base class &#39;_Head_base&lt;0UL, Class&gt;&#39; has a deleted copy constructor
+</span></span><span class="line"><span class="cl">    : private _Head_base&lt;_Idx, _Head&gt;
+</span></span><span class="line"><span class="cl">      ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:86:17: note: explicitly defaulted function was implicitly deleted here
+</span></span><span class="line"><span class="cl">      constexpr _Head_base(const _Head_base&amp;) = default;
+</span></span><span class="line"><span class="cl">                ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:125:39: note: copy constructor of &#39;_Head_base&lt;0, Class, true&gt;&#39; is implicitly deleted because field &#39;_M_head_impl&#39; has a deleted copy constructor
+</span></span><span class="line"><span class="cl">      [[__no_unique_address__]] _Head _M_head_impl;
+</span></span><span class="line"><span class="cl">                                      ^
+</span></span><span class="line"><span class="cl">project.cpp:7:5: note: &#39;Class&#39; has been explicitly marked deleted here
+</span></span><span class="line"><span class="cl">    Class(const Class &amp;) = delete;
+</span></span><span class="line"><span class="cl">    ^
+</span></span><span class="line"><span class="cl">1 error generated.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个编译信息具有一定的误导性，有可能首先会想到的是 <code>std::bind</code> 生成的函数对象不支持复制构造和移动构造，但实际上查看源码后发现，<code>std::bind</code> 返回一个 <code>_Bind&lt;_Signature&gt;</code> 类，其中一个特化为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">_Functor</span><span class="p">,</span> <span class="k">typename</span><span class="p">...</span> <span class="n">_Bound_args</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">_Bind</span><span class="o">&lt;</span><span class="n">_Functor</span><span class="p">(</span><span class="n">_Bound_args</span><span class="p">...)</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">_Weak_result_type</span><span class="o">&lt;</span><span class="n">_Functor</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_Functor</span> <span class="n">_M_f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tuple</span><span class="o">&lt;</span><span class="n">_Bound_args</span><span class="p">...</span><span class="o">&gt;</span> <span class="n">_M_bound_args</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中 <code>_M_f</code> 在这里是编译器将 <code>lambda</code> 表达式转换后的函数对象，复制构造和移动构造都可以支持，<code>_M_bound_args</code> 则是绑定的参数，使用 <code>std::tuple</code> 实现，其复制构造函数和移动构造函数均为 <code>= default</code>，所以至少移动构造函数也是可用的，也就是 <code>std::bind</code> 返回的这个函数对象 <code>_Bind&lt;_Signature&gt;</code> 也是可以移动构造的，因此 <code>std::move(func)</code> 是没有问题的。</p>
+<p>所以问题出在 <code>std::function</code> 上，再查看 <code>std::function</code> 的源码，找到其构造函数对其他函数对象的重载：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">_Functor</span><span class="p">,</span> <span class="k">typename</span> <span class="o">=</span> <span class="cm">/* ... */</span><span class="p">,</span> <span class="k">typename</span> <span class="o">=</span> <span class="cm">/* ... */</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">function</span><span class="p">(</span><span class="n">_Functor</span> <span class="n">__f</span><span class="p">)</span> <span class="o">:</span> <span class="n">_Function_base</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">typedef</span> <span class="n">_Function_handler</span><span class="o">&lt;</span><span class="n">_Res</span><span class="p">(</span><span class="n">_ArgTypes</span><span class="p">...),</span> <span class="n">_Functor</span><span class="o">&gt;</span> <span class="n">_My_handler</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">_My_handler</span><span class="o">::</span><span class="n">_M_not_empty_function</span><span class="p">(</span><span class="n">__f</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_My_handler</span><span class="o">::</span><span class="n">_M_init_functor</span><span class="p">(</span><span class="n">_M_functor</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">__f</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_M_invoker</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">_My_handler</span><span class="o">::</span><span class="n">_M_invoke</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_M_manager</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">_My_handler</span><span class="o">::</span><span class="n">_M_manager</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果 <code>std::function</code> 接受了一个函数对象，那么就会使用 <code>_My_handler::_M_init_functor(_M_functor, std::move(__f))</code> 将该函数对象复制到自身内部的 <code>_M_functor</code> 成员上，而这个函数最终会调用以下两个函数之一：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">_M_init_functor</span><span class="p">(</span><span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__functor</span><span class="p">,</span> <span class="n">_Functor</span> <span class="o">&amp;&amp;</span><span class="n">__f</span><span class="p">,</span> <span class="n">true_type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">::</span><span class="k">new</span> <span class="p">(</span><span class="n">__functor</span><span class="p">.</span><span class="n">_M_access</span><span class="p">())</span> <span class="n">_Functor</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">__f</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">_M_init_functor</span><span class="p">(</span><span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__functor</span><span class="p">,</span> <span class="n">_Functor</span> <span class="o">&amp;&amp;</span><span class="n">__f</span><span class="p">,</span> <span class="n">false_type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">__functor</span><span class="p">.</span><span class="n">_M_access</span><span class="o">&lt;</span><span class="n">_Functor</span> <span class="o">*&gt;</span><span class="p">()</span> <span class="o">=</span> <span class="k">new</span> <span class="n">_Functor</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">__f</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>事实上也只会调用以上这几个函数，这个过程也都是移动构造，理论上即使删除了复制构造函数也是可以正常工作的，其实问题出在其他函数使用了复制，比如下面这对：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">_M_clone</span><span class="p">(</span><span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__dest</span><span class="p">,</span> <span class="k">const</span> <span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__source</span><span class="p">,</span> <span class="n">true_type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">::</span><span class="k">new</span> <span class="p">(</span><span class="n">__dest</span><span class="p">.</span><span class="n">_M_access</span><span class="p">())</span> <span class="n">_Functor</span><span class="p">(</span><span class="n">__source</span><span class="p">.</span><span class="n">_M_access</span><span class="o">&lt;</span><span class="n">_Functor</span><span class="o">&gt;</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">_M_clone</span><span class="p">(</span><span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__dest</span><span class="p">,</span> <span class="k">const</span> <span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__source</span><span class="p">,</span> <span class="n">false_type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">__dest</span><span class="p">.</span><span class="n">_M_access</span><span class="o">&lt;</span><span class="n">_Functor</span> <span class="o">*&gt;</span><span class="p">()</span> <span class="o">=</span> <span class="k">new</span> <span class="n">_Functor</span><span class="p">(</span><span class="o">*</span><span class="n">__source</span><span class="p">.</span><span class="n">_M_access</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">_Functor</span> <span class="o">*&gt;</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里 <code>__source._M_access&lt;_Functor&gt;()</code> 显然不是右值，只能调用复制构造函数。而模板实例化是全部的，不是只对有使用到的代码进行处理。结论就是不可以用 <code>std::function</code> 保存不可复制构造的函数对象，包括这种 <code>std::bind</code>，因此解决方案也就是不使用 <code>std::function</code>。然而这样就不容易对函数签名进行限制，比如下面的这种方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;functional&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Class</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">()</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">(</span><span class="k">const</span> <span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">(</span><span class="n">Class</span> <span class="o">&amp;&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">Class</span> <span class="o">&amp;&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Functor</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">call</span><span class="p">(</span><span class="n">Functor</span> <span class="n">func</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">func</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">func</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">([](</span><span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* code */</span> <span class="p">},</span> <span class="n">Class</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="n">call</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">func</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>]]></description></item><item><title>Arch Linux 常用软件配置</title><link>https://ctj12461.vercel.app/contents/20220317-arch-linux-software-config/</link><pubDate>Thu, 17 Mar 2022 22:28:02 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220317-arch-linux-software-config/</guid><description><![CDATA[<p>记录一下安装 <code>Arch Linux</code> 后的常用软件安装以及配置。</p>
+<h2 id="yay"><code>yay</code></h2>
+<p>使用 <code>yay</code> 从 <code>AUR</code> 上下载各种官方仓库所没有的包。</p>
+<p>项目主页：<a
+  href="https://github.com/Jguer/yay"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="noopener noreffer"
+  
+  
+  
+  
+>https://github.com/Jguer/yay</a>。</p>
+<p>从源码安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ pacman -S --needed git base-devel
+</span></span><span class="line"><span class="cl">$ git clone https://aur.archlinux.org/yay.git
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> yay
+</span></span><span class="line"><span class="cl">$ makepkg -si
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>或者下载二进制包：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ pacman -S --needed git base-devel
+</span></span><span class="line"><span class="cl">$ git clone https://aur.archlinux.org/yay-bin.git
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> yay-bin
+</span></span><span class="line"><span class="cl">$ makepkg -si
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>用法与 <code>pacman</code> 一致。</p>
+<h2 id="debtap"><code>debtap</code></h2>
+<p><code>debtap</code> 是 <code>AUR</code> 包，用于将 <code>deb</code> 包转换为 <code>pacman</code> 可以使用的包。</p>
+<p>安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ yay -S debtap
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>安装后可以编辑 <code>/usr/bin/debtap</code>，替换所有的 <code>http://ftp.debian.org/debian/dists</code> 为 <code>https://mirrors.ustc.edu.cn/debian/dists</code>，替换所有的 <code>http://archive.ubuntu.com/ubuntu/dists</code> 为 <code>https://mirrors.ustc.edu.cn/ubuntu/dists/</code>。</p>
+<p>使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sudo debtap -u <span class="c1"># 更新源列表</span>
+</span></span><span class="line"><span class="cl">$ debtap -q package.deb <span class="c1"># 转换 deb 包，-q 表示不要编辑除元数据之外的信息</span>
+</span></span><span class="line"><span class="cl">$ sudo pacman -U package.tar.xz <span class="c1"># 安装生成的包</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="clementine"><code>clementine</code></h2>
+<p>一个跨平台的音乐播放器，不仅可以播放各种格式的音乐，还支持提取歌曲的元信息。</p>
+<p>安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sudo pacman -S clementine
+</span></span><span class="line"><span class="cl">$ sudo pacman -S gst-plugins-good gst-plugins-base <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    gst-libav gst-plugins-bad gst-plugins-ugly
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于 <code>clementine</code> 使用了 <code>GStreamer</code>，所以还要安装必要的插件，否则无法播放音乐。</p>
+<h2 id="wireshark"><code>wireshark</code></h2>
+<p>基于 <code>Qt</code> 编写的开源抓包工具。</p>
+<p>可以编译源码，也可以直接用 <code>pacman</code> 安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sudo pacman -S wireshark
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>默认情况下只能使用 <code>root</code> 用户运行才可以访问网卡等设备，通过修改用户组设置使得常用用户可以直接使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sudo groupadd wireshark <span class="c1"># 新建一个专用的用户组</span>
+</span></span><span class="line"><span class="cl">$ sudo chgrp wireshark /usr/bin/dumpcap <span class="c1"># 将dumpcap更改为wireshark用户组</span>
+</span></span><span class="line"><span class="cl">$ sudo chmod <span class="m">4755</span> /usr/bin/dumpcap <span class="c1"># 4 表示执行时用户可以与所有者有相同权限</span>
+</span></span><span class="line"><span class="cl">$ sudo gpasswd -a ctj12461 wireshark <span class="c1"># 添加自己</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>附 <code>wireshark</code> 过滤出音乐的 <code>HTTP request</code> 的 <code>pattern</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">(tcp.port == 80 || udp.port == 80) &amp;&amp; (http.request.uri contains &#34;mp3&#34; || http.request.uri contains &#34;m4a&#34; || http.request.uri contains &#34;mp4&#34; || http.request.uri contains &#34;flac&#34; || http.request.uri contains &#34;ogg&#34;)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="vs-code"><code>VS Code</code></h2>
+<p>如果直接用包管理器安装 <code>code</code>，则会安装 <code>Code - OSS</code>，这个虽然也是 <code>VS Code</code>，但在协议上与 <code>Microsoft</code> 提供的 <code>Visual Studio Code</code> 不同，所以所带有的内容也有所差别，比如无法登陆 <code>Microsoft</code> 帐号，无法同步设置等。</p>
+<p>如果有需要，可以用 <code>yay</code> 安装 <code>visual-studio-code-bin</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ yay -S visual-studio-code-bin
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>也是直接输入 <code>code</code> 运行。</p>
+<h2 id="wps-2019-for-linux"><code>WPS 2019 for Linux</code></h2>
+<p>目前 <code>WPS</code> 对 <code>Microsoft Office</code> 的支持是最好的，而且还在稳定更新，推荐使用。</p>
+<p>使用 <code>yay</code> 安装，并且要安装可选的依赖包：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ yay -S wps-office-cn wps-office-mime-cn wps-office-mui-zh-cn <span class="c1"># 安装中文环境的 WPS</span>
+</span></span><span class="line"><span class="cl">$ yay -S ttf-wps-fonts wps-office-fonts <span class="c1"># 安装字体</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果使用 <code>KDE</code>，可能会遇到字体模糊的情况，这是由缩放不为 100% 引起的问题，<code>WPS</code> 使用了 <code>Qt</code> 所以只要在运行前加上环境变量 <code>QT_SCREEN_SCALE_FACTORS=1</code> 即可，对于启动器或桌面上的 <code>Desktop Entry</code>，只要在 <code>/usr/share/applications</code> 下修改所有含 <code>wps</code> 的 <code>Desktop Entry</code> 文件即可，按照下面修改即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># /usr/share/applications/wps-office-wps.desktop</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Exec</span><span class="o">=</span>env <span class="nv">QT_SCREEN_SCALE_FACTORS</span><span class="o">=</span><span class="m">1</span> /usr/bin/wps %U
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个方法还适用于其他的 <code>Qt</code> 程序。</p>
+<h2 id="fcitx-5"><code>fcitx 5</code></h2>
+<p><code>fcitx 5</code> 使用简单，比较推荐。</p>
+<p>安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sudo pacman -S fcitx5-im fcitx5-configtool fcitx5-chinese-addons fcitx5-rime
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>添加环境变量到 <code>/etc/environment</code> 以正常使用 <code>fcitx5</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nv">GTK_IM_MODULE</span><span class="o">=</span>fcitx
+</span></span><span class="line"><span class="cl"><span class="nv">QT_IM_MODULE</span><span class="o">=</span>fcitx
+</span></span><span class="line"><span class="cl"><span class="nv">XMODIFIERS</span><span class="o">=</span>@im<span class="o">=</span>fcitx
+</span></span><span class="line"><span class="cl"><span class="nv">INPUT_METHOD</span><span class="o">=</span>fcitx
+</span></span><span class="line"><span class="cl"><span class="nv">SDL_IM_MODULE</span><span class="o">=</span>fcitx
+</span></span><span class="line"><span class="cl"><span class="nv">GLFW_IM_MODULE</span><span class="o">=</span>ibus
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果无法开机启动，则执以下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 通过在 autostart 目录下添加启动项</span>
+</span></span><span class="line"><span class="cl">$ cp /usr/share/applications/org.fcitx.Fcitx5.desktop ~/.config/autostart/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>词库安装，可以自己选择：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sudo pacman -S fcitx5-pinyin-zhwiki
+</span></span><span class="line"><span class="cl">$ yay -S fcitx5-pinyin-sougou
+</span></span><span class="line"><span class="cl">$ yay -S fcitx5-pinyin-zhwiki-rime
+</span></span><span class="line"><span class="cl">$ yay -S fcitx5-pinyin-moegirl-rime
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>解决中文下按 <code>[</code> 和 <code>]</code> 输出为其他符号：编辑 <code>/usr/share/fcitx5/punctuation/punc.mb.zh_CN</code>，把 <code>[</code> 和 <code>]</code> 映射的字符修改为 <code>【</code> 和 <code>】</code>。</p>
+<h2 id="icalingua"><code>Icalingua++</code></h2>
+<p>一个 <code>OICQ</code> 前端，基于已经被封杀的 <code>Icalingua</code>，拥有大多数实用功能。<code>GitHub</code> 项目主页：<a
+  href="https://github.com/icalingua-plus-plus/icalingua-plus-plus"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="noopener noreffer"
+  
+  
+  
+  
+>https://github.com/icalingua-plus-plus/icalingua-plus-plus</a>。有各种安装方式，如 <code>AppImage</code>、<code>pacman</code>、<code>yay</code>。</p>
+<p>若使用 <code>pacman</code> 安装，则需先下载软件包，比如是 <code>icalingua-2.6.1-1-x86_64.pkg.tar.zst</code>，则使用以下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sudo pacman -U icalingua-2.6.1-1-x86_64.pkg.tar.zst
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>若使用 <code>yay</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ yay -S icalingua++
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里还是要说一句：tx nm*l。</p>
+]]></description></item></channel></rss>

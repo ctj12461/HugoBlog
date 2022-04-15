@@ -1,1 +1,294 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>函数对象 on ctj12461's Blog</title><link>https://ctj12461.vercel.app/tags/%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1/</link><description>Recent content in 函数对象 on ctj12461's Blog</description><generator>Hugo -- gohugo.io</generator><copyright>CC BY-NC 4.0</copyright><lastBuildDate>Tue, 29 Mar 2022 18:21:31 +0800</lastBuildDate><atom:link href="https://ctj12461.vercel.app/tags/%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1/index.xml" rel="self" type="application/rss+xml"/><item><title>MultiGenerator 使用文档</title><link>https://ctj12461.vercel.app/contents/20220404-multigenerator-document/</link><pubDate>Mon, 04 Apr 2022 22:15:15 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220404-multigenerator-document/</guid><description>概述 MultiGenerator 是一个为 OI 而生的多线程并行数据生成库，基于 C++ 17，使用面向对象和泛型等 Morden C++ 高级特性，只需要添加最少的额外代码，就可以获得最高的性能。以</description></item><item><title>std::function 和 std::bind 的使用陷阱</title><link>https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/</link><pubDate>Tue, 29 Mar 2022 18:21:31 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/</guid><description>std::function 和 std::bind 是 C++ 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。 最近写项目时遇到需要将不可复制构造的对象传给 std::bind 的情况，结果遇到了编</description></item><item><title>Arch Linux 常用软件配置</title><link>https://ctj12461.vercel.app/contents/20220317-arch-linux-software-config/</link><pubDate>Thu, 17 Mar 2022 22:28:02 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220317-arch-linux-software-config/</guid><description>记录一下安装 Arch Linux 后的常用软件安装以及配置。 yay 使用 yay 从 AUR 上下载各种官方仓库所没有的包。 项目主页：https://github.com/Jgue</description></item><item><title>二分图匹配学习笔记</title><link>https://ctj12461.vercel.app/contents/20220222-bipartite-graph-matching-note/</link><pubDate>Tue, 22 Feb 2022 13:31:06 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220222-bipartite-graph-matching-note/</guid><description>二分图 定义 如果一个图 $G=(V,E)$ 中的结点可以被分为两个部分，且两个部分之内的点互相没有连边，则称这种图为二分图。如果每个结点的度数相等且都为 $k$，则</description></item><item><title>莫比乌斯反演学习笔记</title><link>https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/</link><pubDate>Sun, 20 Feb 2022 11:23:07 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/</guid><description>莫比乌斯反演可以用于优化一类式子的计算。 莫比乌斯函数 定义 莫比乌斯函数的定义如下： $$ \mu(n)= \begin{cases} 0 &amp;amp; \exists\ p^2 \mid n \wedge p&amp;gt;1\\ (-1)^k &amp;amp; n=\prod_{i=1}^{k} p_i \end{cases} $$ 也就是说，如果 $n$ 含有平方约</description></item><item><title>同余方程学习笔记</title><link>https://ctj12461.vercel.app/contents/20220213-congruence-equation-note/</link><pubDate>Sun, 13 Feb 2022 21:40:02 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220213-congruence-equation-note/</guid><description>解各种同余方程是同余问题的一个重要部分，本文介绍各种同余方程的求解方法。 二元线性不定方程 形式 不定方程的范围很广泛，只要没有确定的解的方程都可</description></item><item><title>About</title><link>https://ctj12461.vercel.app/about/</link><pubDate>Sun, 13 Feb 2022 19:37:31 +0800</pubDate><guid>https://ctj12461.vercel.app/about/</guid><description>福建省长乐第一中学学生 2020.7.23 ~ OIer 2019.03.09 ~ Minecraft 红石 &amp;amp; 建筑玩家 2016.??.?? ~</description></item><item><title>Burnside 引理 &amp; Pólya 定理学习笔记</title><link>https://ctj12461.vercel.app/contents/20220212-burnside-lemma-and-polya-theorem-note/</link><pubDate>Sat, 12 Feb 2022 19:14:24 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220212-burnside-lemma-and-polya-theorem-note/</guid><description>Burnside 引理和 Pólya 定理主要用于解决计算本质不同方案数的计数问题。 群论 基本定义 群可以看成是一个由集合和某个二元运算组成的二元组 $(S,\cdo</description></item><item><title>欧拉函数 &amp; 欧拉定理学习笔记</title><link>https://ctj12461.vercel.app/contents/20220210-euler-function-and-euler-theorem-note/</link><pubDate>Thu, 10 Feb 2022 08:37:50 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220210-euler-function-and-euler-theorem-note/</guid><description>欧拉函数 $\varphi(n)$ 是一个重要的数论函数，它表示 $[1, n]$ 中与 $n$ 互质的数的个数。 欧拉函数性质 积性函数 积性函数的定义是：如果一个函数 $f(n)$ 满足 $\gcd(a,b)=1$ 时 $f(ab)=f</description></item><item><title>拉格朗日插值学习笔记</title><link>https://ctj12461.vercel.app/contents/20220207-lagrange-interpolation-note/</link><pubDate>Mon, 07 Feb 2022 23:53:43 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220207-lagrange-interpolation-note/</guid><description>拉格朗日插值是众多插值算法中的一种，插值是通过一些点来求出过这些点的多项式函数的过程。 算法思想 构造函数 给出 $n + 1$ 个点 $(x_1,y_1),(</description></item><item><title>高斯消元学习笔记</title><link>https://ctj12461.vercel.app/contents/20220206-gauss-elimination-note/</link><pubDate>Sun, 06 Feb 2022 16:06:35 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220206-gauss-elimination-note/</guid><description>高斯消元主要用于求解线性方程组的解，同时可以解决某些有后效性的 DP 问题， 算法思想 增广矩阵 为了更方便地求解方程组，可以将系数和常数项放入矩阵，接</description></item><item><title>Luogu P3647 连珠线题解</title><link>https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/</link><pubDate>Fri, 04 Feb 2022 19:41:12 +0800</pubDate><guid>https://ctj12461.vercel.app/contents/20220204-luogu-p3647-solution/</guid><description>这里给出一种无需换根的 DP 思路。 Part 1 我们从结点的添加方式入手，可以把结点分为三类： 初始的结点，这种结点只有一个 通过 Append 添加的结点，以下简称 A 类结</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>函数对象 - 标签 - ctj12461's Blog</title><link>https://ctj12461.vercel.app/tags/%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1/</link><description>函数对象 - 标签 - ctj12461's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ctj12461@163.com (ctj12461)</managingEditor><webMaster>ctj12461@163.com (ctj12461)</webMaster><lastBuildDate>Tue, 29 Mar 2022 18:21:31 +0800</lastBuildDate><atom:link href="https://ctj12461.vercel.app/tags/%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1/" rel="self" type="application/rss+xml"/><item><title>std::function 和 std::bind 的使用陷阱</title><link>https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/</link><pubDate>Tue, 29 Mar 2022 18:21:31 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/</guid><description><![CDATA[<p><code>std::function</code> 和 <code>std::bind</code> 是 <code>C++</code> 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。</p>
+<p>最近写项目时遇到需要将不可复制构造的对象传给 <code>std::bind</code> 的情况，结果遇到了编译错误。代码逻辑可以抽象为下面这样：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;functional&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Class</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">()</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">(</span><span class="k">const</span> <span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">(</span><span class="n">Class</span> <span class="o">&amp;&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">Class</span> <span class="o">&amp;&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">call</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span> <span class="n">func</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">func</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">func</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">([](</span><span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* code */</span> <span class="p">},</span> <span class="n">Class</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="n">call</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">func</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个错误 <code>Language Server</code> 是检测不到的，只有在编译后才能发现。编译错误信息如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">In file included from project.cpp:1:
+</span></span><span class="line"><span class="cl">In file included from /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/functional:59:
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:159:10: error: call to implicitly-deleted copy constructor of &#39;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&#39;
+</span></span><span class="line"><span class="cl">            new _Functor(*__source._M_access&lt;const _Functor*&gt;());
+</span></span><span class="line"><span class="cl">                ^        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:196:8: note: in instantiation of member function &#39;std::_Function_base::_Base_manager&lt;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&gt;::_M_clone&#39; requested here
+</span></span><span class="line"><span class="cl">              _M_clone(__dest, __source, _Local_storage());
+</span></span><span class="line"><span class="cl">              ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:283:13: note: in instantiation of member function &#39;std::_Function_base::_Base_manager&lt;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&gt;::_M_manager&#39; requested here
+</span></span><span class="line"><span class="cl">            _Base::_M_manager(__dest, __source, __op);
+</span></span><span class="line"><span class="cl">                   ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:423:35: note: in instantiation of member function &#39;std::_Function_handler&lt;void (), std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&gt;::_M_manager&#39; requested here
+</span></span><span class="line"><span class="cl">              _M_manager = &amp;_My_handler::_M_manager;
+</span></span><span class="line"><span class="cl">                                         ^
+</span></span><span class="line"><span class="cl">project.cpp:20:10: note: in instantiation of function template specialization &#39;std::function&lt;void ()&gt;::function&lt;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;, void, void&gt;&#39; requested here
+</span></span><span class="line"><span class="cl">    call(std::move(func));
+</span></span><span class="line"><span class="cl">         ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/functional:493:7: note: explicitly defaulted function was implicitly deleted here
+</span></span><span class="line"><span class="cl">      _Bind(const _Bind&amp;) = default;
+</span></span><span class="line"><span class="cl">      ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/functional:412:29: note: copy constructor of &#39;_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&#39; is implicitly deleted because field &#39;_M_bound_args&#39; has a deleted copy constructor
+</span></span><span class="line"><span class="cl">      tuple&lt;_Bound_args...&gt; _M_bound_args;
+</span></span><span class="line"><span class="cl">                            ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:744:17: note: explicitly defaulted function was implicitly deleted here
+</span></span><span class="line"><span class="cl">      constexpr tuple(const tuple&amp;) = default;
+</span></span><span class="line"><span class="cl">                ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:599:19: note: copy constructor of &#39;tuple&lt;Class&gt;&#39; is implicitly deleted because base class &#39;_Tuple_impl&lt;0, Class&gt;&#39; has a deleted copy constructor
+</span></span><span class="line"><span class="cl">    class tuple : public _Tuple_impl&lt;0, _Elements...&gt;
+</span></span><span class="line"><span class="cl">                  ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:435:17: note: explicitly defaulted function was implicitly deleted here
+</span></span><span class="line"><span class="cl">      constexpr _Tuple_impl(const _Tuple_impl&amp;) = default;
+</span></span><span class="line"><span class="cl">                ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:408:7: note: copy constructor of &#39;_Tuple_impl&lt;0, Class&gt;&#39; is implicitly deleted because base class &#39;_Head_base&lt;0UL, Class&gt;&#39; has a deleted copy constructor
+</span></span><span class="line"><span class="cl">    : private _Head_base&lt;_Idx, _Head&gt;
+</span></span><span class="line"><span class="cl">      ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:86:17: note: explicitly defaulted function was implicitly deleted here
+</span></span><span class="line"><span class="cl">      constexpr _Head_base(const _Head_base&amp;) = default;
+</span></span><span class="line"><span class="cl">                ^
+</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:125:39: note: copy constructor of &#39;_Head_base&lt;0, Class, true&gt;&#39; is implicitly deleted because field &#39;_M_head_impl&#39; has a deleted copy constructor
+</span></span><span class="line"><span class="cl">      [[__no_unique_address__]] _Head _M_head_impl;
+</span></span><span class="line"><span class="cl">                                      ^
+</span></span><span class="line"><span class="cl">project.cpp:7:5: note: &#39;Class&#39; has been explicitly marked deleted here
+</span></span><span class="line"><span class="cl">    Class(const Class &amp;) = delete;
+</span></span><span class="line"><span class="cl">    ^
+</span></span><span class="line"><span class="cl">1 error generated.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个编译信息具有一定的误导性，有可能首先会想到的是 <code>std::bind</code> 生成的函数对象不支持复制构造和移动构造，但实际上查看源码后发现，<code>std::bind</code> 返回一个 <code>_Bind&lt;_Signature&gt;</code> 类，其中一个特化为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">_Functor</span><span class="p">,</span> <span class="k">typename</span><span class="p">...</span> <span class="n">_Bound_args</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">_Bind</span><span class="o">&lt;</span><span class="n">_Functor</span><span class="p">(</span><span class="n">_Bound_args</span><span class="p">...)</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">_Weak_result_type</span><span class="o">&lt;</span><span class="n">_Functor</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_Functor</span> <span class="n">_M_f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tuple</span><span class="o">&lt;</span><span class="n">_Bound_args</span><span class="p">...</span><span class="o">&gt;</span> <span class="n">_M_bound_args</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中 <code>_M_f</code> 在这里是编译器将 <code>lambda</code> 表达式转换后的函数对象，复制构造和移动构造都可以支持，<code>_M_bound_args</code> 则是绑定的参数，使用 <code>std::tuple</code> 实现，其复制构造函数和移动构造函数均为 <code>= default</code>，所以至少移动构造函数也是可用的，也就是 <code>std::bind</code> 返回的这个函数对象 <code>_Bind&lt;_Signature&gt;</code> 也是可以移动构造的，因此 <code>std::move(func)</code> 是没有问题的。</p>
+<p>所以问题出在 <code>std::function</code> 上，再查看 <code>std::function</code> 的源码，找到其构造函数对其他函数对象的重载：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">_Functor</span><span class="p">,</span> <span class="k">typename</span> <span class="o">=</span> <span class="cm">/* ... */</span><span class="p">,</span> <span class="k">typename</span> <span class="o">=</span> <span class="cm">/* ... */</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">function</span><span class="p">(</span><span class="n">_Functor</span> <span class="n">__f</span><span class="p">)</span> <span class="o">:</span> <span class="n">_Function_base</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">typedef</span> <span class="n">_Function_handler</span><span class="o">&lt;</span><span class="n">_Res</span><span class="p">(</span><span class="n">_ArgTypes</span><span class="p">...),</span> <span class="n">_Functor</span><span class="o">&gt;</span> <span class="n">_My_handler</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">_My_handler</span><span class="o">::</span><span class="n">_M_not_empty_function</span><span class="p">(</span><span class="n">__f</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_My_handler</span><span class="o">::</span><span class="n">_M_init_functor</span><span class="p">(</span><span class="n">_M_functor</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">__f</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_M_invoker</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">_My_handler</span><span class="o">::</span><span class="n">_M_invoke</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_M_manager</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">_My_handler</span><span class="o">::</span><span class="n">_M_manager</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果 <code>std::function</code> 接受了一个函数对象，那么就会使用 <code>_My_handler::_M_init_functor(_M_functor, std::move(__f))</code> 将该函数对象复制到自身内部的 <code>_M_functor</code> 成员上，而这个函数最终会调用以下两个函数之一：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">_M_init_functor</span><span class="p">(</span><span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__functor</span><span class="p">,</span> <span class="n">_Functor</span> <span class="o">&amp;&amp;</span><span class="n">__f</span><span class="p">,</span> <span class="n">true_type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">::</span><span class="k">new</span> <span class="p">(</span><span class="n">__functor</span><span class="p">.</span><span class="n">_M_access</span><span class="p">())</span> <span class="n">_Functor</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">__f</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">_M_init_functor</span><span class="p">(</span><span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__functor</span><span class="p">,</span> <span class="n">_Functor</span> <span class="o">&amp;&amp;</span><span class="n">__f</span><span class="p">,</span> <span class="n">false_type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">__functor</span><span class="p">.</span><span class="n">_M_access</span><span class="o">&lt;</span><span class="n">_Functor</span> <span class="o">*&gt;</span><span class="p">()</span> <span class="o">=</span> <span class="k">new</span> <span class="n">_Functor</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">__f</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>事实上也只会调用以上这几个函数，这个过程也都是移动构造，理论上即使删除了复制构造函数也是可以正常工作的，其实问题出在其他函数使用了复制，比如下面这对：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">_M_clone</span><span class="p">(</span><span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__dest</span><span class="p">,</span> <span class="k">const</span> <span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__source</span><span class="p">,</span> <span class="n">true_type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">::</span><span class="k">new</span> <span class="p">(</span><span class="n">__dest</span><span class="p">.</span><span class="n">_M_access</span><span class="p">())</span> <span class="n">_Functor</span><span class="p">(</span><span class="n">__source</span><span class="p">.</span><span class="n">_M_access</span><span class="o">&lt;</span><span class="n">_Functor</span><span class="o">&gt;</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">_M_clone</span><span class="p">(</span><span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__dest</span><span class="p">,</span> <span class="k">const</span> <span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__source</span><span class="p">,</span> <span class="n">false_type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">__dest</span><span class="p">.</span><span class="n">_M_access</span><span class="o">&lt;</span><span class="n">_Functor</span> <span class="o">*&gt;</span><span class="p">()</span> <span class="o">=</span> <span class="k">new</span> <span class="n">_Functor</span><span class="p">(</span><span class="o">*</span><span class="n">__source</span><span class="p">.</span><span class="n">_M_access</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">_Functor</span> <span class="o">*&gt;</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里 <code>__source._M_access&lt;_Functor&gt;()</code> 显然不是右值，只能调用复制构造函数。而模板实例化是全部的，不是只对有使用到的代码进行处理。结论就是不可以用 <code>std::function</code> 保存不可复制构造的函数对象，包括这种 <code>std::bind</code>，因此解决方案也就是不使用 <code>std::function</code>。然而这样就不容易对函数签名进行限制，比如下面的这种方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;functional&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Class</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">()</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">(</span><span class="k">const</span> <span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">(</span><span class="n">Class</span> <span class="o">&amp;&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Class</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">Class</span> <span class="o">&amp;&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Functor</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">call</span><span class="p">(</span><span class="n">Functor</span> <span class="n">func</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">func</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">func</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">([](</span><span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* code */</span> <span class="p">},</span> <span class="n">Class</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="n">call</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">func</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>]]></description></item></channel></rss>

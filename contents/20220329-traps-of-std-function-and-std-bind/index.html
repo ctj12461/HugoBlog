@@ -1,205 +1,258 @@
-<!doctype html><html lang=zh><head><title>std::function 和 std::bind 的使用陷阱 - ctj12461's Blog</title><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui"><meta name=renderer content="webkit"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="black"><meta name=format-detection content="telephone=no,email=no,adress=no"><meta name=theme-color content="#000000"><meta http-equiv=window-target content="_top"><meta name=description content="std::function 和 std::bind 是 C++ 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。 最近写项目时遇到需要将不可复制构造的对象传给 std::bind 的情况，结果遇到了编"><meta name=generator content="Hugo 0.96.0 with theme pure"><title>std::function 和 std::bind 的使用陷阱 - ctj12461's Blog</title><link rel=stylesheet href=https://ctj12461.vercel.app/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css><link rel=stylesheet href=https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css async><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css async><meta property="og:title" content="std::function 和 std::bind 的使用陷阱"><meta property="og:description" content="std::function 和 std::bind 是 C++ 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。 最近写项目时遇到需要将不可复制构造的对象传给 std::bind 的情况，结果遇到了编"><meta property="og:type" content="article"><meta property="og:url" content="https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-03-29T18:21:31+08:00"><meta property="article:modified_time" content="2022-03-29T18:21:31+08:00"><meta itemprop=name content="std::function 和 std::bind 的使用陷阱"><meta itemprop=description content="std::function 和 std::bind 是 C++ 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。 最近写项目时遇到需要将不可复制构造的对象传给 std::bind 的情况，结果遇到了编"><meta itemprop=datePublished content="2022-03-29T18:21:31+08:00"><meta itemprop=dateModified content="2022-03-29T18:21:31+08:00"><meta itemprop=wordCount content="1143"><meta itemprop=keywords content="C++,标准库,函数对象,技术,"><meta name=twitter:card content="summary"><meta name=twitter:title content="std::function 和 std::bind 的使用陷阱"><meta name=twitter:description content="std::function 和 std::bind 是 C++ 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。 最近写项目时遇到需要将不可复制构造的对象传给 std::bind 的情况，结果遇到了编"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
-<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body class="main-center theme-black" itemscope itemtype=http://schema.org/WebPage><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=slimContent><div class=navbar-header><div class="profile-block text-center"><a id=avatar href=https://github.com/ctj12461 target=_blank><img class="img-circle img-rotate" src=https://ctj12461.vercel.app/avatar.jpg width=200 height=200></a><h2 id=name class="hidden-xs hidden-sm">ctj12461</h2><h3 id=title class="hidden-xs hidden-sm hidden-md"></h3><small id=location class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Fuzhou, China</small></div><div class=search id=search-form-wrap><form class="search-form sidebar-form"><div class=input-group><input type=text class="search-form-input form-control" placeholder=搜索>
-<span class=input-group-btn><button type=submit class="search-form-submit btn btn-flat" onclick=return!1><i class="icon icon-search"></i></button></span></div><div class=ins-search><div class=ins-search-mask></div><div class=ins-search-container><div class=ins-input-wrapper><input type=text class=ins-search-input placeholder=想要查找什么... x-webkit-speech>
-<button type=button class="close ins-close ins-selectable" data-dismiss=modal aria-label=Close><span aria-hidden=true>×</span></button></div><div class=ins-section-wrapper><div class=ins-section-container></div></div></div></div></form></div><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#main-navbar aria-controls=main-navbar aria-expanded=false>
-<span class=sr-only>Toggle navigation</span>
-<span class=icon-bar></span>
-<span class=icon-bar></span>
-<span class=icon-bar></span></button></div><nav id=main-navbar class="collapse navbar-collapse" itemscope itemtype=http://schema.org/SiteNavigationElement role=navigation><ul class="nav navbar-nav main-nav"><li class="menu-item menu-item-home"><a href=/><i class="icon icon-home-fill"></i>
-<span class=menu-title>Home</span></a></li><li class="menu-item menu-item-archives"><a href=/posts/><i class="icon icon-archives-fill"></i>
-<span class=menu-title>Archives</span></a></li><li class="menu-item menu-item-categories"><a href=/categories/><i class="icon icon-folder"></i>
-<span class=menu-title>Categories</span></a></li><li class="menu-item menu-item-tags"><a href=/tags/><i class="icon icon-tags"></i>
-<span class=menu-title>Tags</span></a></li><li class="menu-item menu-item-about"><a href=/about/><i class="icon icon-cup-fill"></i>
-<span class=menu-title>About</span></a></li></ul></nav></div></header><aside class=sidebar itemscope itemtype=http://schema.org/WPSideBar><div class=slimContent><div class=widget><h3 class=widget-title>分类</h3><div class=widget-body><ul class=category-list><li class=category-list-item><a href=https://ctj12461.vercel.app/categories/document/ class=category-list-link>document</a><span class=category-list-count>1</span></li><li class=category-list-item><a href=https://ctj12461.vercel.app/categories/olympiad-in-information/ class=category-list-link>olympiad-in-information</a><span class=category-list-count>8</span></li><li class=category-list-item><a href=https://ctj12461.vercel.app/categories/tech/ class=category-list-link>tech</a><span class=category-list-count>2</span></li></ul></div></div><div class=widget><h3 class=widget-title>标签</h3><div id=tag-cloud-list class=widget-body><a href=https://ctj12461.vercel.app/tags/arch-linux/ class=tag-list-link rel=1>arch-linux<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/bsgs/ class=tag-list-link rel=1>bsgs<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/burnside-%E5%BC%95%E7%90%86/ class=tag-list-link rel=1>burnside-引理<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/c++/ class=tag-list-link rel=10>c++<span class=tag-list-count>10</span></a>
-<a href=https://ctj12461.vercel.app/tags/dp/ class=tag-list-link rel=1>dp<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/linux/ class=tag-list-link rel=1>linux<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/multigenerator/ class=tag-list-link rel=1>multigenerator<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/n-%E6%AC%A1%E5%89%A9%E4%BD%99/ class=tag-list-link rel=1>n-次剩余<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/oi/ class=tag-list-link rel=9>oi<span class=tag-list-count>9</span></a>
-<a href=https://ctj12461.vercel.app/tags/p%C3%B3lya-%E5%AE%9A%E7%90%86/ class=tag-list-link rel=1>pólya-定理<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86/ class=tag-list-link rel=1>中国剩余定理<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E4%BA%8C%E5%88%86%E5%9B%BE/ class=tag-list-link rel=1>二分图<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1/ class=tag-list-link rel=1>函数对象<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E5%8E%9F%E6%A0%B9/ class=tag-list-link rel=1>原根<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E5%90%8C%E4%BD%99/ class=tag-list-link rel=1>同余<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E5%9B%BE%E8%AE%BA/ class=tag-list-link rel=1>图论<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/ class=tag-list-link rel=1>多线程<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/ class=tag-list-link rel=1>多项式<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E5%BB%BA%E6%A8%A1/ class=tag-list-link rel=1>建模<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E6%8A%80%E6%9C%AF/ class=tag-list-link rel=1>技术<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E6%8F%92%E5%80%BC/ class=tag-list-link rel=1>拉格朗日插值<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E6%95%B0%E5%AD%A6/ class=tag-list-link rel=6>数学<span class=tag-list-count>6</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E6%95%B0%E8%AE%BA/ class=tag-list-link rel=3>数论<span class=tag-list-count>3</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E6%95%B0%E8%AE%BA%E5%88%86%E5%9D%97/ class=tag-list-link rel=1>数论分块<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E6%A0%87%E5%87%86%E5%BA%93/ class=tag-list-link rel=1>标准库<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E6%A0%91%E5%BD%A2-dp/ class=tag-list-link rel=1>树形-dp<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/ class=tag-list-link rel=1>欧拉函数<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86/ class=tag-list-link rel=1>欧拉定理<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0/ class=tag-list-link rel=1>积性函数<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E7%AD%9B%E6%B3%95/ class=tag-list-link rel=1>筛法<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/ class=tag-list-link rel=1>线性代数<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E7%BD%AE%E6%8D%A2%E7%BE%A4/ class=tag-list-link rel=1>置换群<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E7%BE%A4%E8%AE%BA/ class=tag-list-link rel=1>群论<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%87%BD%E6%95%B0/ class=tag-list-link rel=1>莫比乌斯函数<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/ class=tag-list-link rel=1>莫比乌斯反演<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E9%85%8D%E7%BD%AE/ class=tag-list-link rel=1>配置<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E9%A1%B9%E7%9B%AE/ class=tag-list-link rel=1>项目<span class=tag-list-count>1</span></a>
-<a href=https://ctj12461.vercel.app/tags/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/ class=tag-list-link rel=1>高斯消元<span class=tag-list-count>1</span></a></div><script>document.onreadystatechange=()=>{document.readyState==="complete"&&tagCloud("#tag-cloud-list a",8,20)};function tagCloud(n,s,o){let t=0,e=0;$(n).each(function(){let n=Number($(this).attr("rel"));t<n&&(t=n),(e>n||e==0)&&(e=n)});let i=(o-s)/(t-e);$(n).each(function(){let t=$(this).attr("rel")-e;$(this).css({"font-size":s+t*i+"px"})})}</script></div><div class=widget><h3 class=widget-title>最新文章</h3><div class=widget-body><ul class="recent-post-list list-unstyled no-thumbnail"><li><div class=item-inner><p class=item-title><a href=https://ctj12461.vercel.app/contents/20220404-multigenerator-document/ class=title>MultiGenerator 使用文档</a></p><p class=item-date><time datetime="2022-04-04 22:15:15 +0800 +0800" itemprop=datePublished>2022-04-04</time></p></div></li><li><div class=item-inner><p class=item-title><a href=https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/ class=title>std::function 和 std::bind 的使用陷阱</a></p><p class=item-date><time datetime="2022-03-29 18:21:31 +0800 +0800" itemprop=datePublished>2022-03-29</time></p></div></li><li><div class=item-inner><p class=item-title><a href=https://ctj12461.vercel.app/contents/20220317-arch-linux-software-config/ class=title>Arch Linux 常用软件配置</a></p><p class=item-date><time datetime="2022-03-17 22:28:02 +0800 +0800" itemprop=datePublished>2022-03-17</time></p></div></li><li><div class=item-inner><p class=item-title><a href=https://ctj12461.vercel.app/contents/20220222-bipartite-graph-matching-note/ class=title>二分图匹配学习笔记</a></p><p class=item-date><time datetime="2022-02-22 13:31:06 +0800 +0800" itemprop=datePublished>2022-02-22</time></p></div></li><li><div class=item-inner><p class=item-title><a href=https://ctj12461.vercel.app/contents/20220220-mobius-inversion-note/ class=title>莫比乌斯反演学习笔记</a></p><p class=item-date><time datetime="2022-02-20 11:23:07 +0800 +0800" itemprop=datePublished>2022-02-20</time></p></div></li></ul></div></div></div></aside><aside class="sidebar sidebar-toc collapse" id=collapseToc itemscope itemtype=http://schema.org/WPSideBar><div class=slimContent><h4 class=toc-title>文章目录</h4><nav id=toc class="js-toc toc"></nav></div></aside><main class=main role=main><div class=content><article id=- class="article article-type-" itemscope itemtype=http://schema.org/BlogPosting><div class=article-header><h1 itemprop=name><a class=article-title href=/contents/20220329-traps-of-std-function-and-std-bind/>std::function 和 std::bind 的使用陷阱</a></h1><div class=article-meta><span class=article-date><i class="icon icon-calendar-check"></i>&nbsp;
-<a href=https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/ class=article-date><time datetime="2022-03-29 18:21:31 +0800 +0800" itemprop=datePublished>2022-03-29</time></a></span>
-<span class=article-category><i class="icon icon-folder"></i>&nbsp;
-<a class=article-category-link href=/categories/tech/>Tech</a></span>
-<span class=article-tag><i class="icon icon-tags"></i>&nbsp;
-<a class=article-tag-link href=/tags/c++/>C++</a>
-<a class=article-tag-link href=/tags/%E6%A0%87%E5%87%86%E5%BA%93/>标准库</a>
-<a class=article-tag-link href=/tags/%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1/>函数对象</a>
-<a class=article-tag-link href=/tags/%E6%8A%80%E6%9C%AF/>技术</a></span>
-<span class="article-read hidden-xs"><i class="icon icon-eye-fill" aria-hidden=true></i>
-<span id=busuanzi_container_page_pv><span id=busuanzi_value_page_pv>0</span></span></span>
-<span class="post-wordcount hidden-xs" itemprop=wordCount>字数统计: 1143字</span>
-<span class="post-readcount hidden-xs" itemprop=timeRequired>阅读时长: 3分</span></div></div><div class="article-entry marked-body js-toc-content" itemprop=articleBody><p><code>std::function</code> 和 <code>std::bind</code> 是 <code>C++</code> 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。</p><p>最近写项目时遇到需要将不可复制构造的对象传给 <code>std::bind</code> 的情况，结果遇到了编译错误。代码逻辑可以抽象为下面这样：</p><pre><code class=language-cpp>#include &lt;functional&gt;
-
-class Class {
-public:
-    Class() {}
-
-    Class(const Class &amp;) = delete;
-    Class &amp;operator=(const Class &amp;) = delete;
-
-    Class(Class &amp;&amp;) = default;
-    Class &amp;operator=(Class &amp;&amp;) = default;
-};
-
-void call(std::function&lt;void()&gt; func) {
-    func();
-}
-
-int main() {
-    auto func = std::bind([](Class &amp;) { /* code */ }, Class());
-    call(std::move(func));
-    return 0;
-}
-</code></pre><p>这个错误 <code>Language Server</code> 是检测不到的，只有在编译后才能发现。编译错误信息如下：</p><pre><code class=language-plain>In file included from project.cpp:1:
-In file included from /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/functional:59:
-/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:159:10: error: call to implicitly-deleted copy constructor of 'std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;'
-            new _Functor(*__source._M_access&lt;const _Functor*&gt;());
-                ^        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:196:8: note: in instantiation of member function 'std::_Function_base::_Base_manager&lt;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&gt;::_M_clone' requested here
-              _M_clone(__dest, __source, _Local_storage());
-              ^
-/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:283:13: note: in instantiation of member function 'std::_Function_base::_Base_manager&lt;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&gt;::_M_manager' requested here
-            _Base::_M_manager(__dest, __source, __op);
-                   ^
-/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:423:35: note: in instantiation of member function 'std::_Function_handler&lt;void (), std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&gt;::_M_manager' requested here
-              _M_manager = &amp;_My_handler::_M_manager;
-                                         ^
-project.cpp:20:10: note: in instantiation of function template specialization 'std::function&lt;void ()&gt;::function&lt;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;, void, void&gt;' requested here
-    call(std::move(func));
-         ^
-/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/functional:493:7: note: explicitly defaulted function was implicitly deleted here
-      _Bind(const _Bind&amp;) = default;
-      ^
-/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/functional:412:29: note: copy constructor of '_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;' is implicitly deleted because field '_M_bound_args' has a deleted copy constructor
-      tuple&lt;_Bound_args...&gt; _M_bound_args;
-                            ^
-/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:744:17: note: explicitly defaulted function was implicitly deleted here
-      constexpr tuple(const tuple&amp;) = default;
-                ^
-/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:599:19: note: copy constructor of 'tuple&lt;Class&gt;' is implicitly deleted because base class '_Tuple_impl&lt;0, Class&gt;' has a deleted copy constructor
-    class tuple : public _Tuple_impl&lt;0, _Elements...&gt;
-                  ^
-/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:435:17: note: explicitly defaulted function was implicitly deleted here
-      constexpr _Tuple_impl(const _Tuple_impl&amp;) = default;
-                ^
-/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:408:7: note: copy constructor of '_Tuple_impl&lt;0, Class&gt;' is implicitly deleted because base class '_Head_base&lt;0UL, Class&gt;' has a deleted copy constructor
-    : private _Head_base&lt;_Idx, _Head&gt;
-      ^
-/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:86:17: note: explicitly defaulted function was implicitly deleted here
-      constexpr _Head_base(const _Head_base&amp;) = default;
-                ^
-/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:125:39: note: copy constructor of '_Head_base&lt;0, Class, true&gt;' is implicitly deleted because field '_M_head_impl' has a deleted copy constructor
-      [[__no_unique_address__]] _Head _M_head_impl;
-                                      ^
-project.cpp:7:5: note: 'Class' has been explicitly marked deleted here
-    Class(const Class &amp;) = delete;
-    ^
-1 error generated.
-</code></pre><p>这个编译信息具有一定的误导性，有可能首先会想到的是 <code>std::bind</code> 生成的函数对象不支持复制构造和移动构造，但实际上查看源码后发现，<code>std::bind</code> 返回一个 <code>_Bind&lt;_Signature></code> 类，其中一个特化为：</p><pre><code class=language-cpp>template &lt;typename _Functor, typename... _Bound_args&gt;
-class _Bind&lt;_Functor(_Bound_args...)&gt; : public _Weak_result_type&lt;_Functor&gt; {
-    _Functor _M_f;
-    tuple&lt;_Bound_args...&gt; _M_bound_args;
-
-    // ...
-};
-</code></pre><p>其中 <code>_M_f</code> 在这里是编译器将 <code>lambda</code> 表达式转换后的函数对象，复制构造和移动构造都可以支持，<code>_M_bound_args</code> 则是绑定的参数，使用 <code>std::tuple</code> 实现，其复制构造函数和移动构造函数均为 <code>= default</code>，所以至少移动构造函数也是可用的，也就是 <code>std::bind</code> 返回的这个函数对象 <code>_Bind&lt;_Signature></code> 也是可以移动构造的，因此 <code>std::move(func)</code> 是没有问题的。</p><p>所以问题出在 <code>std::function</code> 上，再查看 <code>std::function</code> 的源码，找到其构造函数对其他函数对象的重载：</p><pre><code class=language-cpp>template &lt;typename _Functor, typename = /* ... */, typename = /* ... */&gt;
-function(_Functor __f) : _Function_base() {
-    typedef _Function_handler&lt;_Res(_ArgTypes...), _Functor&gt; _My_handler;
-
-    if (_My_handler::_M_not_empty_function(__f)) {
-        _My_handler::_M_init_functor(_M_functor, std::move(__f));
-        _M_invoker = &amp;_My_handler::_M_invoke;
-        _M_manager = &amp;_My_handler::_M_manager;
-    }
-}
-</code></pre><p>如果 <code>std::function</code> 接受了一个函数对象，那么就会使用 <code>_My_handler::_M_init_functor(_M_functor, std::move(__f))</code> 将该函数对象复制到自身内部的 <code>_M_functor</code> 成员上，而这个函数最终会调用以下两个函数之一：</p><pre><code class=language-cpp>static void _M_init_functor(_Any_data &amp;__functor, _Functor &amp;&amp;__f, true_type) {
-    ::new (__functor._M_access()) _Functor(std::move(__f));
-}
-
-static void _M_init_functor(_Any_data &amp;__functor, _Functor &amp;&amp;__f, false_type) {
-    __functor._M_access&lt;_Functor *&gt;() = new _Functor(std::move(__f));
-}
-</code></pre><p>事实上也只会调用以上这几个函数，这个过程也都是移动构造，理论上即使删除了复制构造函数也是可以正常工作的，其实问题出在其他函数使用了复制，比如下面这对：</p><pre><code class=language-cpp>static void _M_clone(_Any_data &amp;__dest, const _Any_data &amp;__source, true_type) {
-    ::new (__dest._M_access()) _Functor(__source._M_access&lt;_Functor&gt;());
-}
-
-static void _M_clone(_Any_data &amp;__dest, const _Any_data &amp;__source, false_type) {
-    __dest._M_access&lt;_Functor *&gt;() = new _Functor(*__source._M_access&lt;const _Functor *&gt;());
-}
-</code></pre><p>这里 <code>__source._M_access&lt;_Functor>()</code> 显然不是右值，只能调用复制构造函数。而模板实例化是全部的，不是只对有使用到的代码进行处理。结论就是不可以用 <code>std::function</code> 保存不可复制构造的函数对象，包括这种 <code>std::bind</code>，因此解决方案也就是不使用 <code>std::function</code>。然而这样就不容易对函数签名进行限制，比如下面的这种方法：</p><pre><code class=language-cpp>#include &lt;functional&gt;
-
-class Class {
-public:
-    Class() {}
-
-    Class(const Class &amp;) = delete;
-    Class &amp;operator=(const Class &amp;) = delete;
-
-    Class(Class &amp;&amp;) = default;
-    Class &amp;operator=(Class &amp;&amp;) = default;
-};
-
-template &lt;typename Functor&gt;
-void call(Functor func) {
-    func();
-}
-
-int main() {
-    auto func = std::bind([](Class &amp;) { /* code */ }, Class());
-    call(std::move(func));
-    return 0;
-}
-</code></pre></div><div class=article-footer><blockquote class=mt-2x><ul class="post-copyright list-unstyled"><li class="post-copyright-link hidden-xs"><strong>本文链接:</strong>
-<a href=https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/ title="std::function 和 std::bind 的使用陷阱" target=_blank rel=external>https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/</a></li><li class=post-copyright-license><strong>License:</strong>
-<a href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank rel=external>CC BY-NC 4.0</a></li></ul></blockquote><div class="panel panel-default panel-badger"><div class=panel-body><figure class=media><div class=media-left><a href=https://github.com/ctj12461 target=_blank class="img-burn thumb-sm visible-lg"><img src=https://ctj12461.vercel.app/avatar.jpg class="img-rounded w-full" alt></a></div><div class=media-body><h3 class=media-heading><a href=https://github.com/ctj12461 target=_blank><span class=text-dark>ctj12461</span><small class=ml-1x></small></a></h3><div>当你想要放弃时，想想你为什么开始。</div></div></figure></div></div></div></article></div><nav class="bar bar-footer clearfix" data-stick-bottom><div class=bar-inner><ul class="pager pull-left"><li class=prev><a href=https://ctj12461.vercel.app/contents/20220317-arch-linux-software-config/ title="Arch Linux 常用软件配置"><i class="icon icon-angle-left" aria-hidden=true></i><span>&nbsp;&nbsp;下一篇</span></a></li><li class=next><a href=https://ctj12461.vercel.app/contents/20220404-multigenerator-document/ title="MultiGenerator 使用文档"><span>上一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden=true></i></a></li><li class=toggle-toc><a class="toggle-btn collapsed" data-toggle=collapse href=#collapseToc aria-expanded=false title=文章目录 role=button><span>[&nbsp;</span><span>文章目录</span>
-<i class="text-collapsed icon icon-anchor"></i>
-<i class="text-in icon icon-close"></i>
-<span>]</span></a></li></ul><div class=bar-right><div class=share-component data-sites=weibo,qq,wechat,facebook,twitter data-mobile-sites=weibo,qq,qzone></div></div></div></nav></main><footer class=footer itemscope itemtype=http://schema.org/WPFooter><ul class=social-links><li><a href=https://github.com/ctj12461 target=_blank title=github data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li><li><a href=https://ctj12461.vercel.app/index.xml target=_blank title=rss data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li></ul><div class=copyright>&copy;2022 -
-2022<div class=publishby>Theme by <a href=https://github.com/xiaoheiAh target=_blank>xiaoheiAh </a>base on<a href=https://github.com/xiaoheiAh/hugo-theme-pure target=_blank> pure</a>.</div></div></footer><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
-<script type=text/x-mathjax-config>
-    MathJax.Hub.Config({
-            showMathMenu: false, //disables context menu
-            tex2jax: {
-            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
-           }
-    });
-</script><script src=https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js></script>
-<script>window.jQuery||document.write('<script src="js/jquery.min.js"><\/script>')</script><script type=text/javascript src=https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js></script>
-<script type=text/javascript src=https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js defer></script>
-<script type=text/javascript src=https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js defer></script><script>hljs.configure({tabReplace:"    ",classPrefix:''}),hljs.initHighlightingOnLoad()</script>
-<script src=https://ctj12461.vercel.app/js/application.min.e720b935330b2a176cfb4b8bd9a6cc632caf6b752f94e87c62152a9557ff6d15.js></script>
-<script src=https://ctj12461.vercel.app/js/plugin.min.334875d4d4a72afb866e446df61b5f4bf1f0a516d1303166f52f7804d17ef3ab.js></script>
-<script>(function(e){var t={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(未命名)"},ROOT_URL:"https://ctj12461.vercel.app",CONTENT_URL:"https://ctj12461.vercel.app/searchindex.json "};e.INSIGHT_CONFIG=t})(window)</script><script type=text/javascript src=https://ctj12461.vercel.app/js/insight.min.759e5002714e12761afcd512f103d39c86573165db51972dd3b24df6eddf238ed3e3e85c1988e96cba09419d1deccdeb68c15284f2c3d03049fad53c11774524.js defer></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js></script>
-<script>tocbot.init({tocSelector:".js-toc",contentSelector:".js-toc-content",headingSelector:"h1, h2, h3",hasInnerContainers:!0})</script><script async src=https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script></body></html>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>std::function 和 std::bind 的使用陷阱 - ctj12461's Blog</title><meta name=author content="ctj12461: "><meta name=description content="std::function 和 std::bind 是 C++ 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。 最近写项目时遇到需要将不可复制构造的对象传给 std::bind 的情况，结果遇到了编"><meta name=keywords content="C++,标准库,函数对象,技术"><meta itemprop=name content="std::function 和 std::bind 的使用陷阱"><meta itemprop=description content="std::function 和 std::bind 是 C++ 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。 最近写项目时遇到需要将不可复制构造的对象传给 std::bind 的情况，结果遇到了编"><meta itemprop=datePublished content="2022-03-29T18:21:31+08:00"><meta itemprop=dateModified content="2022-03-29T18:21:31+08:00"><meta itemprop=wordCount content="1264"><meta itemprop=image content="https://ctj12461.vercel.app/logo.png"><meta itemprop=keywords content="C++,标准库,函数对象,技术,"><meta property="og:title" content="std::function 和 std::bind 的使用陷阱"><meta property="og:description" content="std::function 和 std::bind 是 C++ 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。 最近写项目时遇到需要将不可复制构造的对象传给 std::bind 的情况，结果遇到了编"><meta property="og:type" content="article"><meta property="og:url" content="https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/"><meta property="og:image" content="https://ctj12461.vercel.app/logo.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-03-29T18:21:31+08:00"><meta property="article:modified_time" content="2022-03-29T18:21:31+08:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://ctj12461.vercel.app/logo.png"><meta name=twitter:title content="std::function 和 std::bind 的使用陷阱"><meta name=twitter:description content="std::function 和 std::bind 是 C++ 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。 最近写项目时遇到需要将不可复制构造的对象传给 std::bind 的情况，结果遇到了编"><meta name=application-name content="ctj12461"><meta name=apple-mobile-web-app-title content="ctj12461"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#252627"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/><link rel=prev href=https://ctj12461.vercel.app/contents/20220317-arch-linux-software-config/><link rel=next href=https://ctj12461.vercel.app/contents/20220404-multigenerator-document/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"std::function 和 std::bind 的使用陷阱","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/ctj12461.vercel.app\/contents\/20220329-traps-of-std-function-and-std-bind\/"},"genre":"posts","keywords":"C\u002b\u002b, 标准库, 函数对象, 技术","wordcount":1264,"url":"https:\/\/ctj12461.vercel.app\/contents\/20220329-traps-of-std-function-and-std-bind\/","datePublished":"2022-03-29T18:21:31+08:00","dateModified":"2022-03-29T18:21:31+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"ctj12461"},"description":""}</script></head><body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="ctj12461's Blog"><span class=header-title-text>ctj12461's Blog</span></a><span class=header-subtitle></span></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/><i class="fa fa-archive" aria-hidden=true></i> 文章 </a><a class=menu-item href=/tags/><i class="fa fa-tags" aria-hidden=true></i> 标签 </a><a class=menu-item href=/categories/><i class="fa fa-folder-open" aria-hidden=true></i> 分类 </a><a class=menu-item href=/about/><i class="fa fa-info-circle" aria-hidden=true></i> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder="搜索文章标题或内容 ..." id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="ctj12461's Blog"><span class=header-title-text>ctj12461's Blog</span></a><span class=header-subtitle></span></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder="搜索文章标题或内容 ..." id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/ title><i class="fa fa-archive" aria-hidden=true></i> 文章</a><a class=menu-item href=/tags/ title><i class="fa fa-tags" aria-hidden=true></i> 标签</a><a class=menu-item href=/categories/ title><i class="fa fa-folder-open" aria-hidden=true></i> 分类</a><a class=menu-item href=/about/ title><i class="fa fa-info-circle" aria-hidden=true></i> 关于</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><article class="page single"><h1 class="single-title animated flipInX">std::function 和 std::bind 的使用陷阱</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>ctj12461</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/tech/><i class="far fa-folder fa-fw"></i>Tech</a></span></div><div class=post-meta-line><span title="2022-03-29 18:21:31"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-03-29>2022-03-29</time>
+</span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1264 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div></div><div class=content id=content><p><code>std::function</code> 和 <code>std::bind</code> 是 <code>C++</code> 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。</p><p>最近写项目时遇到需要将不可复制构造的对象传给 <code>std::bind</code> 的情况，结果遇到了编译错误。代码逻辑可以抽象为下面这样：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;functional&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Class</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>Class</span><span class=p>()</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>Class</span><span class=p>(</span><span class=k>const</span> <span class=n>Class</span> <span class=o>&amp;</span><span class=p>)</span> <span class=o>=</span> <span class=k>delete</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>Class</span> <span class=o>&amp;</span><span class=k>operator</span><span class=o>=</span><span class=p>(</span><span class=k>const</span> <span class=n>Class</span> <span class=o>&amp;</span><span class=p>)</span> <span class=o>=</span> <span class=k>delete</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>Class</span><span class=p>(</span><span class=n>Class</span> <span class=o>&amp;&amp;</span><span class=p>)</span> <span class=o>=</span> <span class=k>default</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>Class</span> <span class=o>&amp;</span><span class=k>operator</span><span class=o>=</span><span class=p>(</span><span class=n>Class</span> <span class=o>&amp;&amp;</span><span class=p>)</span> <span class=o>=</span> <span class=k>default</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=nf>call</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>function</span><span class=o>&lt;</span><span class=kt>void</span><span class=p>()</span><span class=o>&gt;</span> <span class=n>func</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>func</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>auto</span> <span class=n>func</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>bind</span><span class=p>([](</span><span class=n>Class</span> <span class=o>&amp;</span><span class=p>)</span> <span class=p>{</span> <span class=cm>/* code */</span> <span class=p>},</span> <span class=n>Class</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>    <span class=n>call</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>move</span><span class=p>(</span><span class=n>func</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>这个错误 <code>Language Server</code> 是检测不到的，只有在编译后才能发现。编译错误信息如下：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-plain data-lang=plain><span class=line><span class=cl>In file included from project.cpp:1:
+</span></span><span class=line><span class=cl>In file included from /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/functional:59:
+</span></span><span class=line><span class=cl>/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:159:10: error: call to implicitly-deleted copy constructor of &#39;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&#39;
+</span></span><span class=line><span class=cl>            new _Functor(*__source._M_access&lt;const _Functor*&gt;());
+</span></span><span class=line><span class=cl>                ^        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</span></span><span class=line><span class=cl>/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:196:8: note: in instantiation of member function &#39;std::_Function_base::_Base_manager&lt;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&gt;::_M_clone&#39; requested here
+</span></span><span class=line><span class=cl>              _M_clone(__dest, __source, _Local_storage());
+</span></span><span class=line><span class=cl>              ^
+</span></span><span class=line><span class=cl>/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:283:13: note: in instantiation of member function &#39;std::_Function_base::_Base_manager&lt;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&gt;::_M_manager&#39; requested here
+</span></span><span class=line><span class=cl>            _Base::_M_manager(__dest, __source, __op);
+</span></span><span class=line><span class=cl>                   ^
+</span></span><span class=line><span class=cl>/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:423:35: note: in instantiation of member function &#39;std::_Function_handler&lt;void (), std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&gt;::_M_manager&#39; requested here
+</span></span><span class=line><span class=cl>              _M_manager = &amp;_My_handler::_M_manager;
+</span></span><span class=line><span class=cl>                                         ^
+</span></span><span class=line><span class=cl>project.cpp:20:10: note: in instantiation of function template specialization &#39;std::function&lt;void ()&gt;::function&lt;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;, void, void&gt;&#39; requested here
+</span></span><span class=line><span class=cl>    call(std::move(func));
+</span></span><span class=line><span class=cl>         ^
+</span></span><span class=line><span class=cl>/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/functional:493:7: note: explicitly defaulted function was implicitly deleted here
+</span></span><span class=line><span class=cl>      _Bind(const _Bind&amp;) = default;
+</span></span><span class=line><span class=cl>      ^
+</span></span><span class=line><span class=cl>/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/functional:412:29: note: copy constructor of &#39;_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&#39; is implicitly deleted because field &#39;_M_bound_args&#39; has a deleted copy constructor
+</span></span><span class=line><span class=cl>      tuple&lt;_Bound_args...&gt; _M_bound_args;
+</span></span><span class=line><span class=cl>                            ^
+</span></span><span class=line><span class=cl>/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:744:17: note: explicitly defaulted function was implicitly deleted here
+</span></span><span class=line><span class=cl>      constexpr tuple(const tuple&amp;) = default;
+</span></span><span class=line><span class=cl>                ^
+</span></span><span class=line><span class=cl>/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:599:19: note: copy constructor of &#39;tuple&lt;Class&gt;&#39; is implicitly deleted because base class &#39;_Tuple_impl&lt;0, Class&gt;&#39; has a deleted copy constructor
+</span></span><span class=line><span class=cl>    class tuple : public _Tuple_impl&lt;0, _Elements...&gt;
+</span></span><span class=line><span class=cl>                  ^
+</span></span><span class=line><span class=cl>/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:435:17: note: explicitly defaulted function was implicitly deleted here
+</span></span><span class=line><span class=cl>      constexpr _Tuple_impl(const _Tuple_impl&amp;) = default;
+</span></span><span class=line><span class=cl>                ^
+</span></span><span class=line><span class=cl>/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:408:7: note: copy constructor of &#39;_Tuple_impl&lt;0, Class&gt;&#39; is implicitly deleted because base class &#39;_Head_base&lt;0UL, Class&gt;&#39; has a deleted copy constructor
+</span></span><span class=line><span class=cl>    : private _Head_base&lt;_Idx, _Head&gt;
+</span></span><span class=line><span class=cl>      ^
+</span></span><span class=line><span class=cl>/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:86:17: note: explicitly defaulted function was implicitly deleted here
+</span></span><span class=line><span class=cl>      constexpr _Head_base(const _Head_base&amp;) = default;
+</span></span><span class=line><span class=cl>                ^
+</span></span><span class=line><span class=cl>/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:125:39: note: copy constructor of &#39;_Head_base&lt;0, Class, true&gt;&#39; is implicitly deleted because field &#39;_M_head_impl&#39; has a deleted copy constructor
+</span></span><span class=line><span class=cl>      [[__no_unique_address__]] _Head _M_head_impl;
+</span></span><span class=line><span class=cl>                                      ^
+</span></span><span class=line><span class=cl>project.cpp:7:5: note: &#39;Class&#39; has been explicitly marked deleted here
+</span></span><span class=line><span class=cl>    Class(const Class &amp;) = delete;
+</span></span><span class=line><span class=cl>    ^
+</span></span><span class=line><span class=cl>1 error generated.
+</span></span></code></pre></td></tr></table></div></div><p>这个编译信息具有一定的误导性，有可能首先会想到的是 <code>std::bind</code> 生成的函数对象不支持复制构造和移动构造，但实际上查看源码后发现，<code>std::bind</code> 返回一个 <code>_Bind&lt;_Signature></code> 类，其中一个特化为：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>template</span> <span class=o>&lt;</span><span class=k>typename</span> <span class=n>_Functor</span><span class=p>,</span> <span class=k>typename</span><span class=p>...</span> <span class=n>_Bound_args</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>_Bind</span><span class=o>&lt;</span><span class=n>_Functor</span><span class=p>(</span><span class=n>_Bound_args</span><span class=p>...)</span><span class=o>&gt;</span> <span class=o>:</span> <span class=k>public</span> <span class=n>_Weak_result_type</span><span class=o>&lt;</span><span class=n>_Functor</span><span class=o>&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>_Functor</span> <span class=n>_M_f</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>tuple</span><span class=o>&lt;</span><span class=n>_Bound_args</span><span class=p>...</span><span class=o>&gt;</span> <span class=n>_M_bound_args</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// ...
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><p>其中 <code>_M_f</code> 在这里是编译器将 <code>lambda</code> 表达式转换后的函数对象，复制构造和移动构造都可以支持，<code>_M_bound_args</code> 则是绑定的参数，使用 <code>std::tuple</code> 实现，其复制构造函数和移动构造函数均为 <code>= default</code>，所以至少移动构造函数也是可用的，也就是 <code>std::bind</code> 返回的这个函数对象 <code>_Bind&lt;_Signature></code> 也是可以移动构造的，因此 <code>std::move(func)</code> 是没有问题的。</p><p>所以问题出在 <code>std::function</code> 上，再查看 <code>std::function</code> 的源码，找到其构造函数对其他函数对象的重载：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>template</span> <span class=o>&lt;</span><span class=k>typename</span> <span class=n>_Functor</span><span class=p>,</span> <span class=k>typename</span> <span class=o>=</span> <span class=cm>/* ... */</span><span class=p>,</span> <span class=k>typename</span> <span class=o>=</span> <span class=cm>/* ... */</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=n>function</span><span class=p>(</span><span class=n>_Functor</span> <span class=n>__f</span><span class=p>)</span> <span class=o>:</span> <span class=n>_Function_base</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>typedef</span> <span class=n>_Function_handler</span><span class=o>&lt;</span><span class=n>_Res</span><span class=p>(</span><span class=n>_ArgTypes</span><span class=p>...),</span> <span class=n>_Functor</span><span class=o>&gt;</span> <span class=n>_My_handler</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>_My_handler</span><span class=o>::</span><span class=n>_M_not_empty_function</span><span class=p>(</span><span class=n>__f</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>_My_handler</span><span class=o>::</span><span class=n>_M_init_functor</span><span class=p>(</span><span class=n>_M_functor</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>move</span><span class=p>(</span><span class=n>__f</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>        <span class=n>_M_invoker</span> <span class=o>=</span> <span class=o>&amp;</span><span class=n>_My_handler</span><span class=o>::</span><span class=n>_M_invoke</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>_M_manager</span> <span class=o>=</span> <span class=o>&amp;</span><span class=n>_My_handler</span><span class=o>::</span><span class=n>_M_manager</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>如果 <code>std::function</code> 接受了一个函数对象，那么就会使用 <code>_My_handler::_M_init_functor(_M_functor, std::move(__f))</code> 将该函数对象复制到自身内部的 <code>_M_functor</code> 成员上，而这个函数最终会调用以下两个函数之一：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>static</span> <span class=kt>void</span> <span class=nf>_M_init_functor</span><span class=p>(</span><span class=n>_Any_data</span> <span class=o>&amp;</span><span class=n>__functor</span><span class=p>,</span> <span class=n>_Functor</span> <span class=o>&amp;&amp;</span><span class=n>__f</span><span class=p>,</span> <span class=n>true_type</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=o>::</span><span class=k>new</span> <span class=p>(</span><span class=n>__functor</span><span class=p>.</span><span class=n>_M_access</span><span class=p>())</span> <span class=n>_Functor</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>move</span><span class=p>(</span><span class=n>__f</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>static</span> <span class=kt>void</span> <span class=nf>_M_init_functor</span><span class=p>(</span><span class=n>_Any_data</span> <span class=o>&amp;</span><span class=n>__functor</span><span class=p>,</span> <span class=n>_Functor</span> <span class=o>&amp;&amp;</span><span class=n>__f</span><span class=p>,</span> <span class=n>false_type</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>__functor</span><span class=p>.</span><span class=n>_M_access</span><span class=o>&lt;</span><span class=n>_Functor</span> <span class=o>*&gt;</span><span class=p>()</span> <span class=o>=</span> <span class=k>new</span> <span class=n>_Functor</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>move</span><span class=p>(</span><span class=n>__f</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>事实上也只会调用以上这几个函数，这个过程也都是移动构造，理论上即使删除了复制构造函数也是可以正常工作的，其实问题出在其他函数使用了复制，比如下面这对：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>static</span> <span class=kt>void</span> <span class=nf>_M_clone</span><span class=p>(</span><span class=n>_Any_data</span> <span class=o>&amp;</span><span class=n>__dest</span><span class=p>,</span> <span class=k>const</span> <span class=n>_Any_data</span> <span class=o>&amp;</span><span class=n>__source</span><span class=p>,</span> <span class=n>true_type</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=o>::</span><span class=k>new</span> <span class=p>(</span><span class=n>__dest</span><span class=p>.</span><span class=n>_M_access</span><span class=p>())</span> <span class=n>_Functor</span><span class=p>(</span><span class=n>__source</span><span class=p>.</span><span class=n>_M_access</span><span class=o>&lt;</span><span class=n>_Functor</span><span class=o>&gt;</span><span class=p>());</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>static</span> <span class=kt>void</span> <span class=nf>_M_clone</span><span class=p>(</span><span class=n>_Any_data</span> <span class=o>&amp;</span><span class=n>__dest</span><span class=p>,</span> <span class=k>const</span> <span class=n>_Any_data</span> <span class=o>&amp;</span><span class=n>__source</span><span class=p>,</span> <span class=n>false_type</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>__dest</span><span class=p>.</span><span class=n>_M_access</span><span class=o>&lt;</span><span class=n>_Functor</span> <span class=o>*&gt;</span><span class=p>()</span> <span class=o>=</span> <span class=k>new</span> <span class=n>_Functor</span><span class=p>(</span><span class=o>*</span><span class=n>__source</span><span class=p>.</span><span class=n>_M_access</span><span class=o>&lt;</span><span class=k>const</span> <span class=n>_Functor</span> <span class=o>*&gt;</span><span class=p>());</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>这里 <code>__source._M_access&lt;_Functor>()</code> 显然不是右值，只能调用复制构造函数。而模板实例化是全部的，不是只对有使用到的代码进行处理。结论就是不可以用 <code>std::function</code> 保存不可复制构造的函数对象，包括这种 <code>std::bind</code>，因此解决方案也就是不使用 <code>std::function</code>。然而这样就不容易对函数签名进行限制，比如下面的这种方法：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;functional&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Class</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>Class</span><span class=p>()</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>Class</span><span class=p>(</span><span class=k>const</span> <span class=n>Class</span> <span class=o>&amp;</span><span class=p>)</span> <span class=o>=</span> <span class=k>delete</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>Class</span> <span class=o>&amp;</span><span class=k>operator</span><span class=o>=</span><span class=p>(</span><span class=k>const</span> <span class=n>Class</span> <span class=o>&amp;</span><span class=p>)</span> <span class=o>=</span> <span class=k>delete</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>Class</span><span class=p>(</span><span class=n>Class</span> <span class=o>&amp;&amp;</span><span class=p>)</span> <span class=o>=</span> <span class=k>default</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>Class</span> <span class=o>&amp;</span><span class=k>operator</span><span class=o>=</span><span class=p>(</span><span class=n>Class</span> <span class=o>&amp;&amp;</span><span class=p>)</span> <span class=o>=</span> <span class=k>default</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>template</span> <span class=o>&lt;</span><span class=k>typename</span> <span class=n>Functor</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=n>call</span><span class=p>(</span><span class=n>Functor</span> <span class=n>func</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>func</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>auto</span> <span class=n>func</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>bind</span><span class=p>([](</span><span class=n>Class</span> <span class=o>&amp;</span><span class=p>)</span> <span class=p>{</span> <span class=cm>/* code */</span> <span class=p>},</span> <span class=n>Class</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>    <span class=n>call</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>move</span><span class=p>(</span><span class=n>func</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span title="2022-03-29 18:21:31">更新于 2022-03-29</span></div><div class=post-info-license><span>本文以 CC BY-NC 4.0 许可证发布</span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/ data-title="std::function 和 std::bind 的使用陷阱" data-hashtags=C++,标准库,函数对象,技术><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/ data-hashtag=C++><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 WhatsApp" data-sharer=whatsapp data-url=https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/ data-title="std::function 和 std::bind 的使用陷阱" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/ data-title="std::function 和 std::bind 的使用陷阱"><i data-svg-src=/lib/simple-icons/icons/line.min.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/ data-title="std::function 和 std::bind 的使用陷阱"><i class="fab fa-weibo fa-fw"></i></a><a href=javascript:void(0); title="分享到 Myspace" data-sharer=myspace data-url=https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/ data-title="std::function 和 std::bind 的使用陷阱" data-description><i data-svg-src=/lib/simple-icons/icons/myspace.min.svg></i></a><a href=javascript:void(0); title="分享到 Blogger" data-sharer=blogger data-url=https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/ data-title="std::function 和 std::bind 的使用陷阱" data-description><i class="fab fa-blogger fa-fw"></i></a><a href=javascript:void(0); title="分享到 Evernote" data-sharer=evernote data-url=https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/ data-title="std::function 和 std::bind 的使用陷阱"><i class="fab fa-evernote fa-fw"></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/c++/>C++</a>,&nbsp;<a href=/tags/%E6%A0%87%E5%87%86%E5%BA%93/>标准库</a>,&nbsp;<a href=/tags/%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1/>函数对象</a>,&nbsp;<a href=/tags/%E6%8A%80%E6%9C%AF/>技术</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/contents/20220317-arch-linux-software-config/ class=prev rel=prev title="Arch Linux 常用软件配置"><i class="fas fa-angle-left fa-fw"></i>Arch Linux 常用软件配置</a>
+<a href=/contents/20220404-multigenerator-document/ class=next rel=next title="MultiGenerator 使用文档">MultiGenerator 使用文档<i class="fas fa-angle-right fa-fw"></i></a></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="external nofollow noopener noreffer" title="Hugo 0.97.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/Lruihao/FixIt target=_blank rel="external nofollow noopener noreffer" title="FixIt 0.2.13"><i class="fa-stack fa-xs logo-icon"><i class="fas fa-ban fa-stack-2x"></i><i class="fas fa-bug fa-stack-1x"></i></i> FixIt</a></div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/ target=_blank>ctj12461</a></span><span class=footer-divider></span><span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div><div class=footer-line><span id=busuanzi_container_site_uv title=总访客数><i class="far fa-user"></i>
+<span id=busuanzi_value_site_uv><i class="fa fa-spinner fa-spin"></i></span></span><span id=busuanzi_container_site_pv class=footer-divider title=总访问量><i class="far fa-eye"></i>
+<span id=busuanzi_value_site_pv><i class="fa fa-spinner fa-spin"></i></span></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw"></i></a></div><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js defer></script><script type=text/javascript src=/lib/lunr/lunr.min.js defer></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js defer></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js defer></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js async defer></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js defer></script><script type=text/javascript src=/lib/sharer/sharer.min.js async defer></script><script type=text/javascript src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js async defer></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:1e4},comment:{},search:{highlightTag:"em",lunrIndexURL:"/index.json",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"lunr"}}</script><script type=text/javascript src=/js/theme.min.js defer></script><script type=text/javascript>(()=>{"serviceWorker"in navigator&&(navigator.serviceWorker.register("/service-worker.min.js",{scope:"/"}).then(function(){}).catch(function(e){console.error("error: ",e)}),navigator.serviceWorker.ready.then(function(){})),document.addEventListener("DOMContentLoaded",()=>{})})()</script></body></html>
