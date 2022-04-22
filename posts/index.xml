@@ -6,10 +6,11 @@
   
   
     
+    
     target="_blank"
   
   
-    rel="noopener noreffer"
+    rel="external nofollow noopener noreffer"
   
   
   
@@ -23,10 +24,11 @@
   
   
     
+    
     target="_blank"
   
   
-    rel="noopener noreffer"
+    rel="external nofollow noopener noreffer"
   
   
   
@@ -541,10 +543,11 @@
   
   
     
+    
     target="_blank"
   
   
-    rel="noopener noreffer"
+    rel="external nofollow noopener noreffer"
   
   
   
@@ -564,10 +567,11 @@
   
   
     
+    
     target="_blank"
   
   
-    rel="noopener noreffer"
+    rel="external nofollow noopener noreffer"
   
   
   
@@ -614,7 +618,7 @@
 </span></span><span class="line"><span class="cl">| | | [down, up] | | |
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>然后就是一个很显然的结论：将这些区间安装左端点排序后，一定存在一个分界点，满足分界点之前的区间都是选择右端点，分界点之后的区间都是选择左端点，证明就省略了，现在直接枚举分界的更新 $[up, down]$ 即可。</p>
+</div><p>然后就是一个很显然的结论：将这些区间按照左端点排序后，一定存在一个分界点，满足分界点之前的区间都是选择右端点，分界点之后的区间都是选择左端点，证明就省略了，现在直接枚举分界点更新 $[up, down]$ 即可。</p>
 <h2 id="part-3">Part 3</h2>
 <p>再考虑异色的情况，此时同样设出上一节的变量，但是 $up$ 是与 $a_{maxValPos}$ 同色的，$down$ 是与 $b_{minValPos}$ 同色的。为了最小化答案，就要使 $up$ 尽可能接近 $a_{maxValPos}$，$down$ 尽可能接近 $b_{minValPos}$。</p>
 <p>所以找到最值后，先初始化 $up$ 为 $a_{minValPos}$，$down$ 为 $b_{maxValPos}$，然后再用 $a_i$ 更新 $up$，用 $b_i$ 更新 $down$。</p>
@@ -1076,10 +1080,11 @@
   
   
     
+    
     target="_blank"
   
   
-    rel="noopener noreffer"
+    rel="external nofollow noopener noreffer"
   
   
   
