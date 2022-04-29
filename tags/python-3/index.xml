@@ -416,6 +416,12 @@
 </span><span class="lnt">10
 </span><span class="lnt">11
 </span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">get_submission_content</span><span class="p">(</span><span class="n">session</span><span class="p">:</span> <span class="n">aiohttp</span><span class="o">.</span><span class="n">ClientSession</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -429,7 +435,13 @@
 </span></span><span class="line"><span class="cl">    <span class="n">start</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;const unformattedCode = &#34;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="s1">&#39;const unformattedCode = &#34;&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">end</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\&#34;</span><span class="s2">;&#34;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">content</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;const formattedCode = &#34;&#39;</span><span class="p">,</span> <span class="n">start</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="c1"># 把 \u003C 这样的 Unicode 转义字符转换为正常的字符</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">content</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&#34;unicode-escape&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="sa">r</span><span class="s2">&#34;(</span><span class="se">\\</span><span class="s2">u[0-9a-fA-F])&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="k">lambda</span> <span class="n">match</span><span class="p">:</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&#34;unicode-escape&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">content</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面的代码判断会返回一个 <code>HTML</code> 字符串，含有非常多的 <code>&lt;span&gt;</code> 和 <code>&amp;amp;</code> 这样的东西，所以接下来的就是正常的 <code>HTML</code> 的处理了，把标签去掉，在把一些特殊符号转换回来就可以了：</p>
