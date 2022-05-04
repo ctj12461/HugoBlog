@@ -1,4 +1,237 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>所有文章 - ctj12461's Blog</title><link>https://ctj12461.vercel.app/posts/</link><description>所有文章 | ctj12461's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ctj12461@163.com (ctj12461)</managingEditor><webMaster>ctj12461@163.com (ctj12461)</webMaster><lastBuildDate>Mon, 18 Apr 2022 15:23:12 +0800</lastBuildDate><atom:link href="https://ctj12461.vercel.app/posts/" rel="self" type="application/rss+xml"/><item><title>Python 网络爬虫获取 SYZOJ AC 代码</title><link>https://ctj12461.vercel.app/contents/20220418-python-web-crawler-syzoj-accpeted-codes/</link><pubDate>Mon, 18 Apr 2022 15:23:12 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220418-python-web-crawler-syzoj-accpeted-codes/</guid><description><![CDATA[<p>写本文之前，我共有两百多道题目在校内 <code>OJ</code> 上通过，由于某些原因，想要保存这些代码，于是想到使用 <code>Python</code> 实现自动爬取代码。同时考虑到效率问题，决定使用 <code>aiohttp</code> 编写一个高性能异步爬虫。</p>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>所有文章 - ctj12461's Blog</title><link>https://ctj12461.vercel.app/posts/</link><description>所有文章 | ctj12461's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ctj12461@163.com (ctj12461)</managingEditor><webMaster>ctj12461@163.com (ctj12461)</webMaster><lastBuildDate>Wed, 04 May 2022 21:15:39 +0800</lastBuildDate><atom:link href="https://ctj12461.vercel.app/posts/" rel="self" type="application/rss+xml"/><item><title>Hugo 添加 Netlify CMS 支持</title><link>https://ctj12461.vercel.app/contents/20220504-hugo-netlify-cms-support/</link><pubDate>Wed, 04 May 2022 21:15:39 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220504-hugo-netlify-cms-support/</guid><description><![CDATA[<p>为了解决偶尔在手机上写博客这一<del>不存在</del>的需求，考虑为这个博客添加一个 CMS。在很早以前，我就用过 Netlify CMS，比较熟悉，所以就继续用它了。</p>
+<p>这里假设源码储存在 GitHub 上，且博客部署在 Vercel 上，其他原理类似。</p>
+<h2 id="原理">原理</h2>
+<p>像 Netlify CMS 这样的 Headless CMS，一般是独立于静态博客的其他组件的。以我这个博客为例，使用 Git 来管理由 makrdown 组成的博客原始内容，储存在 GitHub 上，并通过 GitHub Action 来构建，最后部署到 Vercel 上。而 Netlify CMS 要与它们一起工作，需要做比较多的工作。</p>
+<p>整个 Netlify CMS 的部署要考虑以下几个内容：</p>
+<ul>
+<li>获取博客源代码</li>
+<li>提供修改的 UI</li>
+<li>提交对内容的修改</li>
+</ul>
+<p>接下来就对这几个部分进行讲解。</p>
+<h2 id="添加-netlify-cms-到站点">添加 Netlify CMS 到站点</h2>
+<p>Hugo 中，任何放在 <code>static</code> 目录下的东西都不会被渲染，所以在 <code>static</code> 目录下添加一个目录，用于访问 CMS，这里就叫 <code>management</code>，然后按照<a
+  href="https://www.netlifycms.org/docs/add-to-your-site/"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>官方的步骤</a>添加两个文件 <code>config.yml</code> 和 <code>index.html</code>，分别表示 CMS 配置文件和 CMS 访问的 UI。</p>
+<p>目录结构如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">blog
+</span></span><span class="line"><span class="cl">└── static
+</span></span><span class="line"><span class="cl">    └── management
+</span></span><span class="line"><span class="cl">        ├── config.yml
+</span></span><span class="line"><span class="cl">        └── index.html
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在 <code>index.html</code> 中添加以下代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!doctype html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1.0&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Content Manager<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- Alternative CDN: https://cdn.jsdelivr.net/npm/netlify-cms@^2.0.0/dist/netlify-cms.js --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来填写配置文件 <code>config.yml</code>，建议现在本地测试：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">backend</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">github</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l">owner/repo</span><span class="w"> </span><span class="c"># 博客源码仓库</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l">your-branch</span><span class="w"> </span><span class="c"># 源码的分支</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">publish_mode</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;editorial_workflow&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">media_folder</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;static/images&#34;</span><span class="w"> </span><span class="c"># 图片存放的目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">public_folder</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;images&#34;</span><span class="w"> </span><span class="c"># 构建后图片存放的目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># collections 中的每一项代表一种文章类型</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">collections</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;posts&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Posts&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">folder</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;content/posts&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{slug}}/index&#34;</span><span class="w"> </span><span class="c"># {{slug}} 即 {{fields.filename}}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">slug</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{fields.filename}}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">media_folder</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w"> </span><span class="c"># 相对于 content/posts/{{fields.filename}}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">public_folder</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w"> </span><span class="c"># 相对于 content/posts/{{fields.filename}}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 允许创建新文章</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">fields</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- {<span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;File Name&#34;</span><span class="nt">, name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;filename&#34;</span><span class="nt">, widget</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;string&#34;</span><span class="nt">, default</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="nt">, required</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- {<span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Title&#34;</span><span class="nt">, name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;title&#34;</span><span class="nt">, widget</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;string&#34;</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- {<span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Date&#34;</span><span class="nt">, name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;date&#34;</span><span class="nt">, widget</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;datetime&#34;</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- {<span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Draft&#34;</span><span class="nt">, name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;draft&#34;</span><span class="nt">, widget</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;boolean&#34;</span><span class="nt">, default</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- {<span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Tags&#34;</span><span class="nt">, name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;tags&#34;</span><span class="nt">, widget</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;list&#34;</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- {<span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Categories&#34;</span><span class="nt">, name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;categories&#34;</span><span class="nt">, widget</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;list&#34;</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- {<span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Body&#34;</span><span class="nt">, name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;body&#34;</span><span class="nt">, widget</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;markdown&#34;</span>}<span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>这应该还是比较好懂的，我采用了 Hugo 的 Page Bundle 功能，每个位置单独一个目录，其中 <code>index.md</code> 存放内容，同时图片等资源也放在同一目录，可以直接以相对路径的方式引用。当然，Netlify CMS 现在只是提供了全局的 <code>media_folder</code> 的上传，其他的还是要手动用 Git 上传。</p>
+<p>在 <code>collections.fields</code> 中配置的是文章的处理，除了最后一行的 <code>- {label: &quot;Body&quot;, name: &quot;body&quot;, widget: &quot;markdown&quot;}</code> 是用于编写正文的，其他都是处理元信息，通过 Front-Matter 的方式存储。</p>
+<p>注意到 <code>File Name</code> 那一行是为了让 Netlify CMS 能够知道文章是在哪个目录下的，如果你不介意直接 Netlify CMS 生成的默认 <code>slug</code> 作为目录的名字，那可以直接去掉 <code>slug: &quot;{{fields.filename}}&quot;</code> 这一项。</p>
+<p>进阶配置可以参考以下链接：</p>
+<ul>
+<li><a
+  href="https://www.netlifycms.org/docs/configuration-options/"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>https://www.netlifycms.org/docs/configuration-options/</a></li>
+<li><a
+  href="https://www.netlifycms.org/docs/collection-types/"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>https://www.netlifycms.org/docs/collection-types/</a></li>
+<li><a
+  href="https://www.netlifycms.org/docs/widgets/"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>https://www.netlifycms.org/docs/widgets/</a></li>
+</ul>
+<p>接下来在本地运行 <code>hugo serve</code>，访问 <code>http://localhost:1313/management/</code>，应该就可以正常访问了。</p>
+<h2 id="添加认证服务">添加认证服务</h2>
+<p>接下来如果直接把代码部署到 GitHub 上，你会发现登录。这是因为 Netlify CMS 相对于 GitHub 是第三方应用，想要访问和修改你的仓库是需要授权的，这要通过 OAuth 解决。如果使用 Netlify 部署网站的话，Netlify 已经做好了相关工作，而使用 Vercel，就缺少一个 OAuth 的认证服务器。好在有人已经做出了现成的解决方案了，我们可以不用再造轮子。</p>
+<h3 id="部署-oauth-服务器">部署 OAuth 服务器</h3>
+<p>建议先看看 <a
+  href="https://github.com/ublabs/netlify-cms-oauth"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>netlify-cms-oauth</a> 的 readme，接下来就使用它。</p>
+<p>按照 readme 里的办法，我们只要点击那个蓝色的 Deploy 按钮，就可以把这个认证服务部署到自己的 Vercel 上，中途可能要求填写 <code>OAUTH_GITHUB_CLIENT_ID</code> 等环境变量，这个可以先随便填，和后面的东西无关。或者直接使用这个人的部署好的服务。</p>
+<h3 id="创建-github-oauth-app">创建 GitHub OAuth App</h3>
+<p>接下来，假设你使用的服务器的域名是 <code>netlify-cms-oauth.vercel.app</code>。</p>
+<p>在 <a
+  href="https://github.com/settings/developers"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>Developer settings</a> 中点击 New OAuth App，在 Homepage URL 中填上你的博客的 URL，Authorization callback URL 填上 <code>https://netlify-cms-oauth.vercel.app/callback</code>，创建即可。</p>
+<p>接下来再点击 Generate a new client secret，用于接下来的操作。</p>
+<h3 id="设置-vercel-环境变量">设置 Vercel 环境变量</h3>
+<p>在 Vercel 中的博客站点的设置中编辑 Environment Variables，添加 <code>OAUTH_GITHUB_CLIENT_ID</code> 为 Client ID，<code>OAUTH_GITHUB_CLIENT_SECRET</code> 为 Client secrets。</p>
+<p>我不知道要不要把上面的 OAuth 认证服务器的环境变量也改成这个，但是我测试的结果是没有影响。</p>
+<h3 id="修改配置文件">修改配置文件</h3>
+<p>在 <code>config.yml</code> 的 <code>backend</code> 中添加 <code>base_url: https://netlify-cms-oauth.vercel.app</code>，设置认证服务器。</p>
+<p>接下来再部署，应该就可以使用了。</p>
+]]></description></item><item><title>Python 网络爬虫获取 SYZOJ AC 代码</title><link>https://ctj12461.vercel.app/contents/20220418-python-web-crawler-syzoj-accpeted-codes/</link><pubDate>Mon, 18 Apr 2022 15:23:12 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220418-python-web-crawler-syzoj-accpeted-codes/</guid><description><![CDATA[<p>写本文之前，我共有两百多道题目在校内 <code>OJ</code> 上通过，由于某些原因，想要保存这些代码，于是想到使用 <code>Python</code> 实现自动爬取代码。同时考虑到效率问题，决定使用 <code>aiohttp</code> 编写一个高性能异步爬虫。</p>
 <h2 id="实现目标分析">实现目标分析</h2>
 <p>这个爬虫需要能够爬取所有的已通过题目的列表，并继续爬取这些已通过题目的代码，随后保存到文件中。</p>
 <p>校内 <code>OJ</code> 基于 <code>SYZOJ</code> 搭建，该 <code>OJ</code> 的项目地址为 <a
@@ -1472,297 +1705,4 @@
 <h2 id="faq">FAQ</h2>
 <p>Q1：我在 <code>Linux</code> 平台下，如果编译不能够通过，并且含有错误信息中含有 <code>pthread</code> 相关的东西，怎么解决？</p>
 <p>A1：<code>Linux</code> 下使用多线程需要调用 <code>pthread</code>，需要给 <code>g++</code> 加上 <code>-pthread</code> 参数。</p>
-]]></description></item><item><title>std::function 和 std::bind 的使用陷阱</title><link>https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/</link><pubDate>Tue, 29 Mar 2022 18:21:31 +0800</pubDate><author>作者</author><guid>https://ctj12461.vercel.app/contents/20220329-traps-of-std-function-and-std-bind/</guid><description><![CDATA[<p><code>std::function</code> 和 <code>std::bind</code> 是 <code>C++</code> 中非常常用的两个工具，然而要正确使用这两个工具还要更深入的理解。</p>
-<p>最近写项目时遇到需要将不可复制构造的对象传给 <code>std::bind</code> 的情况，结果遇到了编译错误。代码逻辑可以抽象为下面这样：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;functional&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Class</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">()</span> <span class="p">{}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">(</span><span class="k">const</span> <span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Class</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">(</span><span class="n">Class</span> <span class="o">&amp;&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Class</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">Class</span> <span class="o">&amp;&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">call</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span> <span class="n">func</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">func</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">func</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">([](</span><span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* code */</span> <span class="p">},</span> <span class="n">Class</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl">    <span class="n">call</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">func</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>这个错误 <code>Language Server</code> 是检测不到的，只有在编译后才能发现。编译错误信息如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">In file included from project.cpp:1:
-</span></span><span class="line"><span class="cl">In file included from /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/functional:59:
-</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:159:10: error: call to implicitly-deleted copy constructor of &#39;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&#39;
-</span></span><span class="line"><span class="cl">            new _Functor(*__source._M_access&lt;const _Functor*&gt;());
-</span></span><span class="line"><span class="cl">                ^        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:196:8: note: in instantiation of member function &#39;std::_Function_base::_Base_manager&lt;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&gt;::_M_clone&#39; requested here
-</span></span><span class="line"><span class="cl">              _M_clone(__dest, __source, _Local_storage());
-</span></span><span class="line"><span class="cl">              ^
-</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:283:13: note: in instantiation of member function &#39;std::_Function_base::_Base_manager&lt;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&gt;::_M_manager&#39; requested here
-</span></span><span class="line"><span class="cl">            _Base::_M_manager(__dest, __source, __op);
-</span></span><span class="line"><span class="cl">                   ^
-</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/bits/std_function.h:423:35: note: in instantiation of member function &#39;std::_Function_handler&lt;void (), std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&gt;::_M_manager&#39; requested here
-</span></span><span class="line"><span class="cl">              _M_manager = &amp;_My_handler::_M_manager;
-</span></span><span class="line"><span class="cl">                                         ^
-</span></span><span class="line"><span class="cl">project.cpp:20:10: note: in instantiation of function template specialization &#39;std::function&lt;void ()&gt;::function&lt;std::_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;, void, void&gt;&#39; requested here
-</span></span><span class="line"><span class="cl">    call(std::move(func));
-</span></span><span class="line"><span class="cl">         ^
-</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/functional:493:7: note: explicitly defaulted function was implicitly deleted here
-</span></span><span class="line"><span class="cl">      _Bind(const _Bind&amp;) = default;
-</span></span><span class="line"><span class="cl">      ^
-</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/functional:412:29: note: copy constructor of &#39;_Bind&lt;(lambda at project.cpp:19:27) (Class)&gt;&#39; is implicitly deleted because field &#39;_M_bound_args&#39; has a deleted copy constructor
-</span></span><span class="line"><span class="cl">      tuple&lt;_Bound_args...&gt; _M_bound_args;
-</span></span><span class="line"><span class="cl">                            ^
-</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:744:17: note: explicitly defaulted function was implicitly deleted here
-</span></span><span class="line"><span class="cl">      constexpr tuple(const tuple&amp;) = default;
-</span></span><span class="line"><span class="cl">                ^
-</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:599:19: note: copy constructor of &#39;tuple&lt;Class&gt;&#39; is implicitly deleted because base class &#39;_Tuple_impl&lt;0, Class&gt;&#39; has a deleted copy constructor
-</span></span><span class="line"><span class="cl">    class tuple : public _Tuple_impl&lt;0, _Elements...&gt;
-</span></span><span class="line"><span class="cl">                  ^
-</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:435:17: note: explicitly defaulted function was implicitly deleted here
-</span></span><span class="line"><span class="cl">      constexpr _Tuple_impl(const _Tuple_impl&amp;) = default;
-</span></span><span class="line"><span class="cl">                ^
-</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:408:7: note: copy constructor of &#39;_Tuple_impl&lt;0, Class&gt;&#39; is implicitly deleted because base class &#39;_Head_base&lt;0UL, Class&gt;&#39; has a deleted copy constructor
-</span></span><span class="line"><span class="cl">    : private _Head_base&lt;_Idx, _Head&gt;
-</span></span><span class="line"><span class="cl">      ^
-</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:86:17: note: explicitly defaulted function was implicitly deleted here
-</span></span><span class="line"><span class="cl">      constexpr _Head_base(const _Head_base&amp;) = default;
-</span></span><span class="line"><span class="cl">                ^
-</span></span><span class="line"><span class="cl">/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/tuple:125:39: note: copy constructor of &#39;_Head_base&lt;0, Class, true&gt;&#39; is implicitly deleted because field &#39;_M_head_impl&#39; has a deleted copy constructor
-</span></span><span class="line"><span class="cl">      [[__no_unique_address__]] _Head _M_head_impl;
-</span></span><span class="line"><span class="cl">                                      ^
-</span></span><span class="line"><span class="cl">project.cpp:7:5: note: &#39;Class&#39; has been explicitly marked deleted here
-</span></span><span class="line"><span class="cl">    Class(const Class &amp;) = delete;
-</span></span><span class="line"><span class="cl">    ^
-</span></span><span class="line"><span class="cl">1 error generated.
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>这个编译信息具有一定的误导性，有可能首先会想到的是 <code>std::bind</code> 生成的函数对象不支持复制构造和移动构造，但实际上查看源码后发现，<code>std::bind</code> 返回一个 <code>_Bind&lt;_Signature&gt;</code> 类，其中一个特化为：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">_Functor</span><span class="p">,</span> <span class="k">typename</span><span class="p">...</span> <span class="n">_Bound_args</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">_Bind</span><span class="o">&lt;</span><span class="n">_Functor</span><span class="p">(</span><span class="n">_Bound_args</span><span class="p">...)</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">_Weak_result_type</span><span class="o">&lt;</span><span class="n">_Functor</span><span class="o">&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">_Functor</span> <span class="n">_M_f</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">tuple</span><span class="o">&lt;</span><span class="n">_Bound_args</span><span class="p">...</span><span class="o">&gt;</span> <span class="n">_M_bound_args</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// ...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>其中 <code>_M_f</code> 在这里是编译器将 <code>lambda</code> 表达式转换后的函数对象，复制构造和移动构造都可以支持，<code>_M_bound_args</code> 则是绑定的参数，使用 <code>std::tuple</code> 实现，其复制构造函数和移动构造函数均为 <code>= default</code>，所以至少移动构造函数也是可用的，也就是 <code>std::bind</code> 返回的这个函数对象 <code>_Bind&lt;_Signature&gt;</code> 也是可以移动构造的，因此 <code>std::move(func)</code> 是没有问题的。</p>
-<p>所以问题出在 <code>std::function</code> 上，再查看 <code>std::function</code> 的源码，找到其构造函数对其他函数对象的重载：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">_Functor</span><span class="p">,</span> <span class="k">typename</span> <span class="o">=</span> <span class="cm">/* ... */</span><span class="p">,</span> <span class="k">typename</span> <span class="o">=</span> <span class="cm">/* ... */</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="n">function</span><span class="p">(</span><span class="n">_Functor</span> <span class="n">__f</span><span class="p">)</span> <span class="o">:</span> <span class="n">_Function_base</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">typedef</span> <span class="n">_Function_handler</span><span class="o">&lt;</span><span class="n">_Res</span><span class="p">(</span><span class="n">_ArgTypes</span><span class="p">...),</span> <span class="n">_Functor</span><span class="o">&gt;</span> <span class="n">_My_handler</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">_My_handler</span><span class="o">::</span><span class="n">_M_not_empty_function</span><span class="p">(</span><span class="n">__f</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_My_handler</span><span class="o">::</span><span class="n">_M_init_functor</span><span class="p">(</span><span class="n">_M_functor</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">__f</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_M_invoker</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">_My_handler</span><span class="o">::</span><span class="n">_M_invoke</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_M_manager</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">_My_handler</span><span class="o">::</span><span class="n">_M_manager</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>如果 <code>std::function</code> 接受了一个函数对象，那么就会使用 <code>_My_handler::_M_init_functor(_M_functor, std::move(__f))</code> 将该函数对象复制到自身内部的 <code>_M_functor</code> 成员上，而这个函数最终会调用以下两个函数之一：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">_M_init_functor</span><span class="p">(</span><span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__functor</span><span class="p">,</span> <span class="n">_Functor</span> <span class="o">&amp;&amp;</span><span class="n">__f</span><span class="p">,</span> <span class="n">true_type</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="o">::</span><span class="k">new</span> <span class="p">(</span><span class="n">__functor</span><span class="p">.</span><span class="n">_M_access</span><span class="p">())</span> <span class="n">_Functor</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">__f</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">_M_init_functor</span><span class="p">(</span><span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__functor</span><span class="p">,</span> <span class="n">_Functor</span> <span class="o">&amp;&amp;</span><span class="n">__f</span><span class="p">,</span> <span class="n">false_type</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">__functor</span><span class="p">.</span><span class="n">_M_access</span><span class="o">&lt;</span><span class="n">_Functor</span> <span class="o">*&gt;</span><span class="p">()</span> <span class="o">=</span> <span class="k">new</span> <span class="n">_Functor</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">__f</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>事实上也只会调用以上这几个函数，这个过程也都是移动构造，理论上即使删除了复制构造函数也是可以正常工作的，其实问题出在其他函数使用了复制，比如下面这对：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">_M_clone</span><span class="p">(</span><span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__dest</span><span class="p">,</span> <span class="k">const</span> <span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__source</span><span class="p">,</span> <span class="n">true_type</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="o">::</span><span class="k">new</span> <span class="p">(</span><span class="n">__dest</span><span class="p">.</span><span class="n">_M_access</span><span class="p">())</span> <span class="n">_Functor</span><span class="p">(</span><span class="n">__source</span><span class="p">.</span><span class="n">_M_access</span><span class="o">&lt;</span><span class="n">_Functor</span><span class="o">&gt;</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">_M_clone</span><span class="p">(</span><span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__dest</span><span class="p">,</span> <span class="k">const</span> <span class="n">_Any_data</span> <span class="o">&amp;</span><span class="n">__source</span><span class="p">,</span> <span class="n">false_type</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">__dest</span><span class="p">.</span><span class="n">_M_access</span><span class="o">&lt;</span><span class="n">_Functor</span> <span class="o">*&gt;</span><span class="p">()</span> <span class="o">=</span> <span class="k">new</span> <span class="n">_Functor</span><span class="p">(</span><span class="o">*</span><span class="n">__source</span><span class="p">.</span><span class="n">_M_access</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">_Functor</span> <span class="o">*&gt;</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>这里 <code>__source._M_access&lt;_Functor&gt;()</code> 显然不是右值，只能调用复制构造函数。而模板实例化是全部的，不是只对有使用到的代码进行处理。结论就是不可以用 <code>std::function</code> 保存不可复制构造的函数对象，包括这种 <code>std::bind</code>，因此解决方案也就是不使用 <code>std::function</code>。然而这样就不容易对函数签名进行限制，比如下面的这种方法：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;functional&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Class</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">()</span> <span class="p">{}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">(</span><span class="k">const</span> <span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Class</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">Class</span><span class="p">(</span><span class="n">Class</span> <span class="o">&amp;&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Class</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">Class</span> <span class="o">&amp;&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Functor</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">call</span><span class="p">(</span><span class="n">Functor</span> <span class="n">func</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">func</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">func</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">([](</span><span class="n">Class</span> <span class="o">&amp;</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* code */</span> <span class="p">},</span> <span class="n">Class</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl">    <span class="n">call</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">func</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div>]]></description></item></channel></rss>
+]]></description></item></channel></rss>
