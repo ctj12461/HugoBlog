@@ -1,43 +1,37 @@
 ---
-filename: "hugo-netlify-cms-support"
-title: "Hugo 添加 Netlify CMS 支持"
+draft: false
+authorLink: ""
+license: 本文以 CC BY-NC 4.0 许可证发布
+hiddenFromHomePage: false
+resources:
+  - name: featured-image
+    src: featured-image.jpg
+  - name: featured-image-preview
+    src: featured-image-preview.jpg
+summary: ""
+filename: hugo-netlify-cms-support
+title: Hugo 添加 Netlify CMS 支持
 subtitle: ""
 date: 2022-05-04T21:15:39+08:00
-draft: false
 author: ""
-authorLink: ""
-authorEmail: ""
 description: ""
-keywords: ""
-license: "本文以 CC BY-NC 4.0 许可证发布"
-comment: false
 weight: 0
-
 tags:
   - Hugo
   - Netlify CMS
 categories:
   - Tech
-
-hiddenFromHomePage: false
-hiddenFromSearch: false
-
-summary: ""
-resources:
-- name: featured-image
-  src: featured-image.jpg
-- name: featured-image-preview
-  src: featured-image-preview.jpg
-
 toc:
   enable: true
 math:
   enable: false
+keywords: ""
+authorEmail: ""
 lightgallery: false
+hiddenFromSearch: false
 seo:
   images: []
-
-# See details front matter: /theme-documentation-content/#front-matter
+comment: false
 ---
 
 为了解决偶尔在手机上写博客这一~~不存在~~的需求，考虑为这个博客添加一个 CMS。在很早以前，我就用过 Netlify CMS，比较熟悉，所以就继续用它了。
@@ -105,7 +99,7 @@ collections:
     folder: "content/posts"
     path: "{{slug}}/index" # {{slug}} 即 {{fields.filename}}
     slug: "{{fields.filename}}"
-    media_folder: "" # 相对于 content/posts/{{fields.filename}}
+    media_folder: "" # 相fdfdfdfd对于 content/posts/{{fields.filename}}
     public_folder: "" # 相对于 content/posts/{{fields.filename}}
     create: true # 允许创建新文章
     fields:
